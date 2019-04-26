@@ -42,11 +42,5 @@ public class ProfDocumentFetch {
 		return this.empProf.getOneRow(emp_id);
 }
 	
-	@RequestMapping(value = "/vaish/", method = RequestMethod.GET)
-	public Status getstatic() {
-		Status status=new Status();
-		status.setMessage("Professional documents");
-		status.setStatusCode(200);
-		return status;
-	}
+	
 }

@@ -4,7 +4,9 @@ package com.prodapt.propad.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.prodapt.propad.model.PropadEmpEduDetails;
@@ -27,7 +29,9 @@ public interface EmpPerRepository extends JpaRepository<PropadEmpPerDetails, Int
 	@Query(value="select * from propad_emp_per_details where ep_per_emp_id=?1", nativeQuery = true)
 	List<PropadEmpPerDetails> findByEp_per_emp_id(Integer ep_per_emp_id);
 
-
+//	@Modifying(clearAutomatically = true)
+//	@Query("update propad_emp_per_details pee set pee.ep_per_addressproof =:ep_per_addressproof where ep_per_emp_id =:ep_per_emp_id")
+//	List<PropadEmpPerDetails>  updatepersonal(@Param("ep_per_emp_id") int ep_per_emp_id);
 	
 
 }

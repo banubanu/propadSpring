@@ -10,6 +10,7 @@ public interface EmpTech {
 	List<PropadEmpTechDetails> getOneRow(int emp_id);
 	List<PropadEmpTechDetails> getAll();
 	PropadEmpTechDetails save(PropadEmpTechDetails  pet);
+	PropadEmpTechDetails update(PropadEmpTechDetails  pet);
 
 }
 

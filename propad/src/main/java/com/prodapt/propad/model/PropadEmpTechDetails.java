@@ -11,8 +11,11 @@ import javax.persistence.Table;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "propad_emp_tech_details")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class PropadEmpTechDetails {
 
 	@Id

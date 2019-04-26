@@ -45,24 +45,11 @@ public class TechicalDocumentFetch {
 		return this.empTech.getOneRow(emp_id);
 	}
 	
-	@RequestMapping(value = "/vaish/", method = RequestMethod.GET)
-	public Status getstatic() {
-		Status status=new Status();
-		status.setMessage("Technical documents");
-		status.setStatusCode(200);
-		return status;
-	}
 	
-//public List<Job> getDetails(@RequestParam String name)
-//{
-//
-//    System.out.println("select DISTINCT id,jd_position_title,jd_business_unit,jd_delivery_centre,jd_position_creation_date,jd_education,jd_experience,jd_designation,jd_work_location,jd_job_responsibilities,jd_skills,jd_position_code from `refertalents`.`rt_job_details`,`refertalents`.`rt_preferred_job_details` where rt_job_details.jd_skills = rt_preferred_job_details.pj_skills and rt_preferred_job_details.pj_employee_name='"+name+"'");
-//      Query query = entityManager.createNativeQuery(
-//    "select DISTINCT id,jd_position_title,jd_business_unit,jd_delivery_centre,jd_position_creation_date,jd_education,jd_experience,jd_designation,jd_work_location,jd_job_responsibilities,jd_skills,jd_position_code from `refertalents`.`rt_job_details`,`refertalents`.`rt_preferred_job_details` where rt_job_details.jd_skills = rt_preferred_job_details.pj_skills and rt_preferred_job_details.pj_employee_name='"+name+"'",Job.class);
-//      
-//      List<Job> job = query.getResultList(); 
-//      return  job; 
-//}
+	
+	
+	
+
 
 	
 }

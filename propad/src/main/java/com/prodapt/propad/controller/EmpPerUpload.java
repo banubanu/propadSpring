@@ -61,33 +61,33 @@ public class EmpPerUpload {
     }
     
 
-	@RequestMapping(value = "/update-personal-document", method = RequestMethod.PATCH)
-	public PropadEmpPerDetails updatepersonaldocument(@RequestPart(required = false) Map<String, String> json, EmployeePerDTO empper, @RequestParam( required = false) MultipartFile aadhar, @RequestParam( required = false) MultipartFile passport,@RequestParam( required = false) MultipartFile pancard,@RequestParam( required = false) MultipartFile addressproof ) throws IOException, SerialException, SQLException {
-		System.out.println("hi");
-	PropadEmpPerDetails pep = new PropadEmpPerDetails();
-		pep.setEp_per_emp_id(empper.getEp_per_emp_id());
-		if(aadhar!=null) {
-			pep.setEp_per_aadhar(aadhar.getBytes());
-		}	
-		if(addressproof!=null) {
-			pep.setEp_per_aadhar(addressproof.getBytes());
-		}
-		if(pancard!=null) {
-			pep.setEp_per_pan(pancard.getBytes());
-		}
-		if(passport!=null) {
-			pep.setEp_per_aadhar(passport.getBytes());
-		}
-		pep.setEp_per_aadhar_text(empper.getEp_per_aadhar_text());
-		
-		pep.setEp_per_addressproof_text(empper.getEp_per_addressproof_text());
-		
-		pep.setEp_per_pan_text(empper.getEp_per_pan_text());
-		
-		pep.setEp_per_pp_text(empper.getEp_per_pp_text());
-		
-		return this.empPer.save(pep) ;
-	}
+//	@RequestMapping(value = "/update-personal-document", method = RequestMethod.POST)
+//	public PropadEmpPerDetails updatepersonaldocument(@RequestPart(required = false) Map<String, String> json, EmployeePerDTO empper, @RequestParam( required = false) MultipartFile aadhar, @RequestParam( required = false) MultipartFile passport,@RequestParam( required = false) MultipartFile pancard,@RequestParam( required = false) MultipartFile addressproof ) throws IOException, SerialException, SQLException {
+//		System.out.println("hi");
+//	PropadEmpPerDetails pep = new PropadEmpPerDetails();
+//		pep.setEp_per_emp_id(empper.getEp_per_emp_id());
+//		if(aadhar!=null) {
+//			pep.setEp_per_aadhar(aadhar.getBytes());
+//		}	
+//		if(addressproof!=null) {
+//			pep.setEp_per_aadhar(addressproof.getBytes());
+//		}
+//		if(pancard!=null) {
+//			pep.setEp_per_pan(pancard.getBytes());
+//		}
+//		if(passport!=null) {
+//			pep.setEp_per_aadhar(passport.getBytes());
+//		}
+//		pep.setEp_per_aadhar_text(empper.getEp_per_aadhar_text());
+//		
+//		pep.setEp_per_addressproof_text(empper.getEp_per_addressproof_text());
+//		
+//		pep.setEp_per_pan_text(empper.getEp_per_pan_text());
+//		
+//		pep.setEp_per_pp_text(empper.getEp_per_pp_text());
+//		
+//		return this.empPer.save(pep) ;
+//	}
     
 	
 	@RequestMapping(value = "/upload-personal-document", method = RequestMethod.POST)

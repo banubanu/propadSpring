@@ -49,6 +49,13 @@ public EmpTechImpl(EmpTechRepository empTechRepository) {
 	}
 
 
+	@Override
+	public PropadEmpTechDetails update(PropadEmpTechDetails pet) {
+		// TODO Auto-generated method stub
+		return empTechRepository.update(pet);
+	}
+
+
 	
 
 }

@@ -16,9 +16,15 @@ public interface EmpTechRepository extends JpaRepository<PropadEmpTechDetails, I
 
 	@Query(value="select * from propad_emp_tech_details where et_emp_id=?1", nativeQuery = true)
 	public List<PropadEmpTechDetails> getOneRow(int emp_id);
-
+	
+//	@Query(value="select * from propad_emp_tech_details where et_id=?1", nativeQuery = true)
+//	public List<PropadEmpTechDetails> getOne(int et_id);
+	
 	@Query(value="select * from propad_emp_tech_details where et_emp_id=?1", nativeQuery = true)
 	public List<PropadEmpTechDetails> findByEt_emp_id(Integer et_emp_id);
+
+	@Query(value="update propad_emp_tech_details where et_emp_id=?1", nativeQuery = true)
+	public PropadEmpTechDetails update(PropadEmpTechDetails pet);
 
 	
 }
