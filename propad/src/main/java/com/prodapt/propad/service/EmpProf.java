@@ -8,8 +8,8 @@ import com.prodapt.propad.model.PropadEmpProfDetails;
 
 public interface EmpProf {
 	List<PropadEmpProfDetails> getAll();
-	Integer countnull(int ep_emp_id);
-	List<PropadEmpProfDetails> getOneRow(int emp_id);
+	Integer countnull(String ep_prof_mail);
+	List<PropadEmpProfDetails> getOneRow(String ep_prof_mail);
 	PropadEmpProfDetails save(PropadEmpProfDetails  ppd);
 	
 

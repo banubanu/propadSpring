@@ -39,9 +39,9 @@ public class ServiceController {
 		pie.setIe_emp_id(employee.getIe_emp_id());
 		pie.setIe_id(employee.getIe_id());
 		
-		pie.setIe_int1(employee.getIe_int1());
-		
-		pie.setIe_int2(employee.getIe_int2());
+//		pie.setIe_int1(employee.getIe_int1());
+//		
+//		pie.setIe_int2(employee.getIe_int2());
 		
 		pie.setIe_status(employee.getIe_status());
 		
@@ -56,14 +56,14 @@ public class ServiceController {
 		PropadInitiateEmployee pie = new PropadInitiateEmployee();
 		pie.setIe_emp_name(employee.getIe_emp_name());
 
-		pie.setIe_emp_name(employee.getIe_emp_name());
+//		pie.setIe_emp_name(employee.getIe_emp_name());
         pie.setIe_emp_doj(employee.getIe_emp_doj());
         pie.setIe_emp_date(new Date());
 
 	    pie.setIe_emp_email(employee.getIe_emp_email());
 		pie.setIe_emp_id(employee.getIe_emp_id());
-		pie.setIe_int1(employee.getIe_int1()); 
-		pie.setIe_int2(employee.getIe_int2());
+//		pie.setIe_int1(employee.getIe_int1()); 
+//		pie.setIe_int2(employee.getIe_int2());
 		pie.setIe_status(employee.getIe_status());
 		return this.serviceApi.save(pie) ;
 	}

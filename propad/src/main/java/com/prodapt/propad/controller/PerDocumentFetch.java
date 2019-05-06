@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -27,19 +28,13 @@ public class PerDocumentFetch {
 		this.empPer = empPer;
 	}
 	
-	@RequestMapping(value = "/get-per-documents/{emp_id}", method = RequestMethod.GET)
-	public List<PropadEmpPerDetails> getUsers(@PathVariable("emp_id") int emp_id) {
+	@RequestMapping(value = "/get-per-documents/{ep_per_mail}", method = RequestMethod.GET)
+	public List<PropadEmpPerDetails> getUsers(@RequestParam("ep_per_mail") String ep_per_mail) {
 		System.out.println("in get");
-		return this.empPer.getOneRow(emp_id);
+		return this.empPer.getOneRow(ep_per_mail);
 }
 	
-	@RequestMapping(value = "/vaish/", method = RequestMethod.GET)
-	public Status getstatic() {
-		Status status=new Status();
-		status.setMessage("Personal documents");
-		status.setStatusCode(200);
-		return status;
-	}
+	
 }
 
 

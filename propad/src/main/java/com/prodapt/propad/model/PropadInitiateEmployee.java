@@ -18,11 +18,18 @@ public class PropadInitiateEmployee  {
 	private String ie_emp_name;
 	private String ie_emp_email;
 	private Date ie_emp_doj;
-	private String ie_int1;
-	private String ie_int2;
+//	private String ie_int1;
+//	private String ie_int2;
 	private String ie_status;
 	private Date ie_emp_date;
+//	private long mobile_no;
 	
+//	public long getMobile_no() {
+//		return mobile_no;
+//	}
+//	public void setMobile_no(long l) {
+//		this.mobile_no = l;
+//	}
 	public Date getIe_emp_date() {
 		return ie_emp_date;
 	}
@@ -60,18 +67,18 @@ public class PropadInitiateEmployee  {
 	public void setIe_emp_doj(Date ie_emp_doj) {
 		this.ie_emp_doj = ie_emp_doj;
 	}
-	public String getIe_int1() {
-		return ie_int1;
-	}
-	public void setIe_int1(String ie_int1) {
-		this.ie_int1 = ie_int1;
-	}
-	public String getIe_int2() {
-		return ie_int2;
-	}
-	public void setIe_int2(String ie_int2) {
-		this.ie_int2 = ie_int2;
-	}
+//	public String getIe_int1() {
+//		return ie_int1;
+//	}
+//	public void setIe_int1(String ie_int1) {
+//		this.ie_int1 = ie_int1;
+//	}
+//	public String getIe_int2() {
+//		return ie_int2;
+//	}
+//	public void setIe_int2(String ie_int2) {
+//		this.ie_int2 = ie_int2;
+//	}
 	public String getIe_status() {
 		return ie_status;
 	}
@@ -88,8 +95,6 @@ public class PropadInitiateEmployee  {
 		result = prime * result + ie_emp_id;
 		result = prime * result + ((ie_emp_name == null) ? 0 : ie_emp_name.hashCode());
 		result = prime * result + ie_id;
-		result = prime * result + ((ie_int1 == null) ? 0 : ie_int1.hashCode());
-		result = prime * result + ((ie_int2 == null) ? 0 : ie_int2.hashCode());
 		result = prime * result + ((ie_status == null) ? 0 : ie_status.hashCode());
 		return result;
 	}
@@ -126,16 +131,6 @@ public class PropadInitiateEmployee  {
 			return false;
 		if (ie_id != other.ie_id)
 			return false;
-		if (ie_int1 == null) {
-			if (other.ie_int1 != null)
-				return false;
-		} else if (!ie_int1.equals(other.ie_int1))
-			return false;
-		if (ie_int2 == null) {
-			if (other.ie_int2 != null)
-				return false;
-		} else if (!ie_int2.equals(other.ie_int2))
-			return false;
 		if (ie_status == null) {
 			if (other.ie_status != null)
 				return false;
@@ -146,8 +141,8 @@ public class PropadInitiateEmployee  {
 	@Override
 	public String toString() {
 		return "PropadInitiateEmployee [ie_id=" + ie_id + ", ie_emp_id=" + ie_emp_id + ", ie_emp_name=" + ie_emp_name
-				+ ", ie_emp_email=" + ie_emp_email + ", ie_emp_doj=" + ie_emp_doj + ", ie_int1=" + ie_int1
-				+ ", ie_int2=" + ie_int2 + ", ie_status=" + ie_status + ", ie_emp_date=" + ie_emp_date + "]";
+				+ ", ie_emp_email=" + ie_emp_email + ", ie_emp_doj=" + ie_emp_doj + ", ie_status=" + ie_status
+				+ ", ie_emp_date=" + ie_emp_date + "]";
 	}
 	
 	

@@ -9,7 +9,15 @@ public class Status {
        private PropadEmpPerDetails propadEmpPerDetails;
        private PropadEmpTechDetails propadEmpTechDetails;
        private PropadEmpProfDetails propadEmpProfDetails;
-       public PropadEmpProfDetails getPropadEmpProfDetails() {
+       private PropadUsers propadUser;
+       
+       public PropadUsers getPropadUser() {
+		return propadUser;
+	}
+	public void setPropadUser(PropadUsers propadUser) {
+		this.propadUser = propadUser;
+	}
+	public PropadEmpProfDetails getPropadEmpProfDetails() {
 		return propadEmpProfDetails;
 	}
 	public void setPropadEmpProfDetails(PropadEmpProfDetails propadEmpProfDetails) {
@@ -47,6 +55,7 @@ public class Status {
 	public void setPropadEmpPerDetails(PropadEmpPerDetails propadEmpPerDetails) {
 		this.propadEmpPerDetails = propadEmpPerDetails;
 	}
+	
        
               
 }

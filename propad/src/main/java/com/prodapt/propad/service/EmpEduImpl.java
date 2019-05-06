@@ -31,15 +31,15 @@ public PropadEmpEduDetails save(PropadEmpEduDetails pee) {
 }
 
 	@Override
-	public Integer countnull(Integer i) {
+	public Integer countnull(String ed_emp_mail) {
 		// TODO Auto-generated method stub
-		return empEduRepository.countnull(i);
+		return empEduRepository.countnull(ed_emp_mail);
 	}
 
 	@Override
-	public List<PropadEmpEduDetails> getOneRow(int emp_id) {
+	public List<PropadEmpEduDetails> getOneRow(String ed_emp_mail) {
 		// TODO Auto-generated method stub
-		return  empEduRepository.getOneRow(emp_id);
+		return  empEduRepository.getOneRow(ed_emp_mail);
 	}
 	
 

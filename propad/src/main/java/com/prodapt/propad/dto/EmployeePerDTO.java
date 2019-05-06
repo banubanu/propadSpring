@@ -22,7 +22,44 @@ package com.prodapt.propad.dto;
 		private String ep_per_pan_text;
 		private Blob ep_per_aadhar;
 		private String ep_per_aadhar_text;
+		private String ep_per_mail;
+		private String addressproof_status;
+		private String aadhar_status;
+		private String pp_status;
+		private String pan_status;
 		
+		
+		
+		public String getEp_per_mail() {
+			return ep_per_mail;
+		}
+		public void setEp_per_mail(String ep_per_mail) {
+			this.ep_per_mail = ep_per_mail;
+		}
+		public String getAddressproof_status() {
+			return addressproof_status;
+		}
+		public void setAddressproof_status(String addressproof_status) {
+			this.addressproof_status = addressproof_status;
+		}
+		public String getAadhar_status() {
+			return aadhar_status;
+		}
+		public void setAadhar_status(String aadhar_status) {
+			this.aadhar_status = aadhar_status;
+		}
+		public String getPp_status() {
+			return pp_status;
+		}
+		public void setPp_status(String pp_status) {
+			this.pp_status = pp_status;
+		}
+		public String getPan_status() {
+			return pan_status;
+		}
+		public void setPan_status(String pan_status) {
+			this.pan_status = pan_status;
+		}
 		public int getEper_id() {
 			return eper_id;
 		}

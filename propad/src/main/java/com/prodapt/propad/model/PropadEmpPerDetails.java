@@ -15,8 +15,11 @@ import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "propad_emp_per_details")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class PropadEmpPerDetails implements Serializable {
 	
 	@Id
@@ -32,8 +35,44 @@ public class PropadEmpPerDetails implements Serializable {
 	private String ep_per_pan_text;
 	private byte[] ep_per_aadhar;
 	private String ep_per_aadhar_text;
+	private String ep_per_mail;
+	private String addressproof_status;
+	private String aadhar_status;
+	private String pp_status;
+	private String pan_status;
 	
 	
+	
+	public String getEp_per_mail() {
+		return ep_per_mail;
+	}
+	public void setEp_per_mail(String ep_per_mail) {
+		this.ep_per_mail = ep_per_mail;
+	}
+	public String getAddressproof_status() {
+		return addressproof_status;
+	}
+	public void setAddressproof_status(String addressproof_status) {
+		this.addressproof_status = addressproof_status;
+	}
+	public String getAadhar_status() {
+		return aadhar_status;
+	}
+	public void setAadhar_status(String aadhar_status) {
+		this.aadhar_status = aadhar_status;
+	}
+	public String getPp_status() {
+		return pp_status;
+	}
+	public void setPp_status(String pp_status) {
+		this.pp_status = pp_status;
+	}
+	public String getPan_status() {
+		return pan_status;
+	}
+	public void setPan_status(String pan_status) {
+		this.pan_status = pan_status;
+	}
 	public int getEper_id() {
 		return eper_id;
 	}
@@ -101,8 +140,11 @@ public class PropadEmpPerDetails implements Serializable {
 				+ Arrays.toString(ep_per_addressproof) + ", ep_per_addressproof_text=" + ep_per_addressproof_text
 				+ ", ep_per_pp=" + Arrays.toString(ep_per_pp) + ", ep_per_pp_text=" + ep_per_pp_text + ", ep_per_pan="
 				+ Arrays.toString(ep_per_pan) + ", ep_per_pan_text=" + ep_per_pan_text + ", ep_per_aadhar="
-				+ Arrays.toString(ep_per_aadhar) + ", ep_per_aadhar_text=" + ep_per_aadhar_text + "]";
+				+ Arrays.toString(ep_per_aadhar) + ", ep_per_aadhar_text=" + ep_per_aadhar_text + ", ep_per_mail="
+				+ ep_per_mail + ", addressproof_status=" + addressproof_status + ", aadhar_status=" + aadhar_status
+				+ ", pp_status=" + pp_status + ", pan_status=" + pan_status + "]";
 	}
+	
 	
 	
 	

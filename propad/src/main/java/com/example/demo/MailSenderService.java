@@ -1,4 +1,4 @@
-package com.prodapt.propad.demo;
+package com.example.demo;
 
 import java.io.IOException;
 

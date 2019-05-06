@@ -109,9 +109,9 @@ public class EmployeeStatusController {
 //	}
 	
 	
-	@RequestMapping(value = "/get-tech-status/{emp_id}", method = RequestMethod.GET)
-	public Integer gettechdocuments(@PathVariable("emp_id") int emp_id ) {
-		return this.empTech.countnull(emp_id);
+	@RequestMapping(value = "/get-tech-status", method = RequestMethod.GET)
+	public Integer gettechdocuments(@RequestParam("et_emp_mail") String et_emp_mail ) {
+		return this.empTech.countnull(et_emp_mail);
 	}
 	
 

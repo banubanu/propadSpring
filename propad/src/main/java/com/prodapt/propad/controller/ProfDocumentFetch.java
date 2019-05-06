@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -36,10 +36,10 @@ public class ProfDocumentFetch {
 	
     
 	
-	@RequestMapping(value = "/get-prof-documents/{emp_id}", method = RequestMethod.GET)
-	public List<PropadEmpProfDetails> getUsers(@PathVariable("emp_id") int emp_id) {
+	@RequestMapping(value = "/get-prof-documents", method = RequestMethod.GET)
+	public List<PropadEmpProfDetails> getUsers(@RequestParam("ep_prof_mail") String ep_prof_mail) {
 		System.out.println("in get");
-		return this.empProf.getOneRow(emp_id);
+		return this.empProf.getOneRow(ep_prof_mail);
 }
 	
 	

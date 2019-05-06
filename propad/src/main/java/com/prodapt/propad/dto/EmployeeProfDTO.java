@@ -14,7 +14,7 @@ package com.prodapt.propad.dto;
 		@Id
 		@GeneratedValue(strategy=GenerationType.AUTO)
 		private int ep_id;
-		private int ep_emp_id;
+//		private int ep_emp_id;
 		private Blob ep_service_cert1;
 		private String ep_service_cert1_text;
 		private Blob ep_service_cert2;
@@ -27,18 +27,71 @@ package com.prodapt.propad.dto;
 		private String ep_payslip2_text;
 		private Blob ep_payslip3;
 		private String ep_payslip3_text;
+		private String ep_prof_mail;
+		private String service1_status;
+		private String service2_status;
+		private String service3_status;
+		private String payslip1_status;
+		private String payslip2_status;
+		private String payslip3_status;
+		
+		
+		
+		
+		public String getEp_prof_mail() {
+			return ep_prof_mail;
+		}
+		public void setEp_prof_mail(String ep_prof_mail) {
+			this.ep_prof_mail = ep_prof_mail;
+		}
+		public String getService1_status() {
+			return service1_status;
+		}
+		public void setService1_status(String service1_status) {
+			this.service1_status = service1_status;
+		}
+		public String getService2_status() {
+			return service2_status;
+		}
+		public void setService2_status(String service2_status) {
+			this.service2_status = service2_status;
+		}
+		public String getService3_status() {
+			return service3_status;
+		}
+		public void setService3_status(String service3_status) {
+			this.service3_status = service3_status;
+		}
+		public String getPayslip1_status() {
+			return payslip1_status;
+		}
+		public void setPayslip1_status(String payslip1_status) {
+			this.payslip1_status = payslip1_status;
+		}
+		public String getPayslip2_status() {
+			return payslip2_status;
+		}
+		public void setPayslip2_status(String payslip2_status) {
+			this.payslip2_status = payslip2_status;
+		}
+		public String getPayslip3_status() {
+			return payslip3_status;
+		}
+		public void setPayslip3_status(String payslip3_status) {
+			this.payslip3_status = payslip3_status;
+		}
 		public int getEp_id() {
 			return ep_id;
 		}
 		public void setEp_id(int ep_id) {
 			this.ep_id = ep_id;
 		}
-		public int getEp_emp_id() {
-			return ep_emp_id;
-		}
-		public void setEp_emp_id(int ep_emp_id) {
-			this.ep_emp_id = ep_emp_id;
-		}
+//		public int getEp_emp_id() {
+//			return ep_emp_id;
+//		}
+//		public void setEp_emp_id(int ep_emp_id) {
+//			this.ep_emp_id = ep_emp_id;
+//		}
 		public Blob getEp_service_cert1() {
 			return ep_service_cert1;
 		}

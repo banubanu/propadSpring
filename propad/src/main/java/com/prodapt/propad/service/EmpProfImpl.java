@@ -27,9 +27,9 @@ public class EmpProfImpl implements EmpProf {
 
 	
 	@Override
-	public List<PropadEmpProfDetails> getOneRow(int emp_id) {
+	public List<PropadEmpProfDetails> getOneRow(String ep_prof_mail) {
 		// TODO Auto-generated method stub
-		return service.getOneRow(emp_id);
+		return service.getOneRow(ep_prof_mail);
 	}
 	@Override
 	public PropadEmpProfDetails save(PropadEmpProfDetails ppd) {
@@ -38,9 +38,9 @@ public class EmpProfImpl implements EmpProf {
 	}
 
 	@Override
-	public Integer countnull(int ep_emp_id) {
+	public Integer countnull(String ep_prof_mail) {
 		// TODO Auto-generated method stub
-		return service.countnull(ep_emp_id);
+		return service.countnull(ep_prof_mail);
 	}
 	
 

@@ -51,9 +51,9 @@ public class TechincalDocumentUpload {
 		}
 		
 		@RequestMapping(value = "/record-exists", method = RequestMethod.GET)
-	    public ResponseEntity<Status> getsave(@RequestParam Integer et_emp_id){
+	    public ResponseEntity<Status> getsave(@RequestParam String et_emp_mail){
 	           Status status=new Status();
-	           List<PropadEmpTechDetails> list=empTechRepository.findByEt_emp_id(et_emp_id);
+	           List<PropadEmpTechDetails> list=empTechRepository.findByEt_emp_mail(et_emp_mail);
 	          // List<RtSavedJobDetails> list = savedRepository.findBySjEmployeeCodeAndRtJobDetails_JdPositionCode(sjEmployeeCode, jdPositionCode);
 	             if(!list.isEmpty()&& list.size()>0) 
 	             { 
@@ -114,7 +114,8 @@ public class TechincalDocumentUpload {
 		PropadEmpTechDetails pet3 = new PropadEmpTechDetails();
 		System.out.println("hiii from object");
 		pet3.setEt_id(emptech.getEt_id());
-		pet3.setEt_emp_id(emptech.getEt_emp_id());
+		
+		pet3.setEt_emp_mail(emptech.getEt_emp_mail());
 		if(file!=null) {
 			pet3.setEt_tech_cert1(file.getBytes());
 		}
@@ -192,83 +193,5 @@ PropadEmpTechDetails returnrecord=null;
 		 }
 	}
 	return this.empTech.save(returnrecord);
-		 
-//		System.out.println("hi"+pet2);
-//		System.out.println(pet3);
-//		PropadEmpTechDetails pet = new PropadEmpTechDetails();
-//		if(file!=null) {
-//			pet.setEt_tech_cert1(file.getBytes());
-//		}
-//		
-//			if(file1!=null) {
-//				pet.setEt_tech_cert2(file1.getBytes());
-//			}
-//	        
-//	       
-//	        if(file2!=null) {
-//	        	pet.setEt_tech_cert3(file2.getBytes());
-//			}
-//
-//	       
-//	        if(file3!=null) {
-//	        	pet.setEt_tech_cert4(file3.getBytes());
-//	       }
-//	        if(file4!=null) {
-//	        	pet.setEt_tech_cert5(file4.getBytes());
-//			}
-//	        System.out.println("hiii pet");
-//       returnrecord = empTechRepository.save(pet);
-//      
-// } else {
-//	 System.out.println("hiii pet2");
-//	 returnrecord = empTechRepository.save(pet2);
-//	 
-// }
-//
-//} else {
-//	System.out.println("hiii pet3");
-//	returnrecord = empTechRepository.save(pet3);
-//	 
-//}
-//System.out.println("errr");
-//return returnrecord;
+	}
 }
-}
-	
-
-
-
-//@PostMapping("savejobdetails")
-//public RtSavedJobDetails savejdobed(@RequestBody RtSavedJobDetails save) {
-//       RtJobDetails rtJobDetails = refTalRepository.findByJdPositionCode(save.getPositionCode());
-//       save.setRtJobDetails(rtJobDetails);
-//       RtSavedJobDetails returnSave = null;
-//       if (save.getId() != 0) {
-//              RtSavedJobDetails save2 = savedRepository.getOne(save.getId());
-//              if (save2.getSjEmployeeCode() != save.getSjEmployeeCode()) {
-//                    RtSavedJobDetails save3 = new RtSavedJobDetails();
-//                    save3.setSjEmployeeCode(save.getSjEmployeeCode());
-//                    save3.setRtJobDetails(rtJobDetails);
-//                     save3.setPositionCode(save.getPositionCode());
-//                    save3.setSjSaveFlag(save.isSjSaveFlag());
-//                    returnSave = savedRepository.save(save3);
-//              } else {
-//                    returnSave = savedRepository.save(save);
-//              }
-//
-//       } else {
-//              returnSave = savedRepository.save(save);
-//       }
-//
-//       return returnSave;
-//
-//}
-
-
-
-
-
-	
-	
-	
-	

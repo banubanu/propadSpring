@@ -22,8 +22,10 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.prodapt.propad.dto.EmpTechDTO;
 import com.prodapt.propad.dto.EmployeeEduDTO;
+import com.prodapt.propad.dto.EmployeeProfDTO;
 import com.prodapt.propad.model.PropadEmpEduDetails;
 import com.prodapt.propad.model.PropadEmpPerDetails;
+import com.prodapt.propad.model.PropadEmpProfDetails;
 import com.prodapt.propad.model.PropadEmpTechDetails;
 import com.prodapt.propad.model.Status;
 import com.prodapt.propad.repository.EmpEduRepository;
@@ -46,9 +48,9 @@ public class EduDocUpload {
 	}
 	
 	@RequestMapping(value = "/record-exists", method = RequestMethod.GET)
-    public ResponseEntity<Status> getsave(@RequestParam Integer ed_emp_id){
+    public ResponseEntity<Status> getsave(@RequestParam String ed_emp_mail){
            Status status=new Status();
-           List<PropadEmpEduDetails> list=empEduRepository.findByEd_emp_id(ed_emp_id);
+           List<PropadEmpEduDetails> list=empEduRepository.findByEd_emp_mail(ed_emp_mail);
           // List<RtSavedJobDetails> list = savedRepository.findBySjEmployeeCodeAndRtJobDetails_JdPositionCode(sjEmployeeCode, jdPositionCode);
              if(!list.isEmpty()&& list.size()>0) 
              { 
@@ -59,7 +61,7 @@ public class EduDocUpload {
     }
 	
 	@RequestMapping(value = "/upload-edu-document", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public PropadEmpEduDetails uploadedudocument( @RequestPart(required = false) Map<String, String> json,EmployeeEduDTO empEdu, @RequestParam("file") MultipartFile file, @RequestParam("file1") MultipartFile file1,@RequestParam("file2") MultipartFile file2,@RequestParam("file3") MultipartFile file3,@RequestParam("file4") MultipartFile file4, @RequestParam("file5") MultipartFile file5) throws IOException, SerialException, SQLException {
+	public PropadEmpEduDetails uploadedudocument( @RequestPart(required = false) Map<String, String> json,EmployeeEduDTO empEdu, @RequestParam("file") MultipartFile file, @RequestParam("file1") MultipartFile file1,@RequestParam("file2") MultipartFile file2,@RequestParam("file3") MultipartFile file3,@RequestParam("file4") MultipartFile file4, @RequestParam(required=false) MultipartFile file5) throws IOException, SerialException, SQLException {
 		System.out.println("banu"+file.getOriginalFilename());
 		System.out.println(file.getBytes());
 //		System.out.println(emptech.getEt_tech_cert1());
@@ -68,8 +70,8 @@ public class EduDocUpload {
 //  pet.setEt_tech_cert1(((EmpTechDTO) file).getEt_tech_cert1());
 //	pet.setEt_emp_id(et_emp_id);
 		
-		pee.setEd_emp_id(empEdu.getEd_emp_id());
-	
+//		pee.setEd_emp_id(empEdu.getEd_emp_id());
+	pee.setEd_emp_mail(empEdu.getEd_emp_mail());
 		pee.setEd_edu_sslc(file.getBytes());
 		
 		pee.setEd_edu_sslc_text(empEdu.getEd_edu_sslc_text());
@@ -84,12 +86,98 @@ public class EduDocUpload {
         pee.setEd_edu_pg(file4.getBytes());
         
         pee.setEd_edu_pg_text(empEdu.getEd_edu_pg_text());
-        pee.setEd_edu_others(file5.getBytes());
+//        pee.setEd_edu_others(file5.getBytes());
       
         pee.setEd_edu_others_text(empEdu.getEd_edu_others_text());
         pee.setEd_edu_comments(empEdu.getEd_edu_comments());
        
 		return this.empEdu.save(pee) ;
+	}
+
+	@RequestMapping(value = "/update-edu-document", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public PropadEmpEduDetails updatedocument( @RequestPart(required = false) Map<String, String> json,EmployeeEduDTO empEdu, @RequestParam("file") MultipartFile file, @RequestParam("file1") MultipartFile file1,@RequestParam("file2") MultipartFile file2,@RequestParam("file3") MultipartFile file3,@RequestParam("file4") MultipartFile file4, @RequestParam("file5") MultipartFile file5) throws IOException, SerialException, SQLException {
+			System.out.println("hiii from function");
+		/////////////////updated details////////////////
+	PropadEmpEduDetails pee3 = new PropadEmpEduDetails();
+		System.out.println("hiii from object");
+		pee3.setEd_id(empEdu.getEd_id());
+//		pee3.setEd_emp_id(empEdu.getEd_emp_id());
+		if(file!=null) {
+			pee3.setEd_edu_sslc(file.getBytes());
+		}
+		
+			if(file1!=null) {
+				pee3.setEd_edu_hsc(file1.getBytes());
+			}
+	        
+	       
+	        if(file2!=null) {
+	        	pee3.setEd_edu_dip(file2.getBytes());
+			}
+
+	       
+	        if(file3!=null) {
+	        	pee3.setEd_edu_ug(file3.getBytes());
+	       }
+	        if(file4!=null) {
+	        	pee3.setEd_edu_pg(file4.getBytes());
+			}
+	        if(file5!=null) {
+	        	pee3.setEd_edu_others(file5.getBytes());
+			}
+		System.out.println("updarteed records"+pee3);
+		
+		
+		PropadEmpEduDetails returnrecord=null;
+	if( pee3.getEd_id()!=0)	{
+		PropadEmpEduDetails pee2 = empEduRepository.getOne(pee3.getEd_id());
+		System.out.println("record in database"+pee2);
+		 if (pee2.getEd_emp_mail() == pee3.getEd_emp_mail()) {
+			 PropadEmpEduDetails pee = new PropadEmpEduDetails();
+			 pee.setEd_id(pee2.getEd_id());
+//			 pee.setEd_emp_id(pee2.getEd_emp_mail());
+			 if(pee3.getEd_edu_sslc()!=null) {
+				 pee.setEd_edu_sslc(pee3.getEd_edu_sslc());
+			 }else
+			 {
+				 pee.setEd_edu_sslc(pee2.getEd_edu_sslc());
+			 }
+			 if(pee3.getEd_edu_hsc()!=null) {
+				 pee.setEd_edu_hsc(pee3.getEd_edu_hsc());
+			 }else
+			 {
+				 pee.setEd_edu_hsc(pee2.getEd_edu_hsc());
+			 }
+			 if(pee3.getEd_edu_dip()!=null) {
+				 pee.setEd_edu_dip(pee3.getEd_edu_dip());
+			 }else
+			 {
+				 pee.setEd_edu_dip(pee2.getEd_edu_dip());
+			 }
+			 if(pee3.getEd_edu_ug()!=null) {
+				 pee.setEd_edu_ug(pee3.getEd_edu_ug());
+			 }else
+			 {
+				 pee.setEd_edu_ug(pee2.getEd_edu_ug());
+			 }
+
+			 if(pee3.getEd_edu_pg()!=null) {
+				 pee.setEd_edu_pg(pee3.getEd_edu_pg());
+			 }else
+			 {
+				 pee.setEd_edu_pg(pee2.getEd_edu_pg());
+			 }
+			 
+		 System.out.println("update of record needed");
+		 returnrecord=pee;
+		 System.out.println("updation done successfully");
+	 }
+		 else
+		 {
+			 returnrecord=pee3;
+		 }
+	}
+	return this.empEdu.save(returnrecord);
 	}
 
 }

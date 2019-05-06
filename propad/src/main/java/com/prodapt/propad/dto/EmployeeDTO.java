@@ -13,11 +13,32 @@ public class EmployeeDTO {
 	private String ie_emp_name;
 	private String ie_emp_email;
 	private Date ie_emp_doj;
-	private String ie_int1;
-	private String ie_int2;
+//	private String ie_int1;
+//	private String ie_int2;
 	private String ie_status;
 	private Date ie_emp_date;
+
+	private long  mobile_no;
+
 	
+	public long getMobile_no() {
+		return mobile_no;
+	}
+	public void setMobile_no(long mobile_no) {
+		this.mobile_no = mobile_no;
+	}
+	public Date getIe_emp_date() {
+		return ie_emp_date;
+	}
+	public void setIe_emp_date(Date ie_emp_date) {
+		this.ie_emp_date = ie_emp_date;
+	}
+
+	
+
+	public void setIe_emp_doj(Date ie_emp_doj) {
+		this.ie_emp_doj = ie_emp_doj;
+	}
 	public Date getIe_date() {
 		return ie_emp_date;
 	}
@@ -56,18 +77,18 @@ public class EmployeeDTO {
 	public Date  setIe_emp_doj() {
 		return this.ie_emp_doj = new Date() ;
 	}
-	public String getIe_int1() {
-		return ie_int1;
-	}
-	public String setIe_int1(String ie_int1) {
-		return this.ie_int1 = ie_int1;
-	}
-	public String getIe_int2() {
-		return ie_int2;
-	}
-	public String setIe_int2(String ie_int2) {
-		return this.ie_int2 = ie_int2;
-	}
+//	public String getIe_int1() {
+//		return ie_int1;
+//	}
+//	public String setIe_int1(String ie_int1) {
+//		return this.ie_int1 = ie_int1;
+//	}
+//	public String getIe_int2() {
+//		return ie_int2;
+//	}
+//	public String setIe_int2(String ie_int2) {
+//		return this.ie_int2 = ie_int2;
+//	}
 	public String getIe_status() {
 		return ie_status;
 	}

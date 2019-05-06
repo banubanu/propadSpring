@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.prodapt.propad.service.EmpEdu;
@@ -20,12 +21,12 @@ public class EduStatusController {
 		this.empEdu = empEdu;
 	}	
 	
-	@RequestMapping(value = "/get-edu-status/{emp_id}", method = RequestMethod.GET)
-	public Integer getedudocuments(@PathVariable("emp_id") int emp_id ) {
-		if(this.empEdu.countnull(emp_id)==null) {
+	@RequestMapping(value = "/get-edu-status", method = RequestMethod.GET)
+	public Integer getedudocuments(@RequestParam("ed_emp_mail") String ed_emp_mail ) {
+		if(this.empEdu.countnull(ed_emp_mail)==null) {
 			return -1;
 		}
-		return this.empEdu.countnull(emp_id);
+		return this.empEdu.countnull(ed_emp_mail);
 	}
 	
 }

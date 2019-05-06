@@ -39,10 +39,10 @@ public class TechicalDocumentFetch {
 	}
 	
 	
-	@RequestMapping(value = "/get-all-documents/{emp_id}", method = RequestMethod.GET)
-	public List<PropadEmpTechDetails> getUsers(@PathVariable("emp_id") int emp_id) {
+	@RequestMapping(value = "/get-all-documents", method = RequestMethod.GET)
+	public List<PropadEmpTechDetails> getUsers(@RequestParam("et_emp_mail") String et_emp_mail) {
 		System.out.println("in get");
-		return this.empTech.getOneRow(emp_id);
+		return this.empTech.getOneRow(et_emp_mail);
 	}
 	
 	

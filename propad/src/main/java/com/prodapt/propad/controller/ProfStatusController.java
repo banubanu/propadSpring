@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -24,12 +25,12 @@ public class ProfStatusController {
 		this.empProf = empProf;
 	}
 	
-	@RequestMapping(value = "/get-prof-status/{ep_emp_id}", method = RequestMethod.GET)
-	public Integer getpersonalstatus(@PathVariable("ep_emp_id") int ep_emp_id ) {
-		if(this.empProf.countnull(ep_emp_id)==null) {
+	@RequestMapping(value = "/get-prof-status", method = RequestMethod.GET)
+	public Integer getpersonalstatus(@RequestParam("ep_prof_mail") String ep_prof_mail ) {
+		if(this.empProf.countnull(ep_prof_mail)==null) {
 			return -1;
 		}
-		return this.empProf.countnull(ep_emp_id);
+		return this.empProf.countnull(ep_prof_mail);
 	}
 	
 }

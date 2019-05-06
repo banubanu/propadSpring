@@ -14,24 +14,19 @@ import com.prodapt.propad.model.PropadEmpPerDetails;
 
 @Repository
 public interface EmpPerRepository extends JpaRepository<PropadEmpPerDetails, Integer> {
-//	
-//	@Query(value="select * from propad_emp_per_details where ep_per_emp_id=?1", nativeQuery = true)
-//	PropadEmpPerDetails findByEp_per_emp_id(int ep_per_emp_id);
+
 	
 	@Query(value="select * from propad_emp_per_details where ep_per_emp_id=?1", nativeQuery = true)
-	List<PropadEmpPerDetails> getOneRow(int emp_id);
+	List<PropadEmpPerDetails> getOneRow(String ep_per_mail);
 	
 
 	@Query(value = "SELECT ((CASE WHEN ep_per_addressproof IS NULL THEN 1 ELSE 0 END)+ (CASE WHEN ep_per_pp IS NULL THEN 1 ELSE 0 END)+(CASE WHEN ep_per_pan IS NULL THEN 1 ELSE 0 END)+(CASE WHEN ep_per_aadhar IS NULL THEN 1 ELSE 0 END)) AS sum_of_nulls FROM propad_emp_per_details where ep_per_emp_id=?1", nativeQuery = true)
-	Integer countnull(int ep_per_emp_id);
+	Integer countnull(String ep_per_mail);
 
 	
 	@Query(value="select * from propad_emp_per_details where ep_per_emp_id=?1", nativeQuery = true)
-	List<PropadEmpPerDetails> findByEp_per_emp_id(Integer ep_per_emp_id);
+	List<PropadEmpPerDetails> findByEp_per_mail(String ep_per_mail);
 
-//	@Modifying(clearAutomatically = true)
-//	@Query("update propad_emp_per_details pee set pee.ep_per_addressproof =:ep_per_addressproof where ep_per_emp_id =:ep_per_emp_id")
-//	List<PropadEmpPerDetails>  updatepersonal(@Param("ep_per_emp_id") int ep_per_emp_id);
 	
 
 }

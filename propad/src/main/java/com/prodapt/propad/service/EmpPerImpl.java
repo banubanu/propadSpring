@@ -37,15 +37,15 @@ public class EmpPerImpl implements EmpPer {
 	}
 
 	@Override
-	public List<PropadEmpPerDetails> getOneRow(int emp_id) {
+	public List<PropadEmpPerDetails> getOneRow(String ep_per_mail) {
 		// TODO Auto-generated method stub
-		return empPerRepo.getOneRow(emp_id);
+		return empPerRepo.getOneRow(ep_per_mail);
 	}
 
 	@Override
-	public Integer countnull(int emp_id) {
+	public Integer countnull(String ep_per_mail) {
 		// TODO Auto-generated method stub
-		return empPerRepo.countnull(emp_id);
+		return empPerRepo.countnull(ep_per_mail);
 	}
 
 	

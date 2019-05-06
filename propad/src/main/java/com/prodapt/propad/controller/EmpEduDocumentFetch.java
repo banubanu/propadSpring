@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.prodapt.propad.model.PropadEmpEduDetails;
@@ -24,19 +25,14 @@ public class EmpEduDocumentFetch {
 		// TODO Auto-generated constructor stub
 		this.empEdu = empEdu;
 	}	
-	@RequestMapping(value = "/get-edu-documents/{emp_id}", method = RequestMethod.GET)
-	public List<PropadEmpEduDetails> getUsers(@PathVariable("emp_id") int emp_id) {
+	@RequestMapping(value = "/get-edu-documents", method = RequestMethod.GET)
+	public List<PropadEmpEduDetails> getUsers(@RequestParam("ed_emp_mail") String ed_emp_mail) {
 		System.out.println("in get");
-		return this.empEdu.getOneRow(emp_id);
+		System.out.println(ed_emp_mail);
+		return this.empEdu.getOneRow(ed_emp_mail);
 }
 	
-	@RequestMapping(value = "/vaish/", method = RequestMethod.GET)
-	public Status getstatic() {
-		Status status=new Status();
-		status.setMessage("Educational documents");
-		status.setStatusCode(200);
-		return status;
-	}
+	
 	
 	
 }

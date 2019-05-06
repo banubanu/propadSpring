@@ -24,9 +24,9 @@ public EmpTechImpl(EmpTechRepository empTechRepository) {
 	}
 
 	@Override
-	public Integer countnull(Integer i) {
+	public Integer countnull(String et_emp_mail) {
 		// TODO Auto-generated method stub
-		return empTechRepository.countnull(i);
+		return empTechRepository.countnull(et_emp_mail);
 	}
 	@Override
 	public PropadEmpTechDetails save(PropadEmpTechDetails pet) {
@@ -43,9 +43,9 @@ public EmpTechImpl(EmpTechRepository empTechRepository) {
 
 
 	@Override
-	public List<PropadEmpTechDetails> getOneRow(int emp_id) {
+	public List<PropadEmpTechDetails> getOneRow(String et_emp_mail) {
 		// TODO Auto-generated method stub
-		return empTechRepository.getOneRow(emp_id);
+		return empTechRepository.getOneRow(et_emp_mail);
 	}
 
 
@@ -55,6 +55,8 @@ public EmpTechImpl(EmpTechRepository empTechRepository) {
 		return empTechRepository.update(pet);
 	}
 
+
+	
 
 	
 
