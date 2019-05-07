@@ -28,7 +28,7 @@ public class PerDocumentFetch {
 		this.empPer = empPer;
 	}
 	
-	@RequestMapping(value = "/get-per-documents/{ep_per_mail}", method = RequestMethod.GET)
+	@RequestMapping(value = "/get-per-documents", method = RequestMethod.GET)
 	public List<PropadEmpPerDetails> getUsers(@RequestParam("ep_per_mail") String ep_per_mail) {
 		System.out.println("in get");
 		return this.empPer.getOneRow(ep_per_mail);

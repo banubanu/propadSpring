@@ -16,15 +16,15 @@ import com.prodapt.propad.model.PropadEmpPerDetails;
 public interface EmpPerRepository extends JpaRepository<PropadEmpPerDetails, Integer> {
 
 	
-	@Query(value="select * from propad_emp_per_details where ep_per_emp_id=?1", nativeQuery = true)
+	@Query(value="select * from propad_emp_per_details where ep_per_mail=?1", nativeQuery = true)
 	List<PropadEmpPerDetails> getOneRow(String ep_per_mail);
 	
 
-	@Query(value = "SELECT ((CASE WHEN ep_per_addressproof IS NULL THEN 1 ELSE 0 END)+ (CASE WHEN ep_per_pp IS NULL THEN 1 ELSE 0 END)+(CASE WHEN ep_per_pan IS NULL THEN 1 ELSE 0 END)+(CASE WHEN ep_per_aadhar IS NULL THEN 1 ELSE 0 END)) AS sum_of_nulls FROM propad_emp_per_details where ep_per_emp_id=?1", nativeQuery = true)
+	@Query(value = "SELECT ((CASE WHEN ep_per_addressproof IS NULL THEN 1 ELSE 0 END)+ (CASE WHEN ep_per_pp IS NULL THEN 1 ELSE 0 END)+(CASE WHEN ep_per_pan IS NULL THEN 1 ELSE 0 END)+(CASE WHEN ep_per_aadhar IS NULL THEN 1 ELSE 0 END)) AS sum_of_nulls FROM propad_emp_per_details where ep_per_mail=?1", nativeQuery = true)
 	Integer countnull(String ep_per_mail);
 
 	
-	@Query(value="select * from propad_emp_per_details where ep_per_emp_id=?1", nativeQuery = true)
+	@Query(value="select * from propad_emp_per_details where ep_per_mail=?1", nativeQuery = true)
 	List<PropadEmpPerDetails> findByEp_per_mail(String ep_per_mail);
 
 	
