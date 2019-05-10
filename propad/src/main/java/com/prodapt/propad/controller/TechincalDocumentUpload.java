@@ -200,53 +200,53 @@ PropadEmpTechDetails returnrecord=null;
 	
 	
 	@RequestMapping(value = "/update-tech-status", method = RequestMethod.POST)
-	public PropadEmpTechDetails updatedocumentStatus( @RequestBody EmpTechDTO emptech) throws IOException, SerialException, SQLException,JsonParseException {
-				System.out.println("hiii from function");
-		/////////////////updated details////////////////
-				PropadEmpTechDetails pet3 = new PropadEmpTechDetails();
-		System.out.println("hiii from object");
-		pet3.setEt_id(emptech.getEt_id());
-		pet3.setEt_emp_mail(emptech.getEt_emp_mail());
-		pet3.setTech1_status(emptech.getTech1_status());
-		pet3.setTech2_status(emptech.getTech2_status());
-		pet3.setTech3_status(emptech.getTech3_status());
-		pet3.setTech4_status(emptech.getTech4_status());
-		pet3.setTech5_status(emptech.getTech5_status());
+    public PropadEmpTechDetails updatedocumentStatus( @RequestBody EmpTechDTO emptech) throws IOException, SerialException, SQLException,JsonParseException {
+                        System.out.println("hiii from function");
+           /////////////////updated details////////////////
+                        PropadEmpTechDetails pet3 = new PropadEmpTechDetails();
+           System.out.println("hiii from object");
+           pet3.setEt_id(emptech.getEt_id());
+           pet3.setEt_emp_mail(emptech.getEt_emp_mail());
+           pet3.setTech1_status(emptech.getTech1_status());
+           pet3.setTech2_status(emptech.getTech2_status());
+           pet3.setTech3_status(emptech.getTech3_status());
+           pet3.setTech4_status(emptech.getTech4_status());
+           pet3.setTech5_status(emptech.getTech5_status());
 
-		System.out.println("updarteed records"+pet3);
-		
-		
-		PropadEmpTechDetails returnrecord=null;
-	if( pet3.getEt_emp_mail()!=null)	{
-//		PropadEmpTechDetails pet2 = empTechRepository.getOneRow(pet3.getEt_emp_mail());
-		PropadEmpTechDetails pet2 = empTechRepository.getOne(pet3.getEt_id());
-		System.out.println("record in database"+pet2);
-		 if (pet2.getEt_emp_mail().equals(pet3.getEt_emp_mail())) {
-			 PropadEmpTechDetails pet = new PropadEmpTechDetails();
-			 pet.setEt_id(pet2.getEt_id());
-			 pet.setEt_emp_mail(pet2.getEt_emp_mail());
-			 pet.setEt_tech_cert1(pet2.getEt_tech_cert1());
-			 pet.setEt_tech_cert2(pet2.getEt_tech_cert2());
-			 pet.setEt_tech_cert3(pet2.getEt_tech_cert3());
-			 pet.setEt_tech_cert4(pet2.getEt_tech_cert4());
-			 pet.setEt_tech_cert5(pet2.getEt_tech_cert5());
-			 
-			 pet.setTech1_status(pet3.getTech1_status());
-				pet.setTech2_status(pet3.getTech2_status());
-				pet.setTech3_status(pet3.getTech3_status());
-				pet.setTech4_status(pet3.getTech4_status());
-				pet.setTech5_status(pet3.getTech5_status());
-			 
-		 System.out.println("update of record needed");
-		 returnrecord=pet;
-		 System.out.println("updation done successfully");
-	 }
-		 else
-		 {
-			 returnrecord=pet3;
-		 }
-	}
-	return this.empTech.save(returnrecord);
-	}
+           System.out.println("updarteed records"+pet3);
+           
+           
+           PropadEmpTechDetails returnrecord=null;
+    if( pet3.getEt_emp_mail()!=null)  {
+//         PropadEmpTechDetails pet2 = empTechRepository.getOneRow(pet3.getEt_emp_mail());
+           PropadEmpTechDetails pet2 = empTechRepository.getOne(pet3.getEt_id());
+           System.out.println("record in database"+pet2);
+           if (pet2.getEt_emp_mail().equals(pet3.getEt_emp_mail())) {
+                  PropadEmpTechDetails pet = new PropadEmpTechDetails();
+                  pet.setEt_id(pet2.getEt_id());
+                  pet.setEt_emp_mail(pet2.getEt_emp_mail());
+                  pet.setEt_tech_cert1(pet2.getEt_tech_cert1());
+                  pet.setEt_tech_cert2(pet2.getEt_tech_cert2());
+                  pet.setEt_tech_cert3(pet2.getEt_tech_cert3());
+                  pet.setEt_tech_cert4(pet2.getEt_tech_cert4());
+                  pet.setEt_tech_cert5(pet2.getEt_tech_cert5());
+                  
+                   pet.setTech1_status(pet3.getTech1_status());
+                        pet.setTech2_status(pet3.getTech2_status());
+                        pet.setTech3_status(pet3.getTech3_status());
+                        pet.setTech4_status(pet3.getTech4_status());
+                        pet.setTech5_status(pet3.getTech5_status());
+                  
+            System.out.println("update of record needed");
+           returnrecord=pet;
+           System.out.println("updation done successfully");
+    }
+           else
+           {
+                  returnrecord=pet3;
+           }
+    }
+    return this.empTech.save(returnrecord);
+    }
 
 }

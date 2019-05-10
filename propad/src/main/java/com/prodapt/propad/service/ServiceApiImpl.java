@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-
+import com.prodapt.propad.model.PropadEmpTechDetails;
 import com.prodapt.propad.model.PropadInitiateEmployee;
 import com.prodapt.propad.repository.ServiceRepository;
 
@@ -28,6 +28,12 @@ ServiceRepository serviceRepository;
 	public PropadInitiateEmployee save(PropadInitiateEmployee pie) {
 		// TODO Auto-generated method stub
 		return serviceRepository.save(pie);
+	}
+
+	@Override
+	public List<PropadInitiateEmployee> getOneRow(String ie_emp_mail) {
+		// TODO Auto-generated method stub
+		return  serviceRepository.getOneRow(ie_emp_mail);
 	}
 	
 	
