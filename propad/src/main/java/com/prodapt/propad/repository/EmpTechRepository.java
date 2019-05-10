@@ -15,18 +15,15 @@ public interface EmpTechRepository extends JpaRepository<PropadEmpTechDetails, I
 	public Integer countnull(String et_emp_mail);
 
 	@Query(value="select * from propad_emp_tech_details where et_emp_mail=?1", nativeQuery = true)
-	public List<PropadEmpTechDetails> getOneRow(String et_emp_mail);
+	public PropadEmpTechDetails getOneRow(String et_emp_mail);
 	
-//	@Query(value="select * from propad_emp_tech_details where et_id=?1", nativeQuery = true)
-//	public List<PropadEmpTechDetails> getOne(int et_id);
+//	
 	
 	@Query(value="select * from propad_emp_tech_details where et_emp_mail=?1", nativeQuery = true)
 	public List<PropadEmpTechDetails> findByEt_emp_mail(String et_emp_mail);
 
-	@Query(value="update propad_emp_tech_details where et_emp_mail=?1", nativeQuery = true)
-	public PropadEmpTechDetails update(PropadEmpTechDetails pet);
-
-	
+@Query(value="select tech1_status,tech2_status,tech3_status,tech4_status,tech5_status from propad_emp_tech_details where et_emp_mail=?1",nativeQuery= true)
+public  List<PropadEmpTechDetails> findPendingDocuments(String et_emp_mail);
 }
 
 

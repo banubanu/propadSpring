@@ -3,7 +3,9 @@ package com.prodapt.propad.dto;
 
 
 	import java.sql.Date;
-	import javax.persistence.Entity;
+import java.util.List;
+
+import javax.persistence.Entity;
 	import javax.persistence.GeneratedValue;
 	import javax.persistence.GenerationType;
 	import javax.persistence.Id;
@@ -17,6 +19,31 @@ package com.prodapt.propad.dto;
 		private int ev_emp_id;
 		private Date ev_review_dt;
 		private String ev_review_comments;
+		private String ev_emp_mail;
+		private String a[]= new String[5];
+//		 private List<String> commentList;
+		
+//		public List<String> getCommentList() {
+//			return commentList;
+//		}
+//		public void setCommentList(List<String> commentList) {
+//			this.commentList = commentList;
+//		}
+		public String getEv_emp_mail() {
+			return ev_emp_mail;
+		}
+		public void setEv_emp_mail(String ev_emp_mail) {
+			this.ev_emp_mail = ev_emp_mail;
+		}
+		
+		
+	
+		public String[] getA() {
+			return a;
+		}
+		public void setA(String[] a) {
+			this.a = a;
+		}
 		public int getEv_id() {
 			return ev_id;
 		}

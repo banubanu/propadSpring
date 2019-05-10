@@ -25,7 +25,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.prodapt.propad.dto.EmpTechDTO;
 import com.prodapt.propad.dto.EmployeePerDTO;
+import com.prodapt.propad.dto.EmployeeProfDTO;
 import com.prodapt.propad.model.PropadEmpPerDetails;
+import com.prodapt.propad.model.PropadEmpProfDetails;
 import com.prodapt.propad.model.PropadEmpTechDetails;
 import com.prodapt.propad.model.Status;
 import com.prodapt.propad.repository.EmpPerRepository;
@@ -120,13 +122,15 @@ public class EmpPerUpload {
 		if(passport!=null) {
 			pep.setEp_per_pp(passport.getBytes());
 		}
-		pep.setEp_per_aadhar_text(empper.getEp_per_aadhar_text());
 		
-		pep.setEp_per_addressproof_text(empper.getEp_per_addressproof_text());
 		
-		pep.setEp_per_pan_text(empper.getEp_per_pan_text());
 		
-		pep.setEp_per_pp_text(empper.getEp_per_pp_text());
+		pep.setEp_per_mail(empper.getEp_per_mail());
+		pep.setAadhar_status("Submitted");
+		pep.setPan_status("Submitted");
+		pep.setAddressproof_status("Submitted");
+		pep.setPp_status("Submitted");
+		
 		
 		return this.empPer.save(pep) ;
 	}
@@ -214,7 +218,52 @@ return this.empPer.save(returnrecord);
 }
 
 
+@RequestMapping(value = "/update-per-status", method = RequestMethod.POST)
+public PropadEmpPerDetails updatepersonaldocument(@RequestBody EmployeePerDTO empper) {
+	System.out.println("hiii from function");
+	/////////////////updated details////////////////
+	PropadEmpPerDetails ppd3 = new PropadEmpPerDetails();
+	System.out.println("hiii from object");
+	ppd3.setEper_id(empper.getEper_id());
+	ppd3.setEp_per_mail(empper.getEp_per_mail());
+	ppd3.setAadhar_status(empper.getAadhar_status());
+	ppd3.setPan_status(empper.getPan_status());
+	ppd3.setAddressproof_status(empper.getAddressproof_status());
+	ppd3.setPp_status(empper.getPp_status());
+	
+	System.out.println("updarteed records"+ppd3);
+	
+	
+	PropadEmpPerDetails returnrecord=null;
+if( ppd3.getEp_per_mail()!=null)	{
+	PropadEmpPerDetails ppd2 = empPerRepository.getOne(ppd3.getEper_id());
+	System.out.println("record in database"+ppd2);
+	 if (ppd2.getEp_per_mail().equals( ppd3.getEp_per_mail())){
+		 PropadEmpPerDetails ppd = new PropadEmpPerDetails();
+		 ppd.setEper_id(ppd2.getEper_id());
+		 ppd.setEp_per_pan(ppd2.getEp_per_pan());
+		 ppd.setEp_per_addressproof(ppd2.getEp_per_pan());
+		 ppd.setEp_per_aadhar(ppd2.getEp_per_aadhar());
+		 ppd.setEp_per_pp(ppd2.getEp_per_pp());
+		 ppd.setEp_per_mail(ppd2.getEp_per_mail());
+		ppd.setAadhar_status(ppd3.getAadhar_status());
+		ppd.setPan_status(ppd3.getPan_status());
+		ppd.setAddressproof_status(ppd3.getAddressproof_status());
+		ppd.setPp_status(ppd3.getPp_status());
+		 
 		
+		 
+	 System.out.println("update of record needed");
+	 returnrecord=ppd;
+	 System.out.println("updation done successfully");
+ }
+	 else
+	 {
+		 returnrecord=ppd3;
+	 }
+}
+return this.empPer.save(returnrecord);
+}		
 		
 		
 }

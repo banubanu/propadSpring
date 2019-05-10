@@ -18,10 +18,13 @@ public interface EmpEduRepository extends JpaRepository<PropadEmpEduDetails, Int
 	public Integer countnull(String ed_emp_mail);
 	
 	@Query(value="select * from propad_emp_edu_details where ed_emp_mail=?1", nativeQuery = true)
-	public List<PropadEmpEduDetails> getOneRow(String ed_emp_mail);
+	public PropadEmpEduDetails getOneRow(String ed_emp_mail);
 	
 	@Query(value="select * from propad_emp_edu_details where ed_emp_mail=?1", nativeQuery = true)
 	public List<PropadEmpEduDetails> findByEd_emp_mail(String ed_emp_mail);
+
+	@Query(value="select sslc_status,hsc_status,dip_status,ug_status,pg_status from propad_emp_edu_details where ed_emp_mail=?1", nativeQuery = true)
+	public List<PropadEmpEduDetails[]> findPendingDocument(String ed_emp_mail);	
 
 	
 

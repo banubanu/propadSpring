@@ -17,7 +17,7 @@ public interface EmpPerRepository extends JpaRepository<PropadEmpPerDetails, Int
 
 	
 	@Query(value="select * from propad_emp_per_details where ep_per_mail=?1", nativeQuery = true)
-	List<PropadEmpPerDetails> getOneRow(String ep_per_mail);
+	PropadEmpPerDetails getOneRow(String ep_per_mail);
 	
 
 	@Query(value = "SELECT ((CASE WHEN ep_per_addressproof IS NULL THEN 1 ELSE 0 END)+ (CASE WHEN ep_per_pp IS NULL THEN 1 ELSE 0 END)+(CASE WHEN ep_per_pan IS NULL THEN 1 ELSE 0 END)+(CASE WHEN ep_per_aadhar IS NULL THEN 1 ELSE 0 END)) AS sum_of_nulls FROM propad_emp_per_details where ep_per_mail=?1", nativeQuery = true)

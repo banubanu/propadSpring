@@ -37,9 +37,22 @@ public PropadEmpEduDetails save(PropadEmpEduDetails pee) {
 	}
 
 	@Override
-	public List<PropadEmpEduDetails> getOneRow(String ed_emp_mail) {
+	public  PropadEmpEduDetails getOneRow(String ed_emp_mail) {
 		// TODO Auto-generated method stub
 		return  empEduRepository.getOneRow(ed_emp_mail);
+	}
+
+	@Override
+	public List<PropadEmpEduDetails> findByEd_emp_mail(String ed_emp_mail) {
+		// TODO Auto-generated method stub
+		return empEduRepository.findByEd_emp_mail(ed_emp_mail);
+	}
+
+	@Override
+	public List<PropadEmpEduDetails[]> findPendingDocument(String ed_emp_mail) {
+		// TODO Auto-generated method stub
+		System.out.println("in implements");
+		return empEduRepository.findPendingDocument(ed_emp_mail);
 	}
 	
 

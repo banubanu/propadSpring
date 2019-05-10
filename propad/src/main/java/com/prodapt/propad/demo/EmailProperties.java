@@ -13,6 +13,13 @@ public class EmailProperties implements Serializable {
 	private String to;
 	private String subject;
 	private String body;
+	private String cc;
+	public String getCc() {
+		return cc;
+	}
+	public void setCc(String cc) {
+		this.cc = cc;
+	}
 	public String getFrom() {
 		return from;
 	}

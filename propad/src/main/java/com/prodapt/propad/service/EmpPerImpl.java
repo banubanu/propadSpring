@@ -39,7 +39,7 @@ public class EmpPerImpl implements EmpPer {
 	@Override
 	public List<PropadEmpPerDetails> getOneRow(String ep_per_mail) {
 		// TODO Auto-generated method stub
-		return empPerRepo.getOneRow(ep_per_mail);
+		return (List<PropadEmpPerDetails>) empPerRepo.getOneRow(ep_per_mail);
 	}
 
 	@Override
@@ -48,6 +48,12 @@ public class EmpPerImpl implements EmpPer {
 		return empPerRepo.countnull(ep_per_mail);
 	}
 
+	@Override
+	public List<PropadEmpPerDetails> findByEp_per_mail(String ep_per_mail) {
+		// TODO Auto-generated method stub
+		return empPerRepo.findByEp_per_mail(ep_per_mail);
+	}
+	
 	
 	
 

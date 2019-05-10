@@ -45,14 +45,23 @@ public EmpTechImpl(EmpTechRepository empTechRepository) {
 	@Override
 	public List<PropadEmpTechDetails> getOneRow(String et_emp_mail) {
 		// TODO Auto-generated method stub
-		return empTechRepository.getOneRow(et_emp_mail);
+		return (List<PropadEmpTechDetails>) empTechRepository.getOneRow(et_emp_mail);
+	}
+
+
+	
+
+	@Override
+	public List<PropadEmpTechDetails> getByEt_emp_mail(String et_emp_mail) {
+		// TODO Auto-generated method stub
+		return empTechRepository.findByEt_emp_mail(et_emp_mail);
 	}
 
 
 	@Override
 	public PropadEmpTechDetails update(PropadEmpTechDetails pet) {
 		// TODO Auto-generated method stub
-		return empTechRepository.update(pet);
+		return null;
 	}
 
 

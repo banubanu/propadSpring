@@ -11,6 +11,7 @@ public interface EmpTech {
 	List<PropadEmpTechDetails> getAll();
 	PropadEmpTechDetails save(PropadEmpTechDetails  pet);
 	PropadEmpTechDetails update(PropadEmpTechDetails  pet);
+	List<PropadEmpTechDetails> getByEt_emp_mail(String et_emp_mail);
 
 }
 

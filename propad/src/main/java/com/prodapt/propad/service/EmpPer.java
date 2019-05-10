@@ -11,6 +11,7 @@ public interface EmpPer {
 	List<PropadEmpPerDetails> getOneRow(String ep_per_mail);
 	Integer countnull(String ep_per_mail);
 	PropadEmpPerDetails save(PropadEmpPerDetails  pep);
+	List<PropadEmpPerDetails> findByEp_per_mail(String ep_per_mail);
 	
 	
 	

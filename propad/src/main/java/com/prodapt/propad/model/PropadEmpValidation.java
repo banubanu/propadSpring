@@ -15,6 +15,7 @@ public class PropadEmpValidation {
 	private int ev_emp_id;
 	private Date ev_review_dt;
 	private String ev_review_comments;
+	
 	public int getEv_id() {
 		return ev_id;
 	}

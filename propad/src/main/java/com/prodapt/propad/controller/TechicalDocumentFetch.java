@@ -5,11 +5,15 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.sql.rowset.serial.SerialException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.prodapt.propad.model.PropadEmpEduDetails;
 import com.prodapt.propad.model.PropadEmpTechDetails;
 import com.prodapt.propad.model.Status;
 import com.prodapt.propad.service.EmpTech;
@@ -33,6 +38,10 @@ public class TechicalDocumentFetch {
 	
 	@Autowired
 	EmpTech empTech;
+	
+	@PersistenceContext
+    EntityManager entityManager;
+	
 	public TechicalDocumentFetch(EmpTech empTech) {
 		// TODO Auto-generated constructor stub
 		this.empTech = empTech;
@@ -42,10 +51,18 @@ public class TechicalDocumentFetch {
 	@RequestMapping(value = "/get-all-documents", method = RequestMethod.GET)
 	public List<PropadEmpTechDetails> getUsers(@RequestParam("et_emp_mail") String et_emp_mail) {
 		System.out.println("in get");
-		return this.empTech.getOneRow(et_emp_mail);
+		return this.empTech.getByEt_emp_mail(et_emp_mail);
 	}
 	
 	
+	@GetMapping("get-pending-documents")
+    public List<PropadEmpTechDetails> getPendingDocument(@RequestParam("et_emp_mail") String et_emp_mail) {
+           Query query = entityManager.createNativeQuery(
+                        "select tech1_status,tech2_status,tech3_status,tech4_status,tech5_status from propad_emp_tech_details where et_emp_mail='"+et_emp_mail+"'");
+           List<PropadEmpTechDetails> pendingDocuments = query.getResultList();
+           return pendingDocuments;
+
+    }
 	
 	
 	

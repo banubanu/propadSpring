@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,6 +35,7 @@ import com.prodapt.propad.service.EmpEdu;
 import com.prodapt.propad.service.EmpTech;
 
 
+@Controller
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/uploadedudocuments")
@@ -90,18 +93,22 @@ public class EduDocUpload {
       
         pee.setEd_edu_others_text(empEdu.getEd_edu_others_text());
         pee.setEd_edu_comments(empEdu.getEd_edu_comments());
-       
+        pee.setSslc_status(empEdu.getSslc_status());
+		pee.setUg_status(empEdu.getUg_status());
+		pee.setHsc_status(empEdu.getHsc_status());
+		pee.setDip_status(empEdu.getDip_status());
+		pee.setPg_status(empEdu.getPg_status());
 		return this.empEdu.save(pee) ;
 	}
 
 	@RequestMapping(value = "/update-edu-document", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public PropadEmpEduDetails updatedocument( @RequestPart(required = false) Map<String, String> json,EmployeeEduDTO empEdu, @RequestParam("file") MultipartFile file, @RequestParam("file1") MultipartFile file1,@RequestParam("file2") MultipartFile file2,@RequestParam("file3") MultipartFile file3,@RequestParam("file4") MultipartFile file4, @RequestParam("file5") MultipartFile file5) throws IOException, SerialException, SQLException {
+	public PropadEmpEduDetails updatedocument( @RequestPart(required = false) Map<String, String> json,EmployeeEduDTO empEdu, @RequestParam("file") MultipartFile file, @RequestParam(required = false) MultipartFile file1,@RequestParam(required = false) MultipartFile file2,@RequestParam(required = false) MultipartFile file3,@RequestParam(required = false) MultipartFile file4, @RequestParam(required = false) MultipartFile file5) throws IOException, SerialException, SQLException {
 			System.out.println("hiii from function");
 		/////////////////updated details////////////////
 	PropadEmpEduDetails pee3 = new PropadEmpEduDetails();
 		System.out.println("hiii from object");
 		pee3.setEd_id(empEdu.getEd_id());
-//		pee3.setEd_emp_id(empEdu.getEd_emp_id());
+		pee3.setEd_emp_mail(empEdu.getEd_emp_mail());
 		if(file!=null) {
 			pee3.setEd_edu_sslc(file.getBytes());
 		}
@@ -180,6 +187,60 @@ public class EduDocUpload {
 	return this.empEdu.save(returnrecord);
 	}
 
+	
+	
+	@RequestMapping(value = "/update-edu-status", method = RequestMethod.POST)
+	public PropadEmpEduDetails updatedocumentstatus( @RequestBody EmployeeEduDTO empEdu) throws IOException, SerialException, SQLException {
+			System.out.println("hiii from function");
+		/////////////////updated details////////////////
+			System.out.println(empEdu);
+	PropadEmpEduDetails pee3 = new PropadEmpEduDetails();
+		System.out.println("hiii from object");
+		pee3.setEd_id(empEdu.getEd_id());
+		pee3.setEd_emp_mail(empEdu.getEd_emp_mail());
+		pee3.setSslc_status(empEdu.getSslc_status());
+		pee3.setHsc_status(empEdu.getHsc_status());
+		pee3.setDip_status(empEdu.getDip_status());
+		pee3.setPg_status(empEdu.getPg_status());
+		pee3.setUg_status(empEdu.getUg_status());
+		
+		System.out.println("updarteed records"+pee3);
+		
+		System.out.println(pee3.getEd_emp_mail());
+		PropadEmpEduDetails returnrecord=null;
+	if( pee3.getEd_emp_mail()!=null)	{
+		System.out.println(pee3.getEd_emp_mail());
+		PropadEmpEduDetails pee2 = empEduRepository.getOne(pee3.getEd_id());
+		System.out.println("record in database"+pee2);
+		 if (pee2.getEd_emp_mail().equals( pee3.getEd_emp_mail())) {
+			 
+			 PropadEmpEduDetails pee = new PropadEmpEduDetails();
+			 pee.setEd_id(pee2.getEd_id());
+			 pee.setEd_emp_mail(pee2.getEd_emp_mail());
+			 pee.setEd_edu_sslc(pee2.getEd_edu_sslc());
+			 pee.setEd_edu_hsc(pee2.getEd_edu_hsc());
+			 pee.setEd_edu_dip( pee2.getEd_edu_dip());
+			 pee.setEd_edu_ug(pee2.getEd_edu_ug());
+			 pee.setEd_edu_pg(pee2.getEd_edu_pg()); 
+			 pee.setSslc_status(pee3.getSslc_status());
+			 pee.setUg_status(pee3.getUg_status());
+			 pee.setHsc_status(pee3.getHsc_status());
+			 pee.setDip_status(pee3.getDip_status());
+			 pee.setPg_status(pee3.getPg_status());
+			 
+		 System.out.println("update of record needed");
+		 returnrecord=pee;
+		 System.out.println("updation done successfully");
+	 }
+		 else
+		 {
+			 returnrecord=pee3;
+		 }
+	}
+	return this.empEdu.save(returnrecord);
+	}
+
+	
 }
 
 
