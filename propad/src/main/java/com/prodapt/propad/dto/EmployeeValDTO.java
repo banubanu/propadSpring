@@ -21,6 +21,7 @@ import javax.persistence.Entity;
 		private String ev_review_comments;
 		private String ev_emp_mail;
 		private String a[]= new String[5];
+		private String sectionname;
 //		 private List<String> commentList;
 		
 //		public List<String> getCommentList() {
@@ -68,6 +69,12 @@ import javax.persistence.Entity;
 		public void setEv_review_comments(String ev_review_comments) {
 			this.ev_review_comments = ev_review_comments;
 		}
-		
+		public String getSectionname() {
+			return sectionname;
+		}
+		public void setSectionname(String sectionname) {
+			this.sectionname = sectionname;
+		}
+				
 		
 }

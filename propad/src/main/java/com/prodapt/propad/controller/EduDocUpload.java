@@ -102,7 +102,7 @@ public class EduDocUpload {
 	}
 
 	@RequestMapping(value = "/update-edu-document", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public PropadEmpEduDetails updatedocument( @RequestPart(required = false) Map<String, String> json,EmployeeEduDTO empEdu, @RequestParam("file") MultipartFile file, @RequestParam(required = false) MultipartFile file1,@RequestParam(required = false) MultipartFile file2,@RequestParam(required = false) MultipartFile file3,@RequestParam(required = false) MultipartFile file4, @RequestParam(required = false) MultipartFile file5) throws IOException, SerialException, SQLException {
+	public PropadEmpEduDetails updatedocument( @RequestPart(required = false) Map<String, String> json,EmployeeEduDTO empEdu, @RequestParam(required = false) MultipartFile file, @RequestParam(required = false) MultipartFile file1,@RequestParam(required = false) MultipartFile file2,@RequestParam(required = false) MultipartFile file3,@RequestParam(required = false) MultipartFile file4, @RequestParam(required = false) MultipartFile file5) throws IOException, SerialException, SQLException {
 			System.out.println("hiii from function");
 		/////////////////updated details////////////////
 	PropadEmpEduDetails pee3 = new PropadEmpEduDetails();
@@ -139,10 +139,10 @@ public class EduDocUpload {
 	if( pee3.getEd_id()!=0)	{
 		PropadEmpEduDetails pee2 = empEduRepository.getOne(pee3.getEd_id());
 		System.out.println("record in database"+pee2);
-		 if (pee2.getEd_emp_mail() == pee3.getEd_emp_mail()) {
+		 if (pee2.getEd_emp_mail().equals( pee3.getEd_emp_mail())) {
 			 PropadEmpEduDetails pee = new PropadEmpEduDetails();
 			 pee.setEd_id(pee2.getEd_id());
-//			 pee.setEd_emp_id(pee2.getEd_emp_mail());
+			 pee.setEd_emp_mail(pee2.getEd_emp_mail());
 			 if(pee3.getEd_edu_sslc()!=null) {
 				 pee.setEd_edu_sslc(pee3.getEd_edu_sslc());
 			 }else
@@ -216,7 +216,12 @@ public class EduDocUpload {
 			 
 			 PropadEmpEduDetails pee = new PropadEmpEduDetails();
 			 pee.setEd_id(pee2.getEd_id());
+			 
 			 pee.setEd_emp_mail(pee2.getEd_emp_mail());
+			
+			 
+			 
+			 
 			 pee.setEd_edu_sslc(pee2.getEd_edu_sslc());
 			 pee.setEd_edu_hsc(pee2.getEd_edu_hsc());
 			 pee.setEd_edu_dip( pee2.getEd_edu_dip());

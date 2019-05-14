@@ -42,12 +42,7 @@ public class EmpEduDocumentFetch {
 		return this.empEdu.findByEd_emp_mail(ed_emp_mail);
 }
 	
-//	@RequestMapping(value = "/get-pending-documents", method = RequestMethod.GET)
-//	public List<PropadEmpEduDetails[]> getPendingDocument(@RequestParam("ed_emp_mail") String ed_emp_mail) {
-//		System.out.println("in pending");
-//		System.out.println(ed_emp_mail);
-//		return this.empEdu.findPendingDocument(ed_emp_mail);
-//}
+
 	@GetMapping("get-pending-documents")
     public List<PropadEmpEduDetails> getPendingDocument(@RequestParam("ed_emp_mail") String ed_emp_mail) {
            Query query = entityManager.createNativeQuery(

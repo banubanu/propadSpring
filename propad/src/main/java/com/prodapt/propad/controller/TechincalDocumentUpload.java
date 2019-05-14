@@ -117,8 +117,8 @@ public class TechincalDocumentUpload {
 		PropadEmpTechDetails pet3 = new PropadEmpTechDetails();
 		System.out.println("hiii from object");
 		pet3.setEt_id(emptech.getEt_id());
-		
 		pet3.setEt_emp_mail(emptech.getEt_emp_mail());
+		
 		if(file!=null) {
 			pet3.setEt_tech_cert1(file.getBytes());
 		}

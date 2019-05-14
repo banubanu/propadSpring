@@ -23,6 +23,7 @@ public class MailSenderService {
 		SimpleMailMessage message = new SimpleMailMessage();
 
 		message.setTo(emailProperties.getTo());
+		message.setCc(emailProperties.getCc());
 		message.setSubject(emailProperties.getSubject());
 		message.setFrom(emailProperties.getFrom());
 		message.setText(emailProperties.getBody());

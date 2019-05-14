@@ -60,7 +60,7 @@ public class TestMail {
 		System.out.println(empVal.getEv_emp_mail());
 		 String[] empValComment = new String[50];
 		 int length ;
-		 String s= "Dear Prodaptian, Some of your documents are not valid as you need to update those documents your HR comments are given below:" ;
+		 String s= "Dear Prodaptian,\n Some of your documents are not valid as you need to update those documents your HR comments are given below:" ;
 		 
 			for(int i=0;i<empVal.getA().length;i++) {
 				length = empVal.getA().length;
@@ -89,16 +89,16 @@ public class TestMail {
 	
 	
 	@RequestMapping(value = "/sendcompletedDocumentMail", method = RequestMethod.POST)
-    public String resendDocumentMail( @RequestParam("mailId") String mailID, @RequestParam("sectionname") String sectionname ) {
+    public String documentStatusUpdate(@RequestBody EmployeeValDTO empVal ) {
 	
 	EmailProperties emailProperties=new EmailProperties();
 
 	emailProperties.setFrom("banu.b@prodapt.com");
-	emailProperties.setTo(mailID);
+	emailProperties.setTo(empVal.getEv_emp_mail());
 	emailProperties.setCc("vaishnavi.s@prodapt.com");
-	String s= "Dear prodaptian, you have successfully uploaded";
+	String s= "Dear prodaptian,"+ "\n" +"you have successfully uploaded ";
 	
-	emailProperties.setBody(s+sectionname+"\n"+"Thanks,\n Onboarding Support Team");
+	emailProperties.setBody(s+empVal.getSectionname()+"\n"+"Thanks,\n Onboarding Support Team");
 	
 	emailProperties.setSubject("OnBoardingPro Document uploaded - %");
 	
