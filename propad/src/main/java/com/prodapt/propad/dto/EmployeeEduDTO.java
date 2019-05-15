@@ -11,8 +11,14 @@ package com.prodapt.propad.dto;
 	public class EmployeeEduDTO {
 		
 		private int ed_id;
-		
-//		private int ed_emp_id;
+		private int ie_id;
+public int getIe_id() {
+			return ie_id;
+		}
+		public void setIe_id(int ie_id) {
+			this.ie_id = ie_id;
+		}
+		//		private int ed_emp_id;
 		private Blob ed_edu_sslc;
 		private String ed_edu_sslc_text;;
 		private Blob ed_edu_hsc;

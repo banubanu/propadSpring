@@ -35,18 +35,32 @@ public class EmpEduDocumentFetch {
 		// TODO Auto-generated constructor stub
 		this.empEdu = empEdu;
 	}	
+//	@RequestMapping(value = "/get-edu-documents", method = RequestMethod.GET)
+//	public List<PropadEmpEduDetails> getUsers(@RequestParam("ed_emp_mail") String ed_emp_mail) {
+//		System.out.println("in get");
+//		System.out.println(ed_emp_mail);
+//		return this.empEdu.findByEd_emp_mail(ed_emp_mail);
+//	}
 	@RequestMapping(value = "/get-edu-documents", method = RequestMethod.GET)
-	public List<PropadEmpEduDetails> getUsers(@RequestParam("ed_emp_mail") String ed_emp_mail) {
+	public List<PropadEmpEduDetails> getUsers1(@RequestParam("ie_id") int ie_id) {
 		System.out.println("in get");
-		System.out.println(ed_emp_mail);
-		return this.empEdu.findByEd_emp_mail(ed_emp_mail);
-}
+		System.out.println(ie_id);
+		return this.empEdu.findByIe_id(ie_id);
+	}
 	
 
+//	@GetMapping("get-pending-documents")
+//    public List<PropadEmpEduDetails> getPendingDocument(@RequestParam("ed_emp_mail") String ed_emp_mail ) {
+//           Query query = entityManager.createNativeQuery(
+//                        "select sslc_status as sslc_status ,hsc_status as hsc_status,dip_status as dip_status,ug_status as ug_status,pg_status as pg_status from propad_emp_edu_details where ed_emp_mail='"+ed_emp_mail+"'");
+//           List<PropadEmpEduDetails> pendingDocuments = query.getResultList();
+//           return pendingDocuments;
+//
+//    }
 	@GetMapping("get-pending-documents")
-    public List<PropadEmpEduDetails> getPendingDocument(@RequestParam("ed_emp_mail") String ed_emp_mail) {
+    public List<PropadEmpEduDetails> getPendingDocument1(@RequestParam("ie_id") int ie_id ) {
            Query query = entityManager.createNativeQuery(
-                        "select sslc_status as sslc_status ,hsc_status as hsc_status,dip_status as dip_status,ug_status as ug_status,pg_status as pg_status from propad_emp_edu_details where ed_emp_mail='"+ed_emp_mail+"'");
+                        "select sslc_status as sslc_status ,hsc_status as hsc_status,dip_status as dip_status,ug_status as ug_status,pg_status as pg_status from propad_emp_edu_details where ie_id='"+ie_id+"'");
            List<PropadEmpEduDetails> pendingDocuments = query.getResultList();
            return pendingDocuments;
 

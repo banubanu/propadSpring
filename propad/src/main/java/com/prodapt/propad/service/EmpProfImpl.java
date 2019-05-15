@@ -38,9 +38,9 @@ public class EmpProfImpl implements EmpProf {
 	}
 
 	@Override
-	public Integer countnull(String ep_prof_mail) {
+	public Integer countnull(int ie_id) {
 		// TODO Auto-generated method stub
-		return service.countnull(ep_prof_mail);
+		return service.countnull(ie_id);
 	}
 
 	@Override
@@ -48,6 +48,14 @@ public class EmpProfImpl implements EmpProf {
 		// TODO Auto-generated method stub
 		return service.findByEp_prof_mail(ep_prof_mail);
 	}
+
+	@Override
+	public List<PropadEmpProfDetails> getByIe_id(int ie_id) {
+		// TODO Auto-generated method stub
+		return service.findByIe_id(ie_id);
+	}
+
+
 	
 
 }

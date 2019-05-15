@@ -14,7 +14,14 @@ package com.prodapt.propad.dto;
 		@Id
 		@GeneratedValue(strategy=GenerationType.AUTO)
 		private int ep_id;
-//		private int ep_emp_id;
+		private int ie_id;
+public int getIe_id() {
+			return ie_id;
+		}
+		public void setIe_id(int ie_id) {
+			this.ie_id = ie_id;
+		}
+		//		private int ep_emp_id;
 		private Blob ep_service_cert1;
 		private String ep_service_cert1_text;
 		private Blob ep_service_cert2;

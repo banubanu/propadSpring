@@ -130,6 +130,10 @@ pet3.setIe_id(employee.getIe_id());
 	public List<PropadInitiateEmployee> getUsers() {
 		return this.serviceApi.getAll();
 	}
+	@RequestMapping(value = "/get-users/", method = RequestMethod.GET)
+	public List<PropadInitiateEmployee> getUser(@RequestParam("ie_emp_mail") String ie_emp_mail) {
+		return this.serviceApi.getOneRow(ie_emp_mail);
+	}
 	
 	
 	

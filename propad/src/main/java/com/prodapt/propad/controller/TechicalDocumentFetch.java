@@ -49,16 +49,16 @@ public class TechicalDocumentFetch {
 	
 	
 	@RequestMapping(value = "/get-all-documents", method = RequestMethod.GET)
-	public List<PropadEmpTechDetails> getUsers(@RequestParam("et_emp_mail") String et_emp_mail) {
+	public List<PropadEmpTechDetails> getUsers(@RequestParam("ie_id") int ie_id) {
 		System.out.println("in get");
-		return this.empTech.getByEt_emp_mail(et_emp_mail);
+		return this.empTech.getByIe_id(ie_id);
 	}
 	
 	
 	@GetMapping("get-pending-documents")
-    public List<PropadEmpTechDetails> getPendingDocument(@RequestParam("et_emp_mail") String et_emp_mail) {
+    public List<PropadEmpTechDetails> getPendingDocument(@RequestParam("ie_id") int ie_id) {
            Query query = entityManager.createNativeQuery(
-                        "select tech1_status,tech2_status,tech3_status,tech4_status,tech5_status from propad_emp_tech_details where et_emp_mail='"+et_emp_mail+"'");
+                        "select tech1_status,tech2_status,tech3_status,tech4_status,tech5_status from propad_emp_tech_details where ie_id='"+ie_id+"'");
            List<PropadEmpTechDetails> pendingDocuments = query.getResultList();
            return pendingDocuments;
 

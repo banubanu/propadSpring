@@ -25,7 +25,13 @@ public class PropadEmpPerDetails implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int eper_id;
-	
+	private int ie_id;
+	public int getIe_id() {
+		return ie_id;
+	}
+	public void setIe_id(int ie_id) {
+		this.ie_id = ie_id;
+	}
 	private int ep_per_emp_id;
 	private byte[] ep_per_addressproof;
 	private String ep_per_addressproof_text;
@@ -136,14 +142,15 @@ public class PropadEmpPerDetails implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "PropadEmpPerDetails [eper_id=" + eper_id + ", ep_per_emp_id=" + ep_per_emp_id + ", ep_per_addressproof="
-				+ Arrays.toString(ep_per_addressproof) + ", ep_per_addressproof_text=" + ep_per_addressproof_text
-				+ ", ep_per_pp=" + Arrays.toString(ep_per_pp) + ", ep_per_pp_text=" + ep_per_pp_text + ", ep_per_pan="
-				+ Arrays.toString(ep_per_pan) + ", ep_per_pan_text=" + ep_per_pan_text + ", ep_per_aadhar="
-				+ Arrays.toString(ep_per_aadhar) + ", ep_per_aadhar_text=" + ep_per_aadhar_text + ", ep_per_mail="
-				+ ep_per_mail + ", addressproof_status=" + addressproof_status + ", aadhar_status=" + aadhar_status
-				+ ", pp_status=" + pp_status + ", pan_status=" + pan_status + "]";
+		return "PropadEmpPerDetails [eper_id=" + eper_id + ", ie_id=" + ie_id + ", ep_per_emp_id=" + ep_per_emp_id
+				+ ", ep_per_addressproof=" + Arrays.toString(ep_per_addressproof) + ", ep_per_addressproof_text="
+				+ ep_per_addressproof_text + ", ep_per_pp=" + Arrays.toString(ep_per_pp) + ", ep_per_pp_text="
+				+ ep_per_pp_text + ", ep_per_pan=" + Arrays.toString(ep_per_pan) + ", ep_per_pan_text="
+				+ ep_per_pan_text + ", ep_per_aadhar=" + Arrays.toString(ep_per_aadhar) + ", ep_per_aadhar_text="
+				+ ep_per_aadhar_text + ", ep_per_mail=" + ep_per_mail + ", addressproof_status=" + addressproof_status
+				+ ", aadhar_status=" + aadhar_status + ", pp_status=" + pp_status + ", pan_status=" + pan_status + "]";
 	}
+
 	
 	
 	

@@ -51,9 +51,9 @@ public class EduDocUpload {
 	}
 	
 	@RequestMapping(value = "/record-exists", method = RequestMethod.GET)
-    public ResponseEntity<Status> getsave(@RequestParam String ed_emp_mail){
+    public ResponseEntity<Status> getsave(@RequestParam int ie_id){
            Status status=new Status();
-           List<PropadEmpEduDetails> list=empEduRepository.findByEd_emp_mail(ed_emp_mail);
+           List<PropadEmpEduDetails> list=empEduRepository.findByIe_id(ie_id);
           // List<RtSavedJobDetails> list = savedRepository.findBySjEmployeeCodeAndRtJobDetails_JdPositionCode(sjEmployeeCode, jdPositionCode);
              if(!list.isEmpty()&& list.size()>0) 
              { 
@@ -75,6 +75,7 @@ public class EduDocUpload {
 		
 //		pee.setEd_emp_id(empEdu.getEd_emp_id());
 	pee.setEd_emp_mail(empEdu.getEd_emp_mail());
+	pee.setIe_id(empEdu.getIe_id());
 		pee.setEd_edu_sslc(file.getBytes());
 		
 		pee.setEd_edu_sslc_text(empEdu.getEd_edu_sslc_text());
@@ -108,6 +109,7 @@ public class EduDocUpload {
 	PropadEmpEduDetails pee3 = new PropadEmpEduDetails();
 		System.out.println("hiii from object");
 		pee3.setEd_id(empEdu.getEd_id());
+		pee3.setIe_id(empEdu.getIe_id());
 		pee3.setEd_emp_mail(empEdu.getEd_emp_mail());
 		if(file!=null) {
 			pee3.setEd_edu_sslc(file.getBytes());
@@ -142,7 +144,13 @@ public class EduDocUpload {
 		 if (pee2.getEd_emp_mail().equals( pee3.getEd_emp_mail())) {
 			 PropadEmpEduDetails pee = new PropadEmpEduDetails();
 			 pee.setEd_id(pee2.getEd_id());
+
+			 pee.setIe_id(pee2.getIe_id());
+//			 pee.setEd_emp_id(pee2.getEd_emp_mail());
+
+
 			 pee.setEd_emp_mail(pee2.getEd_emp_mail());
+
 			 if(pee3.getEd_edu_sslc()!=null) {
 				 pee.setEd_edu_sslc(pee3.getEd_edu_sslc());
 			 }else

@@ -54,9 +54,9 @@ public class TechincalDocumentUpload {
 		}
 		
 		@RequestMapping(value = "/record-exists", method = RequestMethod.GET)
-	    public ResponseEntity<Status> getsave(@RequestParam String et_emp_mail){
+	    public ResponseEntity<Status> getsave(@RequestParam int ie_id){
 	           Status status=new Status();
-	           List<PropadEmpTechDetails> list=empTechRepository.findByEt_emp_mail(et_emp_mail);
+	           List<PropadEmpTechDetails> list=empTechRepository.findByIe_id(ie_id);
 	          // List<RtSavedJobDetails> list = savedRepository.findBySjEmployeeCodeAndRtJobDetails_JdPositionCode(sjEmployeeCode, jdPositionCode);
 	             if(!list.isEmpty()&& list.size()>0) 
 	             { 
@@ -65,6 +65,19 @@ public class TechincalDocumentUpload {
 	             }
 	           return new ResponseEntity<Status>(status, HttpStatus.OK);
 	    }
+//		@RequestMapping(value = "/record-exists", method = RequestMethod.GET)
+//	    public ResponseEntity<Status> getsave1(@RequestParam int ie_id){
+//	           Status status=new Status();
+//	           List<PropadEmpTechDetails> list=empTechRepository.findByIe_id(ie_id);
+//	          // List<RtSavedJobDetails> list = savedRepository.findBySjEmployeeCodeAndRtJobDetails_JdPositionCode(sjEmployeeCode, jdPositionCode);
+//	             if(!list.isEmpty()&& list.size()>0) 
+//	             { 
+//	                    status.setStatusCode(200);
+//	                    status.setPropadEmpTechDetails(list.get(0));
+//	             }
+//	           return new ResponseEntity<Status>(status, HttpStatus.OK);
+//   }
+//	
 	
 	@RequestMapping(value = "/upload-tech-document", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public PropadEmpTechDetails uploaddocumentModel( @RequestPart(required = false) Map<String, String> json, EmpTechDTO emptech, @RequestParam("file") MultipartFile file, @RequestParam(required = false) MultipartFile file1,@RequestParam(required = false) MultipartFile file2,@RequestParam(required = false) MultipartFile file3,@RequestParam(required = false) MultipartFile file4) throws IOException, SerialException, SQLException {
@@ -75,7 +88,9 @@ public class TechincalDocumentUpload {
 	PropadEmpTechDetails pet = new PropadEmpTechDetails();
 //  pet.setEt_tech_cert1(((EmpTechDTO) file).getEt_tech_cert1());
 //	pet.setEt_emp_id(et_emp_id);
+	pet.setIe_id(emptech.getIe_id());
 	pet.setEt_emp_mail(emptech.getEt_emp_mail());
+
 	if(file!=null) {
 		pet.setEt_tech_cert1(file.getBytes());
 	}
@@ -117,8 +132,12 @@ public class TechincalDocumentUpload {
 		PropadEmpTechDetails pet3 = new PropadEmpTechDetails();
 		System.out.println("hiii from object");
 		pet3.setEt_id(emptech.getEt_id());
+        pet3.setIe_id(emptech.getIe_id());
+		
+
 		pet3.setEt_emp_mail(emptech.getEt_emp_mail());
 		
+
 		if(file!=null) {
 			pet3.setEt_tech_cert1(file.getBytes());
 		}
@@ -150,6 +169,7 @@ PropadEmpTechDetails returnrecord=null;
 		 if (pet2.getEt_emp_id() == pet3.getEt_emp_id()) {
 			 PropadEmpTechDetails pet = new PropadEmpTechDetails();
 			 pet.setEt_id(pet2.getEt_id());
+			 pet.setIe_id(pet2.getIe_id());
 			 pet.setEt_emp_id(pet2.getEt_emp_id());
 			 if(pet3.getEt_tech_cert1()!=null) {
 				 pet.setEt_tech_cert1(pet3.getEt_tech_cert1());

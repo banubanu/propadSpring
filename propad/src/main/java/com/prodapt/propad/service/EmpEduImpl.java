@@ -30,16 +30,29 @@ public PropadEmpEduDetails save(PropadEmpEduDetails pee) {
 	return empEduRepository.save(pee);
 }
 
-	@Override
-	public Integer countnull(String ed_emp_mail) {
-		// TODO Auto-generated method stub
-		return empEduRepository.countnull(ed_emp_mail);
-	}
+//	@Override
+//	public Integer countnull(String ed_emp_mail) {
+//		// TODO Auto-generated method stub
+//		return empEduRepository.countnull(ed_emp_mail);
+//	}
 
 	@Override
 	public  PropadEmpEduDetails getOneRow(String ed_emp_mail) {
 		// TODO Auto-generated method stub
 		return  empEduRepository.getOneRow(ed_emp_mail);
+	}
+
+	@Override
+	public List<PropadEmpEduDetails> findByIe_id (int ie_id) {
+		// TODO Auto-generated method stub
+		return empEduRepository.findByIe_id(ie_id);
+	}
+
+	@Override
+	public List<PropadEmpEduDetails[]> findPendingDocument(String ed_emp_mail) {
+		// TODO Auto-generated method stub
+		System.out.println("in implements");
+		return empEduRepository.findPendingDocument(ed_emp_mail);
 	}
 
 	@Override
@@ -49,10 +62,9 @@ public PropadEmpEduDetails save(PropadEmpEduDetails pee) {
 	}
 
 	@Override
-	public List<PropadEmpEduDetails[]> findPendingDocument(String ed_emp_mail) {
+	public Integer countnull(int ie_id) {
 		// TODO Auto-generated method stub
-		System.out.println("in implements");
-		return empEduRepository.findPendingDocument(ed_emp_mail);
+		return empEduRepository.countnull(ie_id);
 	}
 	
 

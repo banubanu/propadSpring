@@ -21,6 +21,13 @@ public class PropadEmpTechDetails {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int et_id;
+	private int ie_id;
+	public int getIe_id() {
+		return ie_id;
+	}
+	public void setIe_id(int ie_id) {
+		this.ie_id = ie_id;
+	}
 	private int et_emp_id;
 	private byte[] et_tech_cert1;
 	private String et_tech_cert1_text;
@@ -159,15 +166,15 @@ public class PropadEmpTechDetails {
 	}
 	@Override
 	public String toString() {
-		return "PropadEmpTechDetails [et_id=" + et_id + ", et_emp_id=" + et_emp_id + ", et_tech_cert1="
-				+ Arrays.toString(et_tech_cert1) + ", et_tech_cert1_text=" + et_tech_cert1_text + ", et_tech_cert2="
-				+ Arrays.toString(et_tech_cert2) + ", et_tech_cert2_text=" + et_tech_cert2_text + ", et_tech_cert3="
-				+ Arrays.toString(et_tech_cert3) + ", et_tech_cert3_text=" + et_tech_cert3_text + ", et_tech_cert4="
-				+ Arrays.toString(et_tech_cert4) + ", et_tech_cert4_text=" + et_tech_cert4_text + ", et_tech_cert5="
-				+ Arrays.toString(et_tech_cert5) + ", et_tech_cert5_text=" + et_tech_cert5_text + ", et_tech_comments="
-				+ et_tech_comments + ", et_emp_mail=" + et_emp_mail + ", tech1_status=" + tech1_status
-				+ ", tech2_status=" + tech2_status + ", tech3_status=" + tech3_status + ", tech4_status=" + tech4_status
-				+ ", tech5_status=" + tech5_status + "]";
+		return "PropadEmpTechDetails [et_id=" + et_id + ", ie_id=" + ie_id + ", et_emp_id=" + et_emp_id
+				+ ", et_tech_cert1=" + Arrays.toString(et_tech_cert1) + ", et_tech_cert1_text=" + et_tech_cert1_text
+				+ ", et_tech_cert2=" + Arrays.toString(et_tech_cert2) + ", et_tech_cert2_text=" + et_tech_cert2_text
+				+ ", et_tech_cert3=" + Arrays.toString(et_tech_cert3) + ", et_tech_cert3_text=" + et_tech_cert3_text
+				+ ", et_tech_cert4=" + Arrays.toString(et_tech_cert4) + ", et_tech_cert4_text=" + et_tech_cert4_text
+				+ ", et_tech_cert5=" + Arrays.toString(et_tech_cert5) + ", et_tech_cert5_text=" + et_tech_cert5_text
+				+ ", et_tech_comments=" + et_tech_comments + ", et_emp_mail=" + et_emp_mail + ", tech1_status="
+				+ tech1_status + ", tech2_status=" + tech2_status + ", tech3_status=" + tech3_status + ", tech4_status="
+				+ tech4_status + ", tech5_status=" + tech5_status + "]";
 	}
 	
 	}

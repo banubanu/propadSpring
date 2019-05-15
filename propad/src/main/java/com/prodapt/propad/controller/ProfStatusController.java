@@ -26,11 +26,11 @@ public class ProfStatusController {
 	}
 	
 	@RequestMapping(value = "/get-prof-status", method = RequestMethod.GET)
-	public Integer getpersonalstatus(@RequestParam("ep_prof_mail") String ep_prof_mail ) {
-		if(this.empProf.countnull(ep_prof_mail)==null) {
+	public Integer getpersonalstatus(@RequestParam("ie_id") int ie_id ) {
+		if(this.empProf.countnull(ie_id)==null) {
 			return -1;
 		}
-		return this.empProf.countnull(ep_prof_mail);
+		return this.empProf.countnull(ie_id);
 	}
 	
 }

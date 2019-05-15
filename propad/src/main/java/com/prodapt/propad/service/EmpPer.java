@@ -9,10 +9,10 @@ public interface EmpPer {
 	
 	List<PropadEmpPerDetails> getAll();
 	List<PropadEmpPerDetails> getOneRow(String ep_per_mail);
-	Integer countnull(String ep_per_mail);
+	Integer countnull(int ie_id);
 	PropadEmpPerDetails save(PropadEmpPerDetails  pep);
 	List<PropadEmpPerDetails> findByEp_per_mail(String ep_per_mail);
-	
+	List<PropadEmpPerDetails> findByIe_id(int ie_id);
 	
 	
 	

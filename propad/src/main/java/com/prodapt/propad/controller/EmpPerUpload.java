@@ -26,6 +26,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.prodapt.propad.dto.EmpTechDTO;
 import com.prodapt.propad.dto.EmployeePerDTO;
 import com.prodapt.propad.dto.EmployeeProfDTO;
+import com.prodapt.propad.model.PropadEmpEduDetails;
 import com.prodapt.propad.model.PropadEmpPerDetails;
 import com.prodapt.propad.model.PropadEmpProfDetails;
 import com.prodapt.propad.model.PropadEmpTechDetails;
@@ -52,9 +53,9 @@ public class EmpPerUpload {
 	
 	
 	@RequestMapping(value = "/record-exists", method = RequestMethod.GET)
-    public ResponseEntity<Status> getsave(@RequestParam String ep_per_mail){
+    public ResponseEntity<Status> getsave(@RequestParam int ie_id){
            Status status=new Status();
-           List<PropadEmpPerDetails> list=empPerRepository.findByEp_per_mail(ep_per_mail);
+           List<PropadEmpPerDetails> list=empPerRepository.findByIe_id(ie_id);
           // List<RtSavedJobDetails> list = savedRepository.findBySjEmployeeCodeAndRtJobDetails_JdPositionCode(sjEmployeeCode, jdPositionCode);
              if(!list.isEmpty()&& list.size()>0) 
              { 
@@ -63,6 +64,7 @@ public class EmpPerUpload {
              }
            return new ResponseEntity<Status>(status, HttpStatus.OK);
     }
+	
     
 
 //	@RequestMapping(value = "/update-personal-document", method = RequestMethod.POST)
@@ -108,6 +110,7 @@ public class EmpPerUpload {
 //		System.out.println(pepr);
 		
 		PropadEmpPerDetails pep = new PropadEmpPerDetails();
+		pep.setIe_id(empper.getIe_id());
 
 		pep.setEp_per_emp_id(empper.getEp_per_emp_id());
 		if(aadhar!=null) {
@@ -151,6 +154,7 @@ public PropadEmpPerDetails updatepersonaldocument(@RequestPart(required = false)
 	PropadEmpPerDetails pep3 = new PropadEmpPerDetails();
 	System.out.println("hiii from object");
 	pep3.setEper_id(empper.getEper_id());
+	pep3.setIe_id(empper.getIe_id());
 	pep3.setEp_per_emp_id(empper.getEp_per_emp_id());
 	if(aadhar!=null) {
 		pep3.setEp_per_aadhar(aadhar.getBytes());
@@ -174,6 +178,7 @@ if( pep3.getEper_id()!=0)	{
 	 if (pep2.getEp_per_emp_id() == pep3.getEp_per_emp_id()) {
 		 PropadEmpPerDetails pep = new PropadEmpPerDetails();
 		 pep.setEper_id(pep2.getEper_id());
+		 pep.setIe_id(pep2.getIe_id());
 		 pep.setEp_per_emp_id(pep2.getEp_per_emp_id());
 		 if(pep3.getEp_per_aadhar()!=null) {
 			 pep.setEp_per_aadhar(pep3.getEp_per_aadhar());

@@ -43,15 +43,15 @@ public class ProfDocumentFetch {
     
 	
 	@RequestMapping(value = "/get-prof-documents", method = RequestMethod.GET)
-	public List<PropadEmpProfDetails> getUsers(@RequestParam("ep_prof_mail") String ep_prof_mail) {
+	public List<PropadEmpProfDetails> getUsers(@RequestParam("ie_id") int ie_id) {
 		System.out.println("in get");
-		return this.empProf.getByEp_prof_mail(ep_prof_mail);
+		return this.empProf.getByIe_id(ie_id);
 }
 	
 	@GetMapping("get-pending-documents")
-    public List<PropadEmpProfDetails> getPendingDocument(@RequestParam("ep_prof_mail") String ep_prof_mail) {
+    public List<PropadEmpProfDetails> getPendingDocument(@RequestParam("ie_id") int ie_id) {
            Query query = entityManager.createNativeQuery(
-                        "select service1_status,sevice2_status,service3_status,payslip1_status,payslip2_status,payslip3_status from propad_emp_prof_details where ep_per_mail='"+ep_prof_mail+"'");
+                        "select service1_status,sevice2_status,service3_status,payslip1_status,payslip2_status,payslip3_status from propad_emp_prof_details where ie_id='"+ie_id+"'");
            List<PropadEmpProfDetails> pendingDocuments = query.getResultList();
            return pendingDocuments;
 

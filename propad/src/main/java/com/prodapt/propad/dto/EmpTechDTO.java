@@ -6,6 +6,13 @@ import org.springframework.web.multipart.MultipartFile;
 public class EmpTechDTO {
 
 	private int et_id;
+	private int ie_id;
+	public int getIe_id() {
+		return ie_id;
+	}
+	public void setIe_id(int ie_id) {
+		this.ie_id = ie_id;
+	}
 	private int et_emp_id;
 	private Blob et_tech_cert1;
 	private String et_tech_cert1_text;

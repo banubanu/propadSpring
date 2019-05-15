@@ -39,16 +39,16 @@ public class PerDocumentFetch {
 	}
 	
 	@RequestMapping(value = "/get-per-documents", method = RequestMethod.GET)
-	public List<PropadEmpPerDetails> getUsers(@RequestParam("ep_per_mail") String ep_per_mail) {
+	public List<PropadEmpPerDetails> getUsers(@RequestParam("ie_id") int ie_id) {
 		System.out.println("in get");
-		return this.empPer.findByEp_per_mail(ep_per_mail);
+		return this.empPer.findByIe_id(ie_id);
 }
 	
 	
 	@GetMapping("get-pending-documents")
-    public List<PropadEmpPerDetails> getPendingDocument(@RequestParam("ep_per_mail") String ep_per_mail) {
+    public List<PropadEmpPerDetails> getPendingDocument(@RequestParam("ie_id") int ie_id) {
            Query query = entityManager.createNativeQuery(
-                        "select addressproof_status,aadhar_status,pan_status,pp_status from propad_emp_per_details where ep_per_mail='"+ep_per_mail+"'");
+                        "select addressproof_status,aadhar_status,pan_status,pp_status from propad_emp_per_details where ie_id='"+ie_id+"'");
            List<PropadEmpPerDetails> pendingDocuments = query.getResultList();
            return pendingDocuments;
 

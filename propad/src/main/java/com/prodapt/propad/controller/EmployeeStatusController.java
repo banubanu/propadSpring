@@ -110,8 +110,8 @@ public class EmployeeStatusController {
 	
 	
 	@RequestMapping(value = "/get-tech-status", method = RequestMethod.GET)
-	public Integer gettechdocuments(@RequestParam("et_emp_mail") String et_emp_mail ) {
-		return this.empTech.countnull(et_emp_mail);
+	public Integer gettechdocuments(@RequestParam("ie_id") int ie_id ) {
+		return this.empTech.countnull(ie_id);
 	}
 	
 

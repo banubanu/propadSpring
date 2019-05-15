@@ -13,6 +13,13 @@ package com.prodapt.propad.dto;
 		
 		
 		private int eper_id;
+		private int ie_id;
+		public int getIe_id() {
+			return ie_id;
+		}
+		public void setIe_id(int ie_id) {
+			this.ie_id = ie_id;
+		}
 		private int ep_per_emp_id;
 		private Blob ep_per_addressproof;
 		private String ep_per_addressproof_text;

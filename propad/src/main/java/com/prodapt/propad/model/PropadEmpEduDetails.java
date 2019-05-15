@@ -25,7 +25,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 		@GeneratedValue(strategy=GenerationType.AUTO)
 		@Column(name = "ed_id")
 		private int ed_id;
-//		private int ed_emp_id;
+		private int ie_id;
+
+
+		//		private int ed_emp_id;
 		private byte[] ed_edu_sslc;
 		private String ed_edu_sslc_text;;
 		private byte[] ed_edu_hsc;
@@ -48,7 +51,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 		private String others_status;
 		private String ed_emp_mail;
 		
-		
+		public int getIe_id() {
+			return ie_id;
+		}
+
+		public void setIe_id(int ie_id) {
+			this.ie_id = ie_id;
+		}
 		
 //		public int getMobile_no() {
 //			return mobile_no;
@@ -227,19 +236,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 			this.ed_edu_comments = ed_edu_comments;
 		}
 
-		@Override
-		public String toString() {
-			return "PropadEmpEduDetails [ed_id=" + ed_id + ", ed_edu_sslc=" + Arrays.toString(ed_edu_sslc)
-					+ ", ed_edu_sslc_text=" + ed_edu_sslc_text + ", ed_edu_hsc=" + Arrays.toString(ed_edu_hsc)
-					+ ", ed_edu_hsc_text=" + ed_edu_hsc_text + ", ed_edu_dip=" + Arrays.toString(ed_edu_dip)
-					+ ", ed_edu_dip_text=" + ed_edu_dip_text + ", ed_edu_ug=" + Arrays.toString(ed_edu_ug)
-					+ ", ed_edu_ug_text=" + ed_edu_ug_text + ", ed_edu_pg=" + Arrays.toString(ed_edu_pg)
-					+ ", ed_edu_pg_text=" + ed_edu_pg_text + ", ed_edu_others=" + Arrays.toString(ed_edu_others)
-					+ ", ed_edu_others_text=" + ed_edu_others_text + ", ed_edu_comments=" + ed_edu_comments
-					+ ", sslc_status=" + sslc_status + ", hsc_status=" + hsc_status + ", dip_status=" + dip_status
-					+ ", ug_status=" + ug_status + ", pg_status=" + pg_status + ", others_status=" + others_status
-					+ ", ed_emp_mail=" + ed_emp_mail + "]";
-		}
+		
 
 		public String getEd_emp_mail() {
 			return ed_emp_mail;
@@ -247,6 +244,20 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 		public void setEd_emp_mail(String ed_emp_mail) {
 			this.ed_emp_mail = ed_emp_mail;
+		}
+
+		@Override
+		public String toString() {
+			return "PropadEmpEduDetails [ed_id=" + ed_id + ", ed_edu_sslc="
+					+ Arrays.toString(ed_edu_sslc) + ", ed_edu_sslc_text=" + ed_edu_sslc_text + ", ed_edu_hsc="
+					+ Arrays.toString(ed_edu_hsc) + ", ed_edu_hsc_text=" + ed_edu_hsc_text + ", ed_edu_dip="
+					+ Arrays.toString(ed_edu_dip) + ", ed_edu_dip_text=" + ed_edu_dip_text + ", ed_edu_ug="
+					+ Arrays.toString(ed_edu_ug) + ", ed_edu_ug_text=" + ed_edu_ug_text + ", ed_edu_pg="
+					+ Arrays.toString(ed_edu_pg) + ", ed_edu_pg_text=" + ed_edu_pg_text + ", ed_edu_others="
+					+ Arrays.toString(ed_edu_others) + ", ed_edu_others_text=" + ed_edu_others_text
+					+ ", ed_edu_comments=" + ed_edu_comments + ", sslc_status=" + sslc_status + ", hsc_status="
+					+ hsc_status + ", dip_status=" + dip_status + ", ug_status=" + ug_status + ", pg_status="
+					+ pg_status + ", others_status=" + others_status + ", ed_emp_mail=" + ed_emp_mail + "]";
 		}
 
 		

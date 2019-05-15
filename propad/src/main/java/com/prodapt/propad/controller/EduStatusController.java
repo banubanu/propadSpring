@@ -22,11 +22,11 @@ public class EduStatusController {
 	}	
 	
 	@RequestMapping(value = "/get-edu-status", method = RequestMethod.GET)
-	public Integer getedudocuments(@RequestParam("ed_emp_mail") String ed_emp_mail ) {
-		if(this.empEdu.countnull(ed_emp_mail)==null) {
+	public Integer getedudocuments(@RequestParam("ie_id") int ie_id ) {
+		if(this.empEdu.countnull(ie_id)==null) {
 			return -1;
 		}
-		return this.empEdu.countnull(ed_emp_mail);
+		return this.empEdu.countnull(ie_id);
 	}
 	
 }

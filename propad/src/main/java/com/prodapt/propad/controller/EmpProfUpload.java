@@ -46,9 +46,9 @@ public class EmpProfUpload {
 	}
 
 	@RequestMapping(value = "/record-exists", method = RequestMethod.GET)
-    public ResponseEntity<Status> getsave(@RequestParam String ep_prof_mail){
+    public ResponseEntity<Status> getsave(@RequestParam int ie_id){
            Status status=new Status();
-           List<PropadEmpProfDetails> list=empProfRepository.findByEp_prof_mail(ep_prof_mail);
+           List<PropadEmpProfDetails> list=empProfRepository.findByIe_id(ie_id);
           // List<RtSavedJobDetails> list = savedRepository.findBySjEmployeeCodeAndRtJobDetails_JdPositionCode(sjEmployeeCode, jdPositionCode);
              if(!list.isEmpty()&& list.size()>0) 
              { 
@@ -70,6 +70,7 @@ public class EmpProfUpload {
 //	pet.setEt_emp_id(et_emp_id);
 		System.out.println("hiii from object");
 		ppd.setEp_prof_mail(empProf.getEp_prof_mail());
+		ppd.setIe_id(empProf.getIe_id());
 		
 		if(file!=null) {
 			ppd.setEp_service_cert1(file.getBytes());
@@ -116,6 +117,7 @@ public class EmpProfUpload {
 		System.out.println("hiii from object");
 		ppd3.setEp_id(empProf.getEp_id());
 		ppd3.setEp_prof_mail(empProf.getEp_prof_mail());
+		ppd3.setIe_id(empProf.getIe_id());
 		if(file!=null) {
 			ppd3.setEp_service_cert1(file.getBytes());
 		}
@@ -150,6 +152,7 @@ public class EmpProfUpload {
 			 PropadEmpProfDetails ppd = new PropadEmpProfDetails();
 //			 ppd.setEp_id(ppd2.getEp_id());
 			 ppd.setEp_prof_mail(ppd2.getEp_prof_mail());
+			 ppd.setIe_id(ppd2.getIe_id());
 			 if(ppd3.getEp_service_cert1()!=null) {
 				 ppd.setEp_service_cert1(ppd3.getEp_service_cert1());
 			 }else

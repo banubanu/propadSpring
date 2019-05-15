@@ -20,12 +20,15 @@ public interface EmpPerRepository extends JpaRepository<PropadEmpPerDetails, Int
 	PropadEmpPerDetails getOneRow(String ep_per_mail);
 	
 
-	@Query(value = "SELECT ((CASE WHEN ep_per_addressproof IS NULL THEN 1 ELSE 0 END)+ (CASE WHEN ep_per_pp IS NULL THEN 1 ELSE 0 END)+(CASE WHEN ep_per_pan IS NULL THEN 1 ELSE 0 END)+(CASE WHEN ep_per_aadhar IS NULL THEN 1 ELSE 0 END)) AS sum_of_nulls FROM propad_emp_per_details where ep_per_mail=?1", nativeQuery = true)
-	Integer countnull(String ep_per_mail);
+	@Query(value = "SELECT ((CASE WHEN ep_per_addressproof IS NULL THEN 1 ELSE 0 END)+ (CASE WHEN ep_per_pp IS NULL THEN 1 ELSE 0 END)+(CASE WHEN ep_per_pan IS NULL THEN 1 ELSE 0 END)+(CASE WHEN ep_per_aadhar IS NULL THEN 1 ELSE 0 END)) AS sum_of_nulls FROM propad_emp_per_details where ie_id=?1", nativeQuery = true)
+	Integer countnull(int ie_id);
 
 	
 	@Query(value="select * from propad_emp_per_details where ep_per_mail=?1", nativeQuery = true)
 	List<PropadEmpPerDetails> findByEp_per_mail(String ep_per_mail);
+
+	@Query(value="select * from propad_emp_per_details where ie_id=?1", nativeQuery = true)
+	List<PropadEmpPerDetails> findByIe_id(int ie_id);
 
 	
 

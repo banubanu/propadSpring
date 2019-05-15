@@ -43,9 +43,9 @@ public class EmpPerImpl implements EmpPer {
 	}
 
 	@Override
-	public Integer countnull(String ep_per_mail) {
+	public Integer countnull(int ie_id) {
 		// TODO Auto-generated method stub
-		return empPerRepo.countnull(ep_per_mail);
+		return empPerRepo.countnull(ie_id);
 	}
 
 	@Override
@@ -53,6 +53,14 @@ public class EmpPerImpl implements EmpPer {
 		// TODO Auto-generated method stub
 		return empPerRepo.findByEp_per_mail(ep_per_mail);
 	}
+
+	@Override
+	public List<PropadEmpPerDetails> findByIe_id(int ie_id) {
+		// TODO Auto-generated method stub
+		return empPerRepo.findByIe_id(ie_id);
+	}
+
+	
 	
 	
 	

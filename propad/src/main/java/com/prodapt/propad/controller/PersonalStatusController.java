@@ -25,12 +25,12 @@ public class PersonalStatusController {
 	}
 	
 	@RequestMapping(value = "/get-per-status",  method = RequestMethod.GET)
-	public Integer getpersonalstatus(@RequestParam("ep_per_mail") String ep_per_mail ) {
-		System.out.println(ep_per_mail);
-		if(this.empPer.countnull(ep_per_mail)==null) {
+	public Integer getpersonalstatus(@RequestParam("ie_id") int ie_id ) {
+		System.out.println(ie_id);
+		if(this.empPer.countnull(ie_id)==null) {
 			return -1;
 		}
-		return this.empPer.countnull(ep_per_mail);
+		return this.empPer.countnull(ie_id);
 	}
 	
 }

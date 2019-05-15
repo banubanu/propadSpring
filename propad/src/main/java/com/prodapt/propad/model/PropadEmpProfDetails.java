@@ -18,9 +18,16 @@ public class PropadEmpProfDetails {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int ep_id;
 //	private int ep_emp_id;
+	private int ie_id;
 	private byte[] ep_service_cert1;
 	private String ep_service_cert1_text;
 	private byte[] ep_service_cert2;
+	public int getIe_id() {
+		return ie_id;
+	}
+	public void setIe_id(int ie_id) {
+		this.ie_id = ie_id;
+	}
 	private String ep_service_cert2_text;
 	private byte[] ep_service_cert3;
 	private String ep_service_cert3_text;
@@ -169,7 +176,7 @@ public class PropadEmpProfDetails {
 	}
 	@Override
 	public String toString() {
-		return "PropadEmpProfDetails [ep_id=" + ep_id + ", ep_service_cert1="
+		return "PropadEmpProfDetails [ep_id=" + ep_id + ", ie_id=" + ie_id + ", ep_service_cert1="
 				+ Arrays.toString(ep_service_cert1) + ", ep_service_cert1_text=" + ep_service_cert1_text
 				+ ", ep_service_cert2=" + Arrays.toString(ep_service_cert2) + ", ep_service_cert2_text="
 				+ ep_service_cert2_text + ", ep_service_cert3=" + Arrays.toString(ep_service_cert3)
@@ -181,7 +188,6 @@ public class PropadEmpProfDetails {
 				+ ", payslip1_status=" + payslip1_status + ", payslip2_status=" + payslip2_status + ", payslip3_status="
 				+ payslip3_status + "]";
 	}
-	
 
 	
 	
