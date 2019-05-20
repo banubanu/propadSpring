@@ -64,7 +64,7 @@ public class EduDocUpload {
     }
 	
 	@RequestMapping(value = "/upload-edu-document", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public PropadEmpEduDetails uploadedudocument( @RequestPart(required = false) Map<String, String> json,EmployeeEduDTO empEdu, @RequestParam("file") MultipartFile file, @RequestParam("file1") MultipartFile file1,@RequestParam("file2") MultipartFile file2,@RequestParam("file3") MultipartFile file3,@RequestParam("file4") MultipartFile file4, @RequestParam(required=false) MultipartFile file5) throws IOException, SerialException, SQLException {
+	public PropadEmpEduDetails uploadedudocument( @RequestPart(required = false) Map<String, String> json,EmployeeEduDTO empEdu, @RequestParam(required = false) MultipartFile file, @RequestParam(required = false) MultipartFile file1,@RequestParam(required = false) MultipartFile file2,@RequestParam(required = false) MultipartFile file3,@RequestParam(required = false) MultipartFile file4, @RequestParam(required=false) MultipartFile file5) throws IOException, SerialException, SQLException {
 		System.out.println("banu"+file.getOriginalFilename());
 		System.out.println(file.getBytes());
 //		System.out.println(emptech.getEt_tech_cert1());
@@ -76,29 +76,29 @@ public class EduDocUpload {
 //		pee.setEd_emp_id(empEdu.getEd_emp_id());
 	pee.setEd_emp_mail(empEdu.getEd_emp_mail());
 	pee.setIe_id(empEdu.getIe_id());
+	if(file!=null) {
 		pee.setEd_edu_sslc(file.getBytes());
+		 pee.setSslc_status("Submitted");
+	}
+	if(file1!=null) {
+		 pee.setEd_edu_hsc(file1.getBytes());
+		 pee.setHsc_status("Submitted");
+	}
+		if(file2!=null) {
+		    pee.setEd_edu_dip(file2.getBytes());
+		    pee.setDip_status("Submitted");
+		}
+	if(file3!=null) {
+		 pee.setEd_edu_ug(file3.getBytes());
+		 pee.setUg_status("Submitted");
+			
+	}
 		
-		pee.setEd_edu_sslc_text(empEdu.getEd_edu_sslc_text());
-		
-        pee.setEd_edu_hsc(file1.getBytes());
-       
-        pee.setEd_edu_hsc_text(empEdu.getEd_edu_hsc_text());
-        pee.setEd_edu_dip(file2.getBytes());
-        pee.setEd_edu_dip_text(empEdu.getEd_edu_dip_text());
-        pee.setEd_edu_ug(file3.getBytes());
-        pee.setEd_edu_ug_text(empEdu.getEd_edu_ug_text());
-        pee.setEd_edu_pg(file4.getBytes());
-        
-        pee.setEd_edu_pg_text(empEdu.getEd_edu_pg_text());
-//        pee.setEd_edu_others(file5.getBytes());
-      
-        pee.setEd_edu_others_text(empEdu.getEd_edu_others_text());
-        pee.setEd_edu_comments(empEdu.getEd_edu_comments());
-        pee.setSslc_status(empEdu.getSslc_status());
-		pee.setUg_status(empEdu.getUg_status());
-		pee.setHsc_status(empEdu.getHsc_status());
-		pee.setDip_status(empEdu.getDip_status());
-		pee.setPg_status(empEdu.getPg_status());
+   if(file4!=null) {
+	   pee.setEd_edu_pg(file4.getBytes());
+	   pee.setPg_status("Submitted");
+   }
+
 		return this.empEdu.save(pee) ;
 	}
 
@@ -205,6 +205,7 @@ public class EduDocUpload {
 	PropadEmpEduDetails pee3 = new PropadEmpEduDetails();
 		System.out.println("hiii from object");
 		pee3.setEd_id(empEdu.getEd_id());
+		pee3.setIe_id(empEdu.getIe_id());
 		pee3.setEd_emp_mail(empEdu.getEd_emp_mail());
 		pee3.setSslc_status(empEdu.getSslc_status());
 		pee3.setHsc_status(empEdu.getHsc_status());
@@ -224,12 +225,8 @@ public class EduDocUpload {
 			 
 			 PropadEmpEduDetails pee = new PropadEmpEduDetails();
 			 pee.setEd_id(pee2.getEd_id());
-			 
-			 pee.setEd_emp_mail(pee2.getEd_emp_mail());
-			
-			 
-			 
-			 
+			 pee.setIe_id(pee2.getIe_id());
+			 pee.setEd_emp_mail(pee2.getEd_emp_mail()); 
 			 pee.setEd_edu_sslc(pee2.getEd_edu_sslc());
 			 pee.setEd_edu_hsc(pee2.getEd_edu_hsc());
 			 pee.setEd_edu_dip( pee2.getEd_edu_dip());

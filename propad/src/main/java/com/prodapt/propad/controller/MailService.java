@@ -38,14 +38,14 @@ public class MailService {
                 SimpleMailMessage message =new SimpleMailMessage();
 
                 message.setTo(user_email);
-                message.setSubject("Initiation process");
+                message.setSubject("Onboarding Employee Initiation process");
                 message.setFrom("propad.notifications@prodapt.com");
 //                message.setCc(elNomination.getElRmEmail());
                 String s=user_email;
         		String pwd=user_password;
-                message.setText("hi,"
-        				+ "your username is "+ s
-        				+" your password is" +pwd );   
+                message.setText("Dear Prodaptian,\r\n you are allowed to access prodapt network to upload your document. Please find your credentials below: "
+        				+ "\nUsername: "+ s +"\r"
+        				+"\nPassword: " +pwd +"\r\n Thanks,\r\n Propad Support Team");   
                 sender.send(message);     
                 return "Mail Sent Success!";
 }

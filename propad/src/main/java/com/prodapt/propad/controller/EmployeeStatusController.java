@@ -111,7 +111,12 @@ public class EmployeeStatusController {
 	
 	@RequestMapping(value = "/get-tech-status", method = RequestMethod.GET)
 	public Integer gettechdocuments(@RequestParam("ie_id") int ie_id ) {
+		if(this.empTech.countnull(ie_id)==null) {
+			return -1;
+		}
+		
 		return this.empTech.countnull(ie_id);
+		
 	}
 	
 

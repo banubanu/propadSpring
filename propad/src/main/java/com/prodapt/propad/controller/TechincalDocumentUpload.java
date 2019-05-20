@@ -93,24 +93,29 @@ public class TechincalDocumentUpload {
 
 	if(file!=null) {
 		pet.setEt_tech_cert1(file.getBytes());
+		 pet.setTech1_status("Submitted");
 	}
 	
 		
 		if(file1!=null) {
 			pet.setEt_tech_cert2(file1.getBytes());
+			pet.setTech2_status("Submitted");
 		}
         
        
         if(file2!=null) {
         	pet.setEt_tech_cert3(file2.getBytes());
+        	 pet.setTech3_status("Submitted");
 		}
 
        
         if(file3!=null) {
         	pet.setEt_tech_cert4(file3.getBytes());
+        	 pet.setTech4_status("Submitted");
        }
         if(file4!=null) {
         	pet.setEt_tech_cert5(file4.getBytes());
+        	pet.setTech5_status("Submitted");
 		}
         System.out.println("testing "+ emptech.getEt_id());
         pet.setEt_tech_cert1_text(emptech.getEt_tech_cert1_text());
@@ -126,15 +131,14 @@ public class TechincalDocumentUpload {
 	
 	
 	@RequestMapping(value = "/update-tech-document", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public PropadEmpTechDetails updatedocumentModel( @RequestPart(required = false) Map<String, String> json, EmpTechDTO emptech, @RequestParam("file") MultipartFile file, @RequestParam(required = false) MultipartFile file1,@RequestParam(required = false) MultipartFile file2,@RequestParam(required = false) MultipartFile file3,@RequestParam(required = false) MultipartFile file4) throws IOException, SerialException, SQLException,JsonParseException {
+	public PropadEmpTechDetails updatedocumentModel( @RequestPart(required = false) Map<String, String> json, EmpTechDTO emptech, @RequestParam(required = false) MultipartFile file, @RequestParam(required = false) MultipartFile file1,@RequestParam(required = false) MultipartFile file2,@RequestParam(required = false) MultipartFile file3,@RequestParam(required = false) MultipartFile file4) throws IOException, SerialException, SQLException,JsonParseException {
 		System.out.println("hiii from function");
 		/////////////////updated details////////////////
 		PropadEmpTechDetails pet3 = new PropadEmpTechDetails();
 		System.out.println("hiii from object");
 		pet3.setEt_id(emptech.getEt_id());
         pet3.setIe_id(emptech.getIe_id());
-		
-
+		System.out.println(emptech.getEt_emp_mail());
 		pet3.setEt_emp_mail(emptech.getEt_emp_mail());
 		
 
@@ -158,7 +162,11 @@ public class TechincalDocumentUpload {
 	        if(file4!=null) {
 	        	pet3.setEt_tech_cert5(file4.getBytes());
 			}
-		
+	        pet3.setTech1_status(emptech.getTech1_status());
+	        pet3.setTech2_status(emptech.getTech2_status());
+	        pet3.setTech3_status(emptech.getTech3_status());
+            pet3.setTech4_status(emptech.getTech4_status());
+            pet3.setTech5_status(emptech.getTech5_status());
 		System.out.println("updarteed records"+pet3);
 		
 		
@@ -166,11 +174,11 @@ PropadEmpTechDetails returnrecord=null;
 	if( pet3.getEt_id()!=0)	{
 		PropadEmpTechDetails pet2 = empTechRepository.getOne(pet3.getEt_id());
 		System.out.println("record in database"+pet2);
-		 if (pet2.getEt_emp_id() == pet3.getEt_emp_id()) {
+		 if (pet2.getIe_id() == pet3.getIe_id()) {
 			 PropadEmpTechDetails pet = new PropadEmpTechDetails();
 			 pet.setEt_id(pet2.getEt_id());
 			 pet.setIe_id(pet2.getIe_id());
-			 pet.setEt_emp_id(pet2.getEt_emp_id());
+			 pet.setEt_emp_mail(pet2.getEt_emp_mail());
 			 if(pet3.getEt_tech_cert1()!=null) {
 				 pet.setEt_tech_cert1(pet3.getEt_tech_cert1());
 			 }else
@@ -201,7 +209,11 @@ PropadEmpTechDetails returnrecord=null;
 			 {
 				 pet.setEt_tech_cert5(pet2.getEt_tech_cert5());
 			 }
-			 
+			 pet.setTech1_status(pet3.getTech1_status());
+             pet.setTech2_status(pet3.getTech2_status());
+             pet.setTech3_status(pet3.getTech3_status());
+             pet.setTech4_status(pet3.getTech4_status());
+             pet.setTech5_status(pet3.getTech5_status());
 		 System.out.println("update of record needed");
 		 returnrecord=pet;
 		 System.out.println("updation done successfully");
@@ -226,6 +238,7 @@ PropadEmpTechDetails returnrecord=null;
                         PropadEmpTechDetails pet3 = new PropadEmpTechDetails();
            System.out.println("hiii from object");
            pet3.setEt_id(emptech.getEt_id());
+           pet3.setIe_id(emptech.getIe_id());
            pet3.setEt_emp_mail(emptech.getEt_emp_mail());
            pet3.setTech1_status(emptech.getTech1_status());
            pet3.setTech2_status(emptech.getTech2_status());
@@ -244,7 +257,9 @@ PropadEmpTechDetails returnrecord=null;
            if (pet2.getEt_emp_mail().equals(pet3.getEt_emp_mail())) {
                   PropadEmpTechDetails pet = new PropadEmpTechDetails();
                   pet.setEt_id(pet2.getEt_id());
+                  pet.setIe_id(pet2.getIe_id());
                   pet.setEt_emp_mail(pet2.getEt_emp_mail());
+                  
                   pet.setEt_tech_cert1(pet2.getEt_tech_cert1());
                   pet.setEt_tech_cert2(pet2.getEt_tech_cert2());
                   pet.setEt_tech_cert3(pet2.getEt_tech_cert3());

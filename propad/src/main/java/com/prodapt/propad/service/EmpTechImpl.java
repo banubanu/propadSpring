@@ -26,6 +26,7 @@ public EmpTechImpl(EmpTechRepository empTechRepository) {
 	@Override
 	public Integer countnull(int ie_id) {
 		// TODO Auto-generated method stub
+		System.out.println("askldhfa");
 		return empTechRepository.countnull(ie_id);
 	}
 	@Override

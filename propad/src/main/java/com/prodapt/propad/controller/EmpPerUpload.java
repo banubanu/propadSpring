@@ -65,74 +65,36 @@ public class EmpPerUpload {
            return new ResponseEntity<Status>(status, HttpStatus.OK);
     }
 	
-    
 
-//	@RequestMapping(value = "/update-personal-document", method = RequestMethod.POST)
-//	public PropadEmpPerDetails updatepersonaldocument(@RequestPart(required = false) Map<String, String> json, EmployeePerDTO empper, @RequestParam( required = false) MultipartFile aadhar, @RequestParam( required = false) MultipartFile passport,@RequestParam( required = false) MultipartFile pancard,@RequestParam( required = false) MultipartFile addressproof ) throws IOException, SerialException, SQLException {
-//		System.out.println("hi");
-//	PropadEmpPerDetails pep = new PropadEmpPerDetails();
-//		pep.setEp_per_emp_id(empper.getEp_per_emp_id());
-//		if(aadhar!=null) {
-//			pep.setEp_per_aadhar(aadhar.getBytes());
-//		}	
-//		if(addressproof!=null) {
-//			pep.setEp_per_aadhar(addressproof.getBytes());
-//		}
-//		if(pancard!=null) {
-//			pep.setEp_per_pan(pancard.getBytes());
-//		}
-//		if(passport!=null) {
-//			pep.setEp_per_aadhar(passport.getBytes());
-//		}
-//		pep.setEp_per_aadhar_text(empper.getEp_per_aadhar_text());
-//		
-//		pep.setEp_per_addressproof_text(empper.getEp_per_addressproof_text());
-//		
-//		pep.setEp_per_pan_text(empper.getEp_per_pan_text());
-//		
-//		pep.setEp_per_pp_text(empper.getEp_per_pp_text());
-//		
-//		return this.empPer.save(pep) ;
-//	}
-    
-	
 	@RequestMapping(value = "/upload-personal-document", method = RequestMethod.POST)
 	public PropadEmpPerDetails uploadpersonaldocument(@RequestPart(required = false) Map<String, String> json, EmployeePerDTO empper, @RequestParam( required = false) MultipartFile aadhar, @RequestParam( required = false) MultipartFile passport,@RequestParam( required = false) MultipartFile pancard,@RequestParam( required = false) MultipartFile addressproof ) throws IOException, SerialException, SQLException {
-//		System.out.println("personal "+file.getOriginalFilename());
-//		System.out.println(file.getBytes());
-//		System.out.println(emptech.getEt_tech_cert1());
-		System.out.println("hi");
-		
-//		 RtJobDetails rtJobDetails = refTalRepository.findByJdPositionCode(save.getPositionCode());
-//	       save.setRtJobDetails(rtJobDetails);
-//	       RtSavedJobDetails returnSave = null;   
-//		PropadEmpPerDetails pepr=empPerRepository.findByEp_per_emp_id(empper.getEp_per_emp_id());
-//		System.out.println(pepr);
-		
+
 		PropadEmpPerDetails pep = new PropadEmpPerDetails();
 		pep.setIe_id(empper.getIe_id());
 
 		pep.setEp_per_emp_id(empper.getEp_per_emp_id());
 		if(aadhar!=null) {
 			pep.setEp_per_aadhar(aadhar.getBytes());
+			pep.setAadhar_status("Submitted");
 		}
 		if(addressproof!=null) {
 			pep.setEp_per_addressproof(addressproof.getBytes());
+			pep.setAddressproof_status("Submitted");
 		}
 		if(pancard!=null) {
 			pep.setEp_per_pan(pancard.getBytes());
+			pep.setPan_status("Submitted");
 		}
 		if(passport!=null) {
 			pep.setEp_per_pp(passport.getBytes());
+			pep.setPp_status("Submitted");
 		}
-		
-		
-		
+	
 		pep.setEp_per_mail(empper.getEp_per_mail());
-		pep.setAadhar_status("Submitted");
-		pep.setPan_status("Submitted");
-		pep.setAddressproof_status("Submitted");
-		pep.setPp_status("Submitted");
+		
+		
+	
+		
 		
 		
 		return this.empPer.save(pep) ;
@@ -168,6 +130,10 @@ public PropadEmpPerDetails updatepersonaldocument(@RequestPart(required = false)
 	if(passport!=null) {
 		pep3.setEp_per_pp(passport.getBytes());
 	}
+	pep3.setAadhar_status(empper.getAadhar_status());
+	pep3.setAddressproof_status(empper.getAddressproof_status());
+	pep3.setPan_status(empper.getPan_status());
+	pep3.setPp_status(empper.getPp_status());
 	System.out.println("updarteed records"+pep3);
 	
 	
@@ -175,11 +141,11 @@ public PropadEmpPerDetails updatepersonaldocument(@RequestPart(required = false)
 if( pep3.getEper_id()!=0)	{
 	PropadEmpPerDetails pep2 = empPerRepository.getOne(pep3.getEper_id());
 	System.out.println("record in database"+pep2);
-	 if (pep2.getEp_per_emp_id() == pep3.getEp_per_emp_id()) {
+	 if (pep2.getIe_id() == pep3.getIe_id()) {
 		 PropadEmpPerDetails pep = new PropadEmpPerDetails();
 		 pep.setEper_id(pep2.getEper_id());
 		 pep.setIe_id(pep2.getIe_id());
-		 pep.setEp_per_emp_id(pep2.getEp_per_emp_id());
+		 pep.setEp_per_mail(pep2.getEp_per_mail());
 		 if(pep3.getEp_per_aadhar()!=null) {
 			 pep.setEp_per_aadhar(pep3.getEp_per_aadhar());
 		 }else
@@ -230,6 +196,7 @@ public PropadEmpPerDetails updatepersonaldocument(@RequestBody EmployeePerDTO em
 	PropadEmpPerDetails ppd3 = new PropadEmpPerDetails();
 	System.out.println("hiii from object");
 	ppd3.setEper_id(empper.getEper_id());
+	ppd3.setIe_id(empper.getIe_id());
 	ppd3.setEp_per_mail(empper.getEp_per_mail());
 	ppd3.setAadhar_status(empper.getAadhar_status());
 	ppd3.setPan_status(empper.getPan_status());
@@ -246,6 +213,7 @@ if( ppd3.getEp_per_mail()!=null)	{
 	 if (ppd2.getEp_per_mail().equals( ppd3.getEp_per_mail())){
 		 PropadEmpPerDetails ppd = new PropadEmpPerDetails();
 		 ppd.setEper_id(ppd2.getEper_id());
+		 ppd.setIe_id(ppd2.getIe_id());
 		 ppd.setEp_per_pan(ppd2.getEp_per_pan());
 		 ppd.setEp_per_addressproof(ppd2.getEp_per_pan());
 		 ppd.setEp_per_aadhar(ppd2.getEp_per_aadhar());
