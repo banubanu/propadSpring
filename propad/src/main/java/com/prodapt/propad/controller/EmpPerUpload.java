@@ -76,20 +76,28 @@ public class EmpPerUpload {
 		if(aadhar!=null) {
 			pep.setEp_per_aadhar(aadhar.getBytes());
 			pep.setAadhar_status("Submitted");
+		}else {
+			pep.setAadhar_status("Not Submitted");
 		}
 		if(addressproof!=null) {
 			pep.setEp_per_addressproof(addressproof.getBytes());
 			pep.setAddressproof_status("Submitted");
+		}else {
+			pep.setAddressproof_status("Not Submitted");
 		}
 		if(pancard!=null) {
 			pep.setEp_per_pan(pancard.getBytes());
 			pep.setPan_status("Submitted");
+		}else {
+			pep.setPan_status("Not Submitted");
 		}
 		if(passport!=null) {
 			pep.setEp_per_pp(passport.getBytes());
 			pep.setPp_status("Submitted");
 		}
-	
+		else {
+			pep.setPp_status("Not Submitted");
+		}
 		pep.setEp_per_mail(empper.getEp_per_mail());
 		
 		
@@ -99,15 +107,6 @@ public class EmpPerUpload {
 		
 		return this.empPer.save(pep) ;
 	}
-
-	
-
-
-
-
-
-
-
 
 @RequestMapping(value = "/update-per-document", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 public PropadEmpPerDetails updatepersonaldocument(@RequestPart(required = false) Map<String, String> json, EmployeePerDTO empper, @RequestParam( required = false) MultipartFile aadhar, @RequestParam( required = false) MultipartFile passport,@RequestParam( required = false) MultipartFile pancard,@RequestParam( required = false) MultipartFile addressproof ) throws IOException, SerialException, SQLException {
@@ -120,6 +119,7 @@ public PropadEmpPerDetails updatepersonaldocument(@RequestPart(required = false)
 	pep3.setEp_per_emp_id(empper.getEp_per_emp_id());
 	if(aadhar!=null) {
 		pep3.setEp_per_aadhar(aadhar.getBytes());
+		
 	}
 	if(addressproof!=null) {
 		pep3.setEp_per_addressproof(addressproof.getBytes());
@@ -148,28 +148,36 @@ if( pep3.getEper_id()!=0)	{
 		 pep.setEp_per_mail(pep2.getEp_per_mail());
 		 if(pep3.getEp_per_aadhar()!=null) {
 			 pep.setEp_per_aadhar(pep3.getEp_per_aadhar());
+			 pep.setAadhar_status("Submitted");
 		 }else
 		 {
 			 pep.setEp_per_aadhar(pep2.getEp_per_aadhar());
+			 pep.setAadhar_status(pep2.getAadhar_status());
 		 }
 		 
 		 if(pep3.getEp_per_addressproof()!=null) {
 			 pep.setEp_per_addressproof(pep3.getEp_per_addressproof());
+			 pep.setAddressproof_status("Submitted");
 		 }else
 		 {
 			 pep.setEp_per_addressproof(pep2.getEp_per_addressproof());
+			 pep.setAddressproof_status(pep2.getAddressproof_status());
 		 }
 		 if(pep3.getEp_per_pan()!=null) {
 			 pep.setEp_per_pan(pep3.getEp_per_pan());
+			 pep.setPan_status("Submitted");
 		 }else
 		 {
 			 pep.setEp_per_pan(pep2.getEp_per_pan());
+			 pep.setPan_status(pep2.getPan_status());
 		 }
 		 if(pep3.getEp_per_pp()!=null) {
 			 pep.setEp_per_pp(pep3.getEp_per_pp());
+			 pep.setPp_status("Submitted");
 		 }else
 		 {
 			 pep.setEp_per_pp(pep2.getEp_per_pp());
+			 pep.setPp_status(pep2.getPp_status());
 		 }
 		 		 
 	 System.out.println("update of record needed");

@@ -135,6 +135,9 @@ pet3.setIe_id(employee.getIe_id());
 		return this.serviceApi.getOneRow(ie_emp_mail);
 	}
 	
-	
+	@RequestMapping(value = "/get-emp-code", method = RequestMethod.GET)
+	public List<PropadInitiateEmployee> getEmpCode(@RequestParam("ie_emp_id") int ie_emp_id) {
+		return this.serviceApi.getOne(ie_emp_id);
+	}
 	
 }

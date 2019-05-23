@@ -181,50 +181,59 @@ PropadEmpTechDetails returnrecord=null;
 			 pet.setEt_emp_mail(pet2.getEt_emp_mail());
 			 if(pet3.getEt_tech_cert1()!=null) {
 				 pet.setEt_tech_cert1(pet3.getEt_tech_cert1());
+				 pet.setTech1_status("Submitted");
 			 }else
 			 {
 				 pet.setEt_tech_cert1(pet2.getEt_tech_cert1());
+				 pet.setTech1_status(pet2.getTech1_status());
 			 }
 			 if(pet3.getEt_tech_cert2()!=null) {
 				 pet.setEt_tech_cert2(pet3.getEt_tech_cert2());
+				 pet.setTech2_status("Submitted");
 			 }else
 			 {
 				 pet.setEt_tech_cert2(pet2.getEt_tech_cert2());
+				 pet.setTech2_status(pet2.getTech2_status());
 			 }
 			 if(pet3.getEt_tech_cert3()!=null) {
 				 pet.setEt_tech_cert3(pet3.getEt_tech_cert3());
+				  pet.setTech3_status("Submitted");
 			 }else
 			 {
 				 pet.setEt_tech_cert3(pet2.getEt_tech_cert3());
+				  pet.setTech3_status(pet2.getTech3_status());
 			 }
 			 if(pet3.getEt_tech_cert4()!=null) {
 				 pet.setEt_tech_cert4(pet3.getEt_tech_cert4());
+				 pet.setTech4_status("Submitted");
 			 }else
 			 {
 				 pet.setEt_tech_cert4(pet2.getEt_tech_cert4());
+				 pet.setTech4_status(pet2.getTech4_status());
 			 }
 			 if(pet3.getEt_tech_cert5()!=null) {
 				 pet.setEt_tech_cert5(pet3.getEt_tech_cert5());
+				 pet.setTech5_status("Submitted");
 			 }else
 			 {
 				 pet.setEt_tech_cert5(pet2.getEt_tech_cert5());
+				 pet.setTech5_status(pet2.getTech5_status());
 			 }
-			 pet.setTech1_status(pet3.getTech1_status());
-             pet.setTech2_status(pet3.getTech2_status());
-             pet.setTech3_status(pet3.getTech3_status());
-             pet.setTech4_status(pet3.getTech4_status());
-             pet.setTech5_status(pet3.getTech5_status());
+			
+           
+            
+            
 		 System.out.println("update of record needed");
 		 returnrecord=pet;
 		 System.out.println("updation done successfully");
-//		 returnrecord=this.empTech.save(pet);
+
 		 
 		 
 		 }
 		 else
 		 {
 			 returnrecord=pet3;
-//			 returnrecord=	 this.empTech.save(pet3);
+
 		 }
 	}
 	return this.empTech.save(returnrecord);
@@ -266,11 +275,11 @@ PropadEmpTechDetails returnrecord=null;
                   pet.setEt_tech_cert4(pet2.getEt_tech_cert4());
                   pet.setEt_tech_cert5(pet2.getEt_tech_cert5());
                   
-                   pet.setTech1_status(pet3.getTech1_status());
-                        pet.setTech2_status(pet3.getTech2_status());
-                        pet.setTech3_status(pet3.getTech3_status());
-                        pet.setTech4_status(pet3.getTech4_status());
-                        pet.setTech5_status(pet3.getTech5_status());
+                  pet.setTech1_status(pet3.getTech1_status());
+                  pet.setTech2_status(pet3.getTech2_status());
+                  pet.setTech3_status(pet3.getTech3_status());
+                  pet.setTech4_status(pet3.getTech4_status());
+                  pet.setTech5_status(pet3.getTech5_status());
                   
             System.out.println("update of record needed");
            returnrecord=pet;

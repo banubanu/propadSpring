@@ -76,31 +76,43 @@ public class EmpProfUpload {
 		if(file!=null) {
 			ppd.setEp_service_cert1(file.getBytes());
 			  ppd.setService1_status("Submitted");
-		}
+		} else
+			ppd.setService1_status("Not Submitted");
 		
 			if(file1!=null) {
 				ppd.setEp_service_cert2(file1.getBytes());
 				ppd.setService2_status("Submitted");
+			}else {
+				ppd.setService2_status("Not Submitted");
 			}
 	        
 	       
 	        if(file2!=null) {
 	        	ppd.setEp_service_cert3(file2.getBytes());
 	        	 ppd.setService3_status("Submitted");
+			}else {
+				ppd.setService3_status("Not Submitted");
 			}
 
 	       
 	        if(file3!=null) {
 	        	ppd.setEp_payslip1(file3.getBytes());
 	        	ppd.setPayslip1_status("Submitted");
+	       }else {
+	    	   ppd.setPayslip1_status("Not Submitted");
+	    	   
 	       }
 	        if(file4!=null) {
 	        	ppd.setEp_payslip2(file4.getBytes());
 	        	ppd.setPayslip2_status("Submitted");
+			}else {
+				ppd.setPayslip2_status("Not Submitted");
 			}
 	        if(file5!=null) {
 	        	ppd.setEp_payslip3(file5.getBytes());
 	    		ppd.setPayslip3_status("Submitted");
+			}else {
+				ppd.setPayslip3_status("Not Submitted");
 			}
 	      
 
@@ -167,46 +179,58 @@ pep.setIe_id(pep2.getIe_id());
 pep.setEp_prof_mail(pep2.getEp_prof_mail());
 if(pep3.getEp_service_cert1()!=null) {
  pep.setEp_service_cert1(pep3.getEp_service_cert1());
+ pep.setService1_status("Submitted");
 }else
 {
  pep.setEp_service_cert1(pep2.getEp_service_cert1());
+ pep.setService1_status(pep2.getService1_status());
 }
 if(pep3.getEp_service_cert2()!=null) {
 	 pep.setEp_service_cert2(pep3.getEp_service_cert2());
+	 pep.setService2_status("Submitted");
 	}else
 	{
 	 pep.setEp_service_cert2(pep2.getEp_service_cert2());
+	 pep.setService2_status(pep2.getService2_status());
 	}
 if(pep3.getEp_service_cert3()!=null) {
 	 pep.setEp_service_cert3(pep3.getEp_service_cert3());
+	 pep.setService3_status("Submitted");
 	}else
 	{
 	 pep.setEp_service_cert3(pep2.getEp_service_cert3());
+	 pep.setService3_status(pep2.getService3_status());
 	}
 if(pep3.getEp_payslip1()!=null) {
 	 pep.setEp_payslip1(pep3.getEp_payslip1());
+	 pep.setPayslip1_status("Submitted");
 	}else
 	{
 	 pep.setEp_payslip1(pep2.getEp_payslip1());
+	 pep.setPayslip1_status(pep2.getPayslip1_status());
 	}
 if(pep3.getEp_payslip2()!=null) {
 	 pep.setEp_payslip2(pep3.getEp_payslip2());
+	 pep.setPayslip2_status("Submitted");
 	}else
 	{
 	 pep.setEp_payslip2(pep2.getEp_payslip2());
+	 pep.setPayslip2_status(pep2.getPayslip2_status());
 	}
 if(pep3.getEp_payslip3()!=null) {
 	 pep.setEp_payslip3(pep3.getEp_payslip3());
+	 pep.setPayslip3_status("Submitted");
 	}else
 	{
 	 pep.setEp_payslip3(pep2.getEp_payslip3());
+	 pep.setPayslip3_status(pep2.getPayslip3_status());
 	}
-pep.setService1_status(pep3.getService1_status());
-pep.setService2_status(pep3.getService2_status());
-pep.setService3_status(pep3.getService3_status());
-pep.setPayslip1_status(pep3.getPayslip1_status());
-pep.setPayslip2_status(pep3.getPayslip2_status());
-pep.setPayslip3_status(pep3.getPayslip3_status());
+
+
+
+
+
+
 System.out.println("update of record needed");
 returnrecord=pep;
 System.out.println("updation done successfully");
@@ -233,6 +257,7 @@ return this.empProf.save(returnrecord);
 		ppd3.setEp_id(empProf.getEp_id());
 		ppd3.setIe_id(empProf.getIe_id());
 		ppd3.setEp_prof_mail(empProf.getEp_prof_mail());
+				
 		ppd3.setService1_status(empProf.getService1_status());
 		ppd3.setService2_status(empProf.getService2_status());
 		ppd3.setService3_status(empProf.getService3_status());
@@ -253,20 +278,22 @@ return this.empProf.save(returnrecord);
 		 if(ppd2.getIe_id()==ppd3.getIe_id()){
 			 PropadEmpProfDetails ppd = new PropadEmpProfDetails();
 			 ppd.setEp_id(ppd2.getEp_id());
-			 ppd3.setIe_id(ppd2.getIe_id());
+			 ppd.setIe_id(ppd2.getIe_id());
+			 
 			 ppd.setEp_service_cert1(ppd2.getEp_service_cert1());
 			 ppd.setEp_service_cert2(ppd2.getEp_service_cert2());
 			 ppd.setEp_service_cert3(ppd2.getEp_service_cert3());
-			 ppd.setEp_payslip1(ppd3.getEp_payslip1());
-			 ppd.setEp_payslip2(ppd3.getEp_payslip2());
-			 ppd.setEp_payslip3(ppd3.getEp_payslip3());
+			 ppd.setEp_payslip1(ppd2.getEp_payslip1());
+			 ppd.setEp_payslip2(ppd2.getEp_payslip2());
+			 ppd.setEp_payslip3(ppd2.getEp_payslip3());
 			 ppd.setEp_prof_mail(ppd2.getEp_prof_mail());
+			 
 			 ppd.setService1_status(ppd3.getService1_status());
 			 ppd.setService2_status(ppd3.getService2_status());
 			 ppd.setService3_status(ppd3.getService3_status());
-				ppd.setPayslip1_status(ppd3.getPayslip1_status());
-				ppd.setPayslip2_status(ppd3.getPayslip2_status());
-				ppd.setPayslip3_status(ppd3.getPayslip3_status());
+			ppd.setPayslip1_status(ppd3.getPayslip1_status());
+			ppd.setPayslip2_status(ppd3.getPayslip2_status());
+			ppd.setPayslip3_status(ppd3.getPayslip3_status());
 			 
 			
 			 

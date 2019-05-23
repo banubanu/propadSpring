@@ -79,24 +79,35 @@ public class EduDocUpload {
 	if(file!=null) {
 		pee.setEd_edu_sslc(file.getBytes());
 		 pee.setSslc_status("Submitted");
+	}else {
+		 pee.setSslc_status("Not Submitted");
 	}
 	if(file1!=null) {
 		 pee.setEd_edu_hsc(file1.getBytes());
 		 pee.setHsc_status("Submitted");
 	}
+	else {
+		pee.setHsc_status("Not Submitted");
+	}
 		if(file2!=null) {
 		    pee.setEd_edu_dip(file2.getBytes());
 		    pee.setDip_status("Submitted");
+		}else {
+			pee.setDip_status("Not Submitted");
 		}
 	if(file3!=null) {
 		 pee.setEd_edu_ug(file3.getBytes());
 		 pee.setUg_status("Submitted");
 			
+	}else {
+		 pee.setUg_status("Not Submitted");
 	}
 		
    if(file4!=null) {
 	   pee.setEd_edu_pg(file4.getBytes());
 	   pee.setPg_status("Submitted");
+   }else {
+	   pee.setPg_status("Not Submitted");
    }
 
 		return this.empEdu.save(pee) ;

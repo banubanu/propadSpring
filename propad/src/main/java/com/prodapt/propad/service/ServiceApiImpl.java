@@ -36,6 +36,12 @@ ServiceRepository serviceRepository;
 		return  serviceRepository.getOneRow(ie_emp_mail);
 	}
 	
+	@Override
+	public List<PropadInitiateEmployee> getOne(int ie_emp_id) {
+		// TODO Auto-generated method stub
+		return  serviceRepository.getByEmpid(ie_emp_id);
+	}
+	
 	
 
 }

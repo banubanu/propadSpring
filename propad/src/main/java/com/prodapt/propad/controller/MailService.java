@@ -43,9 +43,9 @@ public class MailService {
 //                message.setCc(elNomination.getElRmEmail());
                 String s=user_email;
         		String pwd=user_password;
-                message.setText("Dear Prodaptian,\r\n you are allowed to access prodapt network to upload your document. Please find your credentials below: "
+                message.setText("Dear Prodaptian,\r\n You are allowed to access Prodapt network to upload your document. Please find your credentials below: "
         				+ "\nUsername: "+ s +"\r"
-        				+"\nPassword: " +pwd +"\r\n Thanks,\r\n Propad Support Team");   
+        				+"\nPassword: " +pwd +"\r\n Thanks,\r\n Onboarding Support Team");   
                 sender.send(message);     
                 return "Mail Sent Success!";
 }
@@ -55,7 +55,7 @@ public class MailService {
   public String resendDocumentMail( @RequestBody EmployeeValDTO empVal ) {
 	  String[] empValComment = new String[50];
 		 int length ;
-		 String s= "Dear Prodaptian,\n Some of your documents are not valid as you need to update those documents your HR comments are given below:" ;
+		 String s= "Dear Prodaptian,\r\n Some of your documents are not valid as you need to update those documents.Your HR comments are given below:" ;
 		 
 			for(int i=0;i<empVal.getA().length;i++) {
 				length = empVal.getA().length;
@@ -79,12 +79,12 @@ public class MailService {
   @RequestMapping(value = "/sendcompletedDocumentMail", method = RequestMethod.POST)
   public String documentStatusUpdate(@RequestBody EmployeeValDTO empVal ) {
 	  SimpleMailMessage message =new SimpleMailMessage();
-	  String s= "Dear prodaptian,"+ "\n" +"you have successfully uploaded ";
+	  String s= "Dear Prodaptian,\r \n You have successfully uploaded ";
                 message.setTo(empVal.getEv_emp_mail());
-                message.setSubject("OnBoardingPro Document uploaded - %");
+                message.setSubject("OnBoardingPro Document Uploaded");
                 message.setFrom("propad.notifications@prodapt.com");
 //              
-                message.setText(s+empVal.getSectionname()+"\n"+"Thanks,\n Onboarding Support Team" );   
+                message.setText(s+empVal.getSectionname()+"."+"\r\n\n"+"Thanks,\r\n\n Onboarding Support Team" );   
                 sender.send(message);     
                 return "Mail Sent Success!";
 }

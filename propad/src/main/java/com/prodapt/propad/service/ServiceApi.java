@@ -11,6 +11,7 @@ public interface ServiceApi {
 	List<PropadInitiateEmployee> getAll();
 	PropadInitiateEmployee save(PropadInitiateEmployee  pie);
 	List<PropadInitiateEmployee> getOneRow(String ie_emp_mail);
+	List<PropadInitiateEmployee> getOne(int ie_emp_id);
 
 
 }
