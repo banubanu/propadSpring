@@ -22,9 +22,16 @@ import javax.persistence.Entity;
 		private String ev_emp_mail;
 		private String a[]= new String[5];
 		private String sectionname;
+		private int uploadedPercentage;
 //		 private List<String> commentList;
 		
-//		public List<String> getCommentList() {
+public int getUploadedPercentage() {
+			return uploadedPercentage;
+		}
+		public void setUploadedPercentage(int uploadedPercentage) {
+			this.uploadedPercentage = uploadedPercentage;
+		}
+		//		public List<String> getCommentList() {
 //			return commentList;
 //		}
 //		public void setCommentList(List<String> commentList) {

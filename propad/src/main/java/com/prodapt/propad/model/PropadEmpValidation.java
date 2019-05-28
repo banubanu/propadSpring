@@ -15,6 +15,7 @@ public class PropadEmpValidation {
 	private int ev_emp_id;
 	private Date ev_review_dt;
 	private String ev_review_comments;
+	private int uploadedPercentage;
 	
 	public int getEv_id() {
 		return ev_id;
@@ -27,6 +28,12 @@ public class PropadEmpValidation {
 	}
 	public void setEv_emp_id(int ev_emp_id) {
 		this.ev_emp_id = ev_emp_id;
+	}
+	public int getUploadedPercentage() {
+		return uploadedPercentage;
+	}
+	public void setUploadedPercentage(int uploadedPercentage) {
+		this.uploadedPercentage = uploadedPercentage;
 	}
 	public Date getEv_review_dt() {
 		return ev_review_dt;
@@ -48,6 +55,7 @@ public class PropadEmpValidation {
 		result = prime * result + ev_id;
 		result = prime * result + ((ev_review_comments == null) ? 0 : ev_review_comments.hashCode());
 		result = prime * result + ((ev_review_dt == null) ? 0 : ev_review_dt.hashCode());
+		result = prime * result + uploadedPercentage;
 		return result;
 	}
 	@Override
@@ -73,13 +81,18 @@ public class PropadEmpValidation {
 				return false;
 		} else if (!ev_review_dt.equals(other.ev_review_dt))
 			return false;
+		if (uploadedPercentage != other.uploadedPercentage)
+			return false;
 		return true;
 	}
 	@Override
 	public String toString() {
 		return "PropadEmpValidation [ev_id=" + ev_id + ", ev_emp_id=" + ev_emp_id + ", ev_review_dt=" + ev_review_dt
-				+ ", ev_review_comments=" + ev_review_comments + "]";
+				+ ", ev_review_comments=" + ev_review_comments + ", uploadedPercentage=" + uploadedPercentage + "]";
 	}
+
+	
+	
 	
 
 }

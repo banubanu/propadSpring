@@ -33,4 +33,5 @@ public class ProfStatusController {
 		return this.empProf.countnull(ie_id);
 	}
 	
+	
 }

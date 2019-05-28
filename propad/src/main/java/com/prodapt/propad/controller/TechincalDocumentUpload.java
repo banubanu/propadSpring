@@ -94,28 +94,38 @@ public class TechincalDocumentUpload {
 	if(file!=null) {
 		pet.setEt_tech_cert1(file.getBytes());
 		 pet.setTech1_status("Submitted");
+	}else {
+		 pet.setTech1_status("Not Submitted");
 	}
 	
 		
 		if(file1!=null) {
 			pet.setEt_tech_cert2(file1.getBytes());
 			pet.setTech2_status("Submitted");
+		}else {
+			pet.setTech2_status("Not Submitted");
 		}
         
        
         if(file2!=null) {
         	pet.setEt_tech_cert3(file2.getBytes());
         	 pet.setTech3_status("Submitted");
+		}else {
+			pet.setTech3_status("Not Submitted");
 		}
 
        
         if(file3!=null) {
         	pet.setEt_tech_cert4(file3.getBytes());
         	 pet.setTech4_status("Submitted");
+       }else {
+    	   pet.setTech4_status("Not Submitted");
        }
         if(file4!=null) {
         	pet.setEt_tech_cert5(file4.getBytes());
         	pet.setTech5_status("Submitted");
+		}else {
+			pet.setTech5_status("Not Submitted");
 		}
         System.out.println("testing "+ emptech.getEt_id());
         pet.setEt_tech_cert1_text(emptech.getEt_tech_cert1_text());

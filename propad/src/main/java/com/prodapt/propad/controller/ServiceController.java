@@ -121,6 +121,47 @@ pet3.setIe_id(employee.getIe_id());
 	}
 	return this.serviceApi.save(returnrecord);
 	}
+	
+	
+	@RequestMapping(value = "/update-user-status", method = RequestMethod.POST)
+	public PropadInitiateEmployee updateuserStatus(@RequestBody EmployeeDTO employee) throws  SerialException {
+		/////////////////updated details////////////////
+		PropadInitiateEmployee pet3 = new PropadInitiateEmployee();
+		System.out.println("hiii from object");
+pet3.setIe_id(employee.getIe_id());
+		pet3.setIe_status(employee.getIe_status());
+				System.out.println("updarteed records"+pet3);
+		
+		
+		PropadInitiateEmployee returnrecord=null;
+	if( pet3.getIe_id()!=0)	{
+		PropadInitiateEmployee pet2 = serviceRepository.getOne(pet3.getIe_id());
+		System.out.println("record in database"+pet2);
+		 if (pet2.getIe_id() == pet3.getIe_id()) {
+			 PropadInitiateEmployee pet = new PropadInitiateEmployee();
+			 pet.setIe_id(pet2.getIe_id());
+             pet.setIe_emp_doj(pet2.getIe_emp_doj());
+             pet.setIe_emp_name(pet2.getIe_emp_name());
+             pet.setIe_emp_email(pet2.getIe_emp_email());
+             pet.setIe_emp_id(pet2.getIe_emp_id());
+             pet.setIe_emp_date(pet2.getIe_emp_date());
+			 pet.setIe_status(pet3.getIe_status());
+			 
+			
+			 
+		 System.out.println("update of record needed");
+		 returnrecord=pet;
+		 System.out.println("updation done successfully");
+	 }
+		 else
+		 {
+			 returnrecord=pet3;
+		 }
+	}
+	return this.serviceApi.save(returnrecord);
+	}
+	
+	
 	@RequestMapping(value = "/get-updated-user", method = RequestMethod.GET)
 	public List<PropadInitiateEmployee> updateUsers(@RequestParam("ie_emp_mail") String ie_emp_mail) {
 		return this.serviceApi.getOneRow(ie_emp_mail);
@@ -135,9 +176,8 @@ pet3.setIe_id(employee.getIe_id());
 		return this.serviceApi.getOneRow(ie_emp_mail);
 	}
 	
-	@RequestMapping(value = "/get-emp-code", method = RequestMethod.GET)
-	public List<PropadInitiateEmployee> getEmpCode(@RequestParam("ie_emp_id") int ie_emp_id) {
-		return this.serviceApi.getOne(ie_emp_id);
+	@RequestMapping(value = "/checkusername", method = RequestMethod.GET)
+	public List<PropadInitiateEmployee> checkusername(@RequestParam("ie_emp_mail") String ie_emp_mail) {
+		return this.serviceApi.getOneRow(ie_emp_mail);
 	}
-	
 }

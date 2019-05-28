@@ -124,6 +124,7 @@ public class EduDocUpload {
 		pee3.setEd_emp_mail(empEdu.getEd_emp_mail());
 		if(file!=null) {
 			pee3.setEd_edu_sslc(file.getBytes());
+			
 		}
 		
 			if(file1!=null) {
@@ -164,34 +165,44 @@ public class EduDocUpload {
 
 			 if(pee3.getEd_edu_sslc()!=null) {
 				 pee.setEd_edu_sslc(pee3.getEd_edu_sslc());
+				 pee.setSslc_status("Submitted");
 			 }else
 			 {
 				 pee.setEd_edu_sslc(pee2.getEd_edu_sslc());
+				 pee.setSslc_status(pee2.getSslc_status());
 			 }
 			 if(pee3.getEd_edu_hsc()!=null) {
 				 pee.setEd_edu_hsc(pee3.getEd_edu_hsc());
+				 pee.setHsc_status("Submitted");
 			 }else
 			 {
 				 pee.setEd_edu_hsc(pee2.getEd_edu_hsc());
+				 pee.setHsc_status(pee2.getHsc_status());
 			 }
 			 if(pee3.getEd_edu_dip()!=null) {
 				 pee.setEd_edu_dip(pee3.getEd_edu_dip());
+				 pee.setDip_status("Submitted");
 			 }else
 			 {
 				 pee.setEd_edu_dip(pee2.getEd_edu_dip());
+				 pee.setDip_status(pee2.getDip_status());
 			 }
 			 if(pee3.getEd_edu_ug()!=null) {
 				 pee.setEd_edu_ug(pee3.getEd_edu_ug());
+				 pee.setUg_status("Submitted");
 			 }else
 			 {
 				 pee.setEd_edu_ug(pee2.getEd_edu_ug());
+				 pee.setUg_status(pee2.getUg_status());
 			 }
 
 			 if(pee3.getEd_edu_pg()!=null) {
 				 pee.setEd_edu_pg(pee3.getEd_edu_pg());
+				 pee.setPg_status("Submitted");
 			 }else
 			 {
 				 pee.setEd_edu_pg(pee2.getEd_edu_pg());
+				 pee.setPg_status(pee2.getPg_status());
 			 }
 			 
 		 System.out.println("update of record needed");

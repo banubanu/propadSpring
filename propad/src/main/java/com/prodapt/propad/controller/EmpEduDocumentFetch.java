@@ -62,6 +62,7 @@ public class EmpEduDocumentFetch {
            Query query = entityManager.createNativeQuery(
                         "select sslc_status as sslc_status ,hsc_status as hsc_status,dip_status as dip_status,ug_status as ug_status,pg_status as pg_status from propad_emp_edu_details where ie_id='"+ie_id+"'");
            List<PropadEmpEduDetails> pendingDocuments = query.getResultList();
+           
            return pendingDocuments;
 
     }
