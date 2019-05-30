@@ -23,9 +23,12 @@ public class EduStatusController {
 	
 	@RequestMapping(value = "/get-edu-status", method = RequestMethod.GET)
 	public Integer getedudocuments(@RequestParam("ie_id") int ie_id ) {
+		System.out.println(ie_id);
 		if(this.empEdu.countnull(ie_id)==null) {
+//			System.out.println("null value");
 			return -1;
 		}
+//		System.out.println(this.empEdu.countnull(ie_id)+ "   null 4 value");
 		return this.empEdu.countnull(ie_id);
 	}
 	

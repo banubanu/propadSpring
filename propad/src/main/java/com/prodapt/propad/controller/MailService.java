@@ -53,16 +53,18 @@ public class MailService {
   
   @RequestMapping(value = "/resendDocumentMail", method = RequestMethod.POST)
   public String resendDocumentMail( @RequestBody EmployeeValDTO empVal ) {
-	  String[] empValComment = new String[50];
-		 int length ;
-		 String s= "Dear Prodaptian,\r\n Some of your documents are not valid as you need to update those documents.Your HR comments are given below:" ;
+//	  String[] empValComment = new String[50];
+//		 int length ;
 		 
-			for(int i=0;i<empVal.getA().length;i++) {
-				length = empVal.getA().length;
-				s += " "+ empVal.getA()[i];
-				
-				
-		}
+
+		 String s= "Dear Prodaptian,\r\n Some of your documents uploaded in "+empVal.getSectionname()+" is not valid.Please upload the correct documents.\n\rRejected Reason: "+empVal.getEv_review_comments()+"\n\rThanks\n\rPropad Support Team" ;
+		 
+//			for(int i=0;i<empVal.getA().length;i++) {
+//				length = empVal.getA().length;
+//				s += " "+ empVal.getA()[i];
+//				
+//				
+//		}
 	  SimpleMailMessage message =new SimpleMailMessage();
 
                 message.setTo(empVal.getEv_emp_mail());
@@ -70,7 +72,7 @@ public class MailService {
                 message.setFrom("propad.notifications@prodapt.com");
 //                message.setCc(elNomination.getElRmEmail());
                
-                message.setText(s );   
+                message.setText(s);   
                 sender.send(message);     
                 return "Mail Sent Success!";
 }
