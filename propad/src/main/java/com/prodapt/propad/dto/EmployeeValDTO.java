@@ -23,8 +23,15 @@ import javax.persistence.Entity;
 		private String a[]= new String[5];
 		private String sectionname;
 		private int uploadedPercentage;
+		private String documentName;
 //		 private List<String> commentList;
 		
+public String getDocumentName() {
+			return documentName;
+		}
+		public void setDocumentStatus(String documentName) {
+			this.documentName = documentName;
+		}
 public int getUploadedPercentage() {
 			return uploadedPercentage;
 		}
@@ -82,6 +89,6 @@ public int getUploadedPercentage() {
 		public void setSectionname(String sectionname) {
 			this.sectionname = sectionname;
 		}
-				
+			
 		
 }

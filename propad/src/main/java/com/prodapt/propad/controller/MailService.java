@@ -57,7 +57,7 @@ public class MailService {
 //		 int length ;
 		 
 
-		 String s= "Dear Prodaptian,\r\n Some of your documents uploaded in "+empVal.getSectionname()+" is not valid.Please upload the correct documents.\n\rRejected Reason: "+empVal.getEv_review_comments()+"\n\rThanks\n\rPropad Support Team" ;
+		 String s= "Dear Prodaptian,\n\r\nThe document you have uploaded in "+empVal.getSectionname()+" ("+empVal.getDocumentName()+")"+" is not valid.Please upload the correct document.\n\rRejected Reason: "+empVal.getEv_review_comments()+"\n\rThanks\n\rPropad Support Team" ;
 		 
 //			for(int i=0;i<empVal.getA().length;i++) {
 //				length = empVal.getA().length;

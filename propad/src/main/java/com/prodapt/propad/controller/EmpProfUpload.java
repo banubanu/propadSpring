@@ -1,5 +1,7 @@
 package com.prodapt.propad.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -291,9 +293,9 @@ return this.empProf.save(returnrecord);
 			 ppd.setService1_status(ppd3.getService1_status());
 			 ppd.setService2_status(ppd3.getService2_status());
 			 ppd.setService3_status(ppd3.getService3_status());
-			ppd.setPayslip1_status(ppd3.getPayslip1_status());
-			ppd.setPayslip2_status(ppd3.getPayslip2_status());
-			ppd.setPayslip3_status(ppd3.getPayslip3_status());
+			 ppd.setPayslip1_status(ppd3.getPayslip1_status());
+			 ppd.setPayslip2_status(ppd3.getPayslip2_status());
+			 ppd.setPayslip3_status(ppd3.getPayslip3_status());
 			 
 			
 			 
@@ -310,7 +312,18 @@ return this.empProf.save(returnrecord);
 	}
 	
 	
-	
+	@RequestMapping(value = "/uploads", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public ResponseEntity<Object> uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
+		System.out.println("Srijithcode");
+		File convertFile = new File("D:\\Srijith1\\" + file.getOriginalFilename());
+		convertFile.createNewFile();
+//		file.getOriginalFilename();
+		FileOutputStream fout = new FileOutputStream(convertFile);
+		fout.write(file.getBytes());
+		fout.close();
+		return new ResponseEntity<>("File uploaded Succesfuflly", HttpStatus.OK);
+		
+	}  
 	
 }
 

@@ -23,14 +23,14 @@ public class PropadInitiateEmployee  {
 
 	private String ie_status;
 	private Date ie_emp_date;
-	private int ie_document_status;
+//	private int ie_document_status;
 
-	public int getIe_document_status() {
-		return ie_document_status;
-	}
-	public void setIe_document_status(int ie_document_status) {
-		this.ie_document_status = ie_document_status;
-	}
+//	public int getIe_document_status() {
+//		return ie_document_status;
+//	}
+//	public void setIe_document_status(int ie_document_status) {
+//		this.ie_document_status = ie_document_status;
+//	}
 	public Date getIe_emp_date() {
 		return ie_emp_date;
 	}
@@ -90,7 +90,7 @@ public class PropadInitiateEmployee  {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ie_document_status;
+		
 		result = prime * result + ((ie_emp_date == null) ? 0 : ie_emp_date.hashCode());
 		result = prime * result + ((ie_emp_doj == null) ? 0 : ie_emp_doj.hashCode());
 		result = prime * result + ((ie_emp_email == null) ? 0 : ie_emp_email.hashCode());
@@ -109,8 +109,7 @@ public class PropadInitiateEmployee  {
 		if (getClass() != obj.getClass())
 			return false;
 		PropadInitiateEmployee other = (PropadInitiateEmployee) obj;
-		if (ie_document_status != other.ie_document_status)
-			return false;
+		
 		if (ie_emp_date == null) {
 			if (other.ie_emp_date != null)
 				return false;
@@ -146,7 +145,7 @@ public class PropadInitiateEmployee  {
 	public String toString() {
 		return "PropadInitiateEmployee [ie_id=" + ie_id + ", ie_emp_id=" + ie_emp_id + ", ie_emp_name=" + ie_emp_name
 				+ ", ie_emp_email=" + ie_emp_email + ", ie_emp_doj=" + ie_emp_doj + ", ie_status=" + ie_status
-				+ ", ie_emp_date=" + ie_emp_date + ", ie_document_status=" + ie_document_status + "]";
+				+ ", ie_emp_date=" + ie_emp_date + "]";
 	}
 	
 	

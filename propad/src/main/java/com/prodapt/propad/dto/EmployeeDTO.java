@@ -15,17 +15,17 @@ public class EmployeeDTO {
 	private Date ie_emp_doj;
 	private String ie_status;
 	private Date ie_emp_date;
-private int ie_document_status;
+//private int ie_document_status;
 
 	public Date getIe_emp_date() {
 		return ie_emp_date;
 	}
-	public int getIe_document_status() {
-		return ie_document_status;
-	}
-	public void setIe_document_status(int ie_document_status) {
-		this.ie_document_status = ie_document_status;
-	}
+//	public int getIe_document_status() {
+//		return ie_document_status;
+//	}
+//	public void setIe_document_status(int ie_document_status) {
+//		this.ie_document_status = ie_document_status;
+//	}
 	public void setIe_emp_date(Date ie_emp_date) {
 		this.ie_emp_date = ie_emp_date;
 	}
