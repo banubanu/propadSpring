@@ -71,10 +71,11 @@ public class EmpPerUpload {
 
 		PropadEmpPerDetails pep = new PropadEmpPerDetails();
 		pep.setIe_id(empper.getIe_id());
-
+System.out.println("file here"+aadhar );
+System.out.println("file here in bytes"+aadhar.getBytes() );
 		pep.setEp_per_emp_id(empper.getEp_per_emp_id());
 		if(aadhar!=null) {
-			pep.setEp_per_aadhar(aadhar.getBytes());
+//			pep.setEp_per_aadhar(aadhar.getBytes());
 			pep.setAadhar_status("Submitted");
 		}else {
 			pep.setAadhar_status("Not Submitted");
@@ -113,12 +114,13 @@ public PropadEmpPerDetails updatepersonaldocument(@RequestPart(required = false)
 	System.out.println("hiii from function");
 	/////////////////updated details////////////////
 	PropadEmpPerDetails pep3 = new PropadEmpPerDetails();
+	
 	System.out.println("hiii from object");
 	pep3.setEper_id(empper.getEper_id());
 	pep3.setIe_id(empper.getIe_id());
 	pep3.setEp_per_emp_id(empper.getEp_per_emp_id());
 	if(aadhar!=null) {
-		pep3.setEp_per_aadhar(aadhar.getBytes());
+//		pep3.setEp_per_aadhar(aadhar.getBytes());
 		
 	}
 	if(addressproof!=null) {
@@ -147,11 +149,11 @@ if( pep3.getEper_id()!=0)	{
 		 pep.setIe_id(pep2.getIe_id());
 		 pep.setEp_per_mail(pep2.getEp_per_mail());
 		 if(pep3.getEp_per_aadhar()!=null) {
-			 pep.setEp_per_aadhar(pep3.getEp_per_aadhar());
+//			 pep.setEp_per_aadhar(pep3.getEp_per_aadhar());
 			 pep.setAadhar_status("Submitted");
 		 }else
 		 {
-			 pep.setEp_per_aadhar(pep2.getEp_per_aadhar());
+//			 pep.setEp_per_aadhar(pep2.getEp_per_aadhar());
 			 pep.setAadhar_status(pep2.getAadhar_status());
 		 }
 		 
@@ -223,7 +225,7 @@ if( ppd3.getEp_per_mail()!=null)	{
 		 ppd.setEper_id(ppd2.getEper_id());
 		 ppd.setIe_id(ppd2.getIe_id());
 		 ppd.setEp_per_pan(ppd2.getEp_per_pan());
-		 ppd.setEp_per_addressproof(ppd2.getEp_per_pan());
+		 ppd.setEp_per_addressproof(ppd2.getEp_per_addressproof());
 		 ppd.setEp_per_aadhar(ppd2.getEp_per_aadhar());
 		 ppd.setEp_per_pp(ppd2.getEp_per_pp());
 		 ppd.setEp_per_mail(ppd2.getEp_per_mail());
@@ -246,7 +248,137 @@ if( ppd3.getEp_per_mail()!=null)	{
 return this.empPer.save(returnrecord);
 }		
 		
+@RequestMapping(value = "/upload-personal-camera", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+public PropadEmpPerDetails cameradocument(@RequestBody EmployeePerDTO empper)  {
+
+	PropadEmpPerDetails pep = new PropadEmpPerDetails();
+	
+	pep.setIe_id(empper.getIe_id());
+	pep.setEp_per_mail(empper.getEp_per_mail());
+//	pep.setEp_per_aadhar(empper.getEp_per_aadhar());
+System.out.println("file here"+empper.getEp_per_aadhar() );
+System.out.println("file here"+empper.getEp_per_mail() );
+//System.out.println("file here in bytes"+aadhar.getBytes() );
+//	pep.setEp_per_emp_id(empper.getEp_per_emp_id());
+	if(empper.getEp_per_aadhar()!=null) {
+		pep.setEp_per_aadhar(empper.getEp_per_aadhar());
+		pep.setAadhar_status("Submitted");
+	}else {
+		pep.setAadhar_status("Not Submitted");
+	}
+	if(empper.getEp_per_addressproof()!=null) {
+		pep.setEp_per_addressproof(empper.getEp_per_addressproof());
+		pep.setAddressproof_status("Submitted");
+	}else {
+		pep.setAddressproof_status("Not Submitted");
+	}
+	if(empper.getEp_per_pan()!=null) {
+		pep.setEp_per_pan(empper.getEp_per_pan());
+		pep.setPan_status("Submitted");
+	}else {
+		pep.setPan_status("Not Submitted");
+	}
+	if(empper.getEp_per_pp()!=null) {
+		pep.setEp_per_pp(empper.getEp_per_pp());
+		pep.setPp_status("Submitted");
+	}
+	else {
+		pep.setPp_status("Not Submitted");
+	}
+	return this.empPer.save(pep) ;
+}
+
+@RequestMapping(value = "/update-per-camera", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
+public PropadEmpPerDetails updatepersonalcamera(@RequestBody EmployeePerDTO empper){
+	System.out.println("hiii from function");
+	/////////////////updated details////////////////
+	PropadEmpPerDetails pep3 = new PropadEmpPerDetails();
+	
+	System.out.println("hiii from object");
+	pep3.setEper_id(empper.getEper_id());
+	pep3.setIe_id(empper.getIe_id());
+	pep3.setEp_per_emp_id(empper.getEp_per_emp_id());
+	if(empper.getEp_per_aadhar()!=null) {
+		pep3.setEp_per_aadhar(empper.getEp_per_aadhar());
 		
+	}
+	if(empper.getEp_per_addressproof()!=null) {
+		pep3.setEp_per_addressproof(empper.getEp_per_addressproof());
+	}
+	if(empper.getEp_per_pan()!=null) {
+		pep3.setEp_per_pan(empper.getEp_per_pan());
+	}
+	if(empper.getEp_per_pp()!=null) {
+		pep3.setEp_per_pp(empper.getEp_per_pp());
+	}
+	pep3.setAadhar_status(empper.getAadhar_status());
+	pep3.setAddressproof_status(empper.getAddressproof_status());
+	pep3.setPan_status(empper.getPan_status());
+	pep3.setPp_status(empper.getPp_status());
+	System.out.println("updarteed records"+pep3);
+	
+	
+	PropadEmpPerDetails returnrecord=null;
+if( pep3.getEper_id()!=0)	{
+	PropadEmpPerDetails pep2 = empPerRepository.getOne(pep3.getEper_id());
+	System.out.println("record in database"+pep2);
+	 if (pep2.getIe_id() == pep3.getIe_id()) {
+		 PropadEmpPerDetails pep = new PropadEmpPerDetails();
+		 pep.setEper_id(pep2.getEper_id());
+		 pep.setIe_id(pep2.getIe_id());
+		 pep.setEp_per_mail(pep2.getEp_per_mail());
+		 System.out.println("aadhaaarrrrrrrrrrrrr"+pep3.getEp_per_aadhar());
+		 if(pep3.getEp_per_aadhar()!=null) {
+			 pep.setEp_per_aadhar(pep3.getEp_per_aadhar());
+			 pep.setAadhar_status("Submitted");
+		 }else
+		 {
+			 pep.setEp_per_aadhar(pep2.getEp_per_aadhar());
+			 pep.setAadhar_status(pep2.getAadhar_status());
+		 }
+		 
+		 if(pep3.getEp_per_addressproof()!=null) {
+			 pep.setEp_per_addressproof(pep3.getEp_per_addressproof());
+			 pep.setAddressproof_status("Submitted");
+		 }else
+		 {
+			 pep.setEp_per_addressproof(pep2.getEp_per_addressproof());
+			 pep.setAddressproof_status(pep2.getAddressproof_status());
+		 }
+		 if(pep3.getEp_per_pan()!=null) {
+			 pep.setEp_per_pan(pep3.getEp_per_pan());
+			 pep.setPan_status("Submitted");
+		 }else
+		 {
+			 pep.setEp_per_pan(pep2.getEp_per_pan());
+			 pep.setPan_status(pep2.getPan_status());
+		 }
+		 if(pep3.getEp_per_pp()!=null) {
+			 pep.setEp_per_pp(pep3.getEp_per_pp());
+			 pep.setPp_status("Submitted");
+		 }else
+		 {
+			 pep.setEp_per_pp(pep2.getEp_per_pp());
+			 pep.setPp_status(pep2.getPp_status());
+		 }
+		 		 
+	 System.out.println("update of record needed");
+	 returnrecord=pep;
+	 System.out.println("updation done successfully");
+//	 returnrecord=this.empTech.save(pet);
+	 
+	 
+	 }
+	 else
+	 {
+		 returnrecord=pep3;
+//		 returnrecord=	 this.empTech.save(pet3);
+	 }
+}
+return this.empPer.save(returnrecord);
+}
+
+
 }
 	
 

@@ -21,13 +21,13 @@ package com.prodapt.propad.dto;
 			this.ie_id = ie_id;
 		}
 		private int ep_per_emp_id;
-		private Blob ep_per_addressproof;
+		private byte[] ep_per_addressproof;
 		private String ep_per_addressproof_text;
-		private Blob ep_per_pp;
+		private byte[] ep_per_pp;
 		private String ep_per_pp_text;
-		private Blob ep_per_pan;
+		private byte[] ep_per_pan;
 		private String ep_per_pan_text;
-		private Blob ep_per_aadhar;
+		private byte[] ep_per_aadhar;
 		private String ep_per_aadhar_text;
 		private String ep_per_mail;
 		private String addressproof_status;
@@ -79,10 +79,10 @@ package com.prodapt.propad.dto;
 		public void setEp_per_emp_id(int ep_per_emp_id) {
 			this.ep_per_emp_id = ep_per_emp_id;
 		}
-		public Blob getEp_per_addressproof() {
+		public byte[] getEp_per_addressproof() {
 			return ep_per_addressproof;
 		}
-		public void setEp_per_addressproof(Blob ep_per_addressproof) {
+		public void setEp_per_addressproof(byte[] ep_per_addressproof) {
 			this.ep_per_addressproof = ep_per_addressproof;
 		}
 		public String getEp_per_addressproof_text() {
@@ -91,10 +91,10 @@ package com.prodapt.propad.dto;
 		public void setEp_per_addressproof_text(String ep_per_addressproof_text) {
 			this.ep_per_addressproof_text = ep_per_addressproof_text;
 		}
-		public Blob getEp_per_pp() {
+		public byte[] getEp_per_pp() {
 			return ep_per_pp;
 		}
-		public void setEp_per_pp(Blob ep_per_pp) {
+		public void setEp_per_pp(byte[] ep_per_pp) {
 			this.ep_per_pp = ep_per_pp;
 		}
 		public String getEp_per_pp_text() {
@@ -103,10 +103,10 @@ package com.prodapt.propad.dto;
 		public void setEp_per_pp_text(String ep_per_pp_text) {
 			this.ep_per_pp_text = ep_per_pp_text;
 		}
-		public Blob getEp_per_pan() {
+		public byte[] getEp_per_pan() {
 			return ep_per_pan;
 		}
-		public void setEp_per_pan(Blob ep_per_pan) {
+		public void setEp_per_pan(byte[] ep_per_pan) {
 			this.ep_per_pan = ep_per_pan;
 		}
 		public String getEp_per_pan_text() {
@@ -115,10 +115,10 @@ package com.prodapt.propad.dto;
 		public void setEp_per_pan_text(String ep_per_pan_text) {
 			this.ep_per_pan_text = ep_per_pan_text;
 		}
-		public Blob getEp_per_aadhar() {
+		public byte[] getEp_per_aadhar() {
 			return ep_per_aadhar;
 		}
-		public void setEp_per_aadhar(Blob ep_per_aadhar) {
+		public void setEp_per_aadhar(byte[] ep_per_aadhar) {
 			this.ep_per_aadhar = ep_per_aadhar;
 		}
 		public String getEp_per_aadhar_text() {

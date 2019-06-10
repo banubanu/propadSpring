@@ -17,7 +17,14 @@ public class PropadEmpProfDetails {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int ep_id;
-//	private int ep_emp_id;
+	private String camera_file;
+public String getCamera_file() {
+		return camera_file;
+	}
+	public void setCamera_file(String camera_file) {
+		this.camera_file = camera_file;
+	}
+	//	private int ep_emp_id;
 	private int ie_id;
 	private byte[] ep_service_cert1;
 	private String ep_service_cert1_text;
@@ -46,6 +53,7 @@ public class PropadEmpProfDetails {
 	private String payslip1_status;
 	private String payslip2_status;
 	private String payslip3_status;
+	
 	
 	
 	
@@ -176,19 +184,19 @@ public class PropadEmpProfDetails {
 	}
 	@Override
 	public String toString() {
-		return "PropadEmpProfDetails [ep_id=" + ep_id + ", ie_id=" + ie_id + ", ep_service_cert1="
-				+ Arrays.toString(ep_service_cert1) + ", ep_service_cert1_text=" + ep_service_cert1_text
-				+ ", ep_service_cert2=" + Arrays.toString(ep_service_cert2) + ", ep_service_cert2_text="
-				+ ep_service_cert2_text + ", ep_service_cert3=" + Arrays.toString(ep_service_cert3)
-				+ ", ep_service_cert3_text=" + ep_service_cert3_text + ", ep_payslip1=" + Arrays.toString(ep_payslip1)
-				+ ", ep_payslip1_text=" + ep_payslip1_text + ", ep_payslip2=" + Arrays.toString(ep_payslip2)
-				+ ", ep_payslip2_text=" + ep_payslip2_text + ", ep_payslip3=" + Arrays.toString(ep_payslip3)
-				+ ", ep_payslip3_text=" + ep_payslip3_text + ", ep_prof_mail=" + ep_prof_mail + ", service1_status="
-				+ service1_status + ", service2_status=" + service2_status + ", service3_status=" + service3_status
-				+ ", payslip1_status=" + payslip1_status + ", payslip2_status=" + payslip2_status + ", payslip3_status="
-				+ payslip3_status + "]";
+		return "PropadEmpProfDetails [ep_id=" + ep_id + ", camera_file=" + camera_file + ", ie_id=" + ie_id
+				+ ", ep_service_cert1=" + Arrays.toString(ep_service_cert1) + ", ep_service_cert1_text="
+				+ ep_service_cert1_text + ", ep_service_cert2=" + Arrays.toString(ep_service_cert2)
+				+ ", ep_service_cert2_text=" + ep_service_cert2_text + ", ep_service_cert3="
+				+ Arrays.toString(ep_service_cert3) + ", ep_service_cert3_text=" + ep_service_cert3_text
+				+ ", ep_payslip1=" + Arrays.toString(ep_payslip1) + ", ep_payslip1_text=" + ep_payslip1_text
+				+ ", ep_payslip2=" + Arrays.toString(ep_payslip2) + ", ep_payslip2_text=" + ep_payslip2_text
+				+ ", ep_payslip3=" + Arrays.toString(ep_payslip3) + ", ep_payslip3_text=" + ep_payslip3_text
+				+ ", ep_prof_mail=" + ep_prof_mail + ", service1_status=" + service1_status + ", service2_status="
+				+ service2_status + ", service3_status=" + service3_status + ", payslip1_status=" + payslip1_status
+				+ ", payslip2_status=" + payslip2_status + ", payslip3_status=" + payslip3_status + "]";
 	}
-
+	
 	
 	
 	
