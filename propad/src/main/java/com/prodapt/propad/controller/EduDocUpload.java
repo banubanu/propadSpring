@@ -272,7 +272,157 @@ public class EduDocUpload {
 	return this.empEdu.save(returnrecord);
 	}
 
-	
+	@RequestMapping(value = "/upload-edu-camera", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public PropadEmpEduDetails uploadedudocumentcamera( @RequestBody EmployeeEduDTO empEdu) {
+//		System.out.println("banu"+file.getOriginalFilename());
+//		System.out.println(file.getBytes());
+//		System.out.println(emptech.getEt_tech_cert1());
+		
+		PropadEmpEduDetails pee = new PropadEmpEduDetails();
+//  pet.setEt_tech_cert1(((EmpTechDTO) file).getEt_tech_cert1());
+//	pet.setEt_emp_id(et_emp_id);
+		
+//		pee.setEd_emp_id(empEdu.getEd_emp_id());
+	pee.setEd_emp_mail(empEdu.getEd_emp_mail());
+	pee.setIe_id(empEdu.getIe_id());
+	if(empEdu.getEd_edu_sslc()!=null) {
+		pee.setEd_edu_sslc(empEdu.getEd_edu_sslc());
+		 pee.setSslc_status("Submitted");
+	}else {
+		 pee.setSslc_status("Not Submitted");
+	}
+	if(empEdu.getEd_edu_hsc()!=null) {
+		 pee.setEd_edu_hsc(empEdu.getEd_edu_hsc());
+		 pee.setHsc_status("Submitted");
+	}
+	else {
+		pee.setHsc_status("Not Submitted");
+	}
+		if(empEdu.getEd_edu_dip()!=null) {
+		    pee.setEd_edu_dip(empEdu.getEd_edu_dip());
+		    pee.setDip_status("Submitted");
+		}else {
+			pee.setDip_status("Not Submitted");
+		}
+	if(empEdu.getEd_edu_ug()!=null) {
+		 pee.setEd_edu_ug(empEdu.getEd_edu_ug());
+		 pee.setUg_status("Submitted");
+			
+	}else {
+		 pee.setUg_status("Not Submitted");
+	}
+		
+   if(empEdu.getEd_edu_pg()!=null) {
+	   pee.setEd_edu_pg(empEdu.getEd_edu_pg());
+	   pee.setPg_status("Submitted");
+   }else {
+	   pee.setPg_status("Not Submitted");
+   }
+
+		return this.empEdu.save(pee) ;
+	}
+	@RequestMapping(value = "/update-edu-camera", method = RequestMethod.POST)
+	public PropadEmpEduDetails updatedocumentcamera( @RequestPart(required = false) Map<String, String> json,EmployeeEduDTO empEdu, @RequestParam(required = false) MultipartFile file, @RequestParam(required = false) MultipartFile file1,@RequestParam(required = false) MultipartFile file2,@RequestParam(required = false) MultipartFile file3,@RequestParam(required = false) MultipartFile file4, @RequestParam(required = false) MultipartFile file5) throws IOException, SerialException, SQLException {
+			System.out.println("hiii from function");
+		/////////////////updated details////////////////
+	PropadEmpEduDetails pee3 = new PropadEmpEduDetails();
+		System.out.println("hiii from object");
+		pee3.setEd_id(empEdu.getEd_id());
+		pee3.setIe_id(empEdu.getIe_id());
+		pee3.setEd_emp_mail(empEdu.getEd_emp_mail());
+		if(empEdu.getEd_edu_sslc()!=null) {
+			pee3.setEd_edu_sslc(empEdu.getEd_edu_sslc());
+			
+		}
+		
+			if(empEdu.getEd_edu_hsc()!=null) {
+				pee3.setEd_edu_hsc(empEdu.getEd_edu_hsc());
+			}
+	        
+	       
+	        if(empEdu.getEd_edu_dip()!=null) {
+	        	pee3.setEd_edu_dip(empEdu.getEd_edu_dip());
+			}
+
+	       
+	        if(empEdu.getEd_edu_ug()!=null) {
+	        	pee3.setEd_edu_ug(empEdu.getEd_edu_ug());
+	       }
+	        if(empEdu.getEd_edu_pg()!=null) {
+	        	pee3.setEd_edu_pg(empEdu.getEd_edu_pg());
+			}
+	      
+		System.out.println("updarteed records"+pee3);
+		
+		
+		PropadEmpEduDetails returnrecord=null;
+	if( pee3.getEd_id()!=0)	{
+		PropadEmpEduDetails pee2 = empEduRepository.getOne(pee3.getEd_id());
+		System.out.println("record in database"+pee2);
+		 if (pee2.getEd_emp_mail().equals( pee3.getEd_emp_mail())) {
+			 PropadEmpEduDetails pee = new PropadEmpEduDetails();
+			 pee.setEd_id(pee2.getEd_id());
+
+			 pee.setIe_id(pee2.getIe_id());
+//			 pee.setEd_emp_id(pee2.getEd_emp_mail());
+
+
+			 pee.setEd_emp_mail(pee2.getEd_emp_mail());
+
+			 if(pee3.getEd_edu_sslc()!=null) {
+				 pee.setEd_edu_sslc(pee3.getEd_edu_sslc());
+				 pee.setSslc_status("Submitted");
+			 }else
+			 {
+				 pee.setEd_edu_sslc(pee2.getEd_edu_sslc());
+				 pee.setSslc_status(pee2.getSslc_status());
+			 }
+			 if(pee3.getEd_edu_hsc()!=null) {
+				 pee.setEd_edu_hsc(pee3.getEd_edu_hsc());
+				 pee.setHsc_status("Submitted");
+			 }else
+			 {
+				 pee.setEd_edu_hsc(pee2.getEd_edu_hsc());
+				 pee.setHsc_status(pee2.getHsc_status());
+			 }
+			 if(pee3.getEd_edu_dip()!=null) {
+				 pee.setEd_edu_dip(pee3.getEd_edu_dip());
+				 pee.setDip_status("Submitted");
+			 }else
+			 {
+				 pee.setEd_edu_dip(pee2.getEd_edu_dip());
+				 pee.setDip_status(pee2.getDip_status());
+			 }
+			 if(pee3.getEd_edu_ug()!=null) {
+				 pee.setEd_edu_ug(pee3.getEd_edu_ug());
+				 pee.setUg_status("Submitted");
+			 }else
+			 {
+				 pee.setEd_edu_ug(pee2.getEd_edu_ug());
+				 pee.setUg_status(pee2.getUg_status());
+			 }
+
+			 if(pee3.getEd_edu_pg()!=null) {
+				 pee.setEd_edu_pg(pee3.getEd_edu_pg());
+				 pee.setPg_status("Submitted");
+			 }else
+			 {
+				 pee.setEd_edu_pg(pee2.getEd_edu_pg());
+				 pee.setPg_status(pee2.getPg_status());
+			 }
+			 
+		 System.out.println("update of record needed");
+		 returnrecord=pee;
+		 System.out.println("updation done successfully");
+	 }
+		 else
+		 {
+			 returnrecord=pee3;
+		 }
+	}
+	return this.empEdu.save(returnrecord);
+	}
+
 }
 
 

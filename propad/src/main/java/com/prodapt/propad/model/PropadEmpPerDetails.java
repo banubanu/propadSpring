@@ -131,8 +131,8 @@ public class PropadEmpPerDetails implements Serializable {
 	public byte[] getEp_per_aadhar() {
 		return ep_per_aadhar;
 	}
-	public void setEp_per_aadhar(byte[] bs) {
-		this.ep_per_aadhar = bs;
+	public void setEp_per_aadhar(byte[] blob) {
+		this.ep_per_aadhar = blob;
 	}
 	public String getEp_per_aadhar_text() {
 		return ep_per_aadhar_text;
@@ -146,10 +146,11 @@ public class PropadEmpPerDetails implements Serializable {
 				+ ", ep_per_addressproof=" + Arrays.toString(ep_per_addressproof) + ", ep_per_addressproof_text="
 				+ ep_per_addressproof_text + ", ep_per_pp=" + Arrays.toString(ep_per_pp) + ", ep_per_pp_text="
 				+ ep_per_pp_text + ", ep_per_pan=" + Arrays.toString(ep_per_pan) + ", ep_per_pan_text="
-				+ ep_per_pan_text + ", ep_per_aadhar=" + Arrays.toString(ep_per_aadhar) + ", ep_per_aadhar_text="
-				+ ep_per_aadhar_text + ", ep_per_mail=" + ep_per_mail + ", addressproof_status=" + addressproof_status
-				+ ", aadhar_status=" + aadhar_status + ", pp_status=" + pp_status + ", pan_status=" + pan_status + "]";
+				+ ep_per_pan_text + ", ep_per_aadhar=" + ep_per_aadhar + ", ep_per_aadhar_text=" + ep_per_aadhar_text
+				+ ", ep_per_mail=" + ep_per_mail + ", addressproof_status=" + addressproof_status + ", aadhar_status="
+				+ aadhar_status + ", pp_status=" + pp_status + ", pan_status=" + pan_status + "]";
 	}
+	
 
 	
 	

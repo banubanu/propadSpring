@@ -3,14 +3,20 @@ package com.prodapt.propad.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 import javax.sql.rowset.serial.SerialException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +39,7 @@ import com.prodapt.propad.repository.EmpProfRepository;
 import com.prodapt.propad.service.EmpProf;
 
 
+@Controller
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/getemployeeprofessionaldetails")
@@ -42,6 +49,9 @@ public class EmpProfUpload {
 	EmpProf empProf;
 	@Autowired
 	EmpProfRepository empProfRepository;
+	@Value("${application.base.media}")
+    private String storagePath;
+
 	
 	public EmpProfUpload(EmpProf empProf)
 	{
@@ -259,7 +269,6 @@ return this.empProf.save(returnrecord);
 		ppd3.setEp_id(empProf.getEp_id());
 		ppd3.setIe_id(empProf.getIe_id());
 		ppd3.setEp_prof_mail(empProf.getEp_prof_mail());
-				
 		ppd3.setService1_status(empProf.getService1_status());
 		ppd3.setService2_status(empProf.getService2_status());
 		ppd3.setService3_status(empProf.getService3_status());
@@ -311,20 +320,277 @@ return this.empProf.save(returnrecord);
 	return this.empProf.save(returnrecord);
 	}
 	
-	
-	@RequestMapping(value = "/uploads", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public ResponseEntity<Object> uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
-		System.out.println("Srijithcode");
-		File convertFile = new File("D:\\Srijith1\\" + file.getOriginalFilename());
-		convertFile.createNewFile();
-//		file.getOriginalFilename();
-		FileOutputStream fout = new FileOutputStream(convertFile);
-		fout.write(file.getBytes());
-		fout.close();
-		return new ResponseEntity<>("File uploaded Succesfuflly", HttpStatus.OK);
+	@RequestMapping(value = "/upload-prof-camera", method = RequestMethod.POST)
+	public PropadEmpProfDetails uploaddocumentcamera( @RequestBody EmployeeProfDTO empProf){
+		PropadEmpProfDetails ppd = new PropadEmpProfDetails();
+		System.out.println("hiii from object");
+		ppd.setEp_prof_mail(empProf.getEp_prof_mail());
+		ppd.setIe_id(empProf.getIe_id());
 		
-	}  
+		if(empProf.getEp_service_cert1()!=null) {
+			ppd.setEp_service_cert1(empProf.getEp_service_cert1());
+			  ppd.setService1_status("Submitted");
+		} else
+			ppd.setService1_status("Not Submitted");
+		
+			if(empProf.getEp_service_cert2()!=null) {
+				ppd.setEp_service_cert2(empProf.getEp_service_cert2());
+				ppd.setService2_status("Submitted");
+			}else {
+				ppd.setService2_status("Not Submitted");
+			}
+	        
+	       
+	        if(empProf.getEp_service_cert3()!=null) {
+	        	ppd.setEp_service_cert3(empProf.getEp_service_cert3());
+	        	 ppd.setService3_status("Submitted");
+			}else {
+				ppd.setService3_status("Not Submitted");
+			}
+
+	       
+	        if(empProf.getEp_payslip1()!=null) {
+	        	ppd.setEp_payslip1(empProf.getEp_payslip1());
+	        	ppd.setPayslip1_status("Submitted");
+	       }else {
+	    	   ppd.setPayslip1_status("Not Submitted");
+	    	   
+	       }
+	        if(empProf.getEp_payslip2()!=null) {
+	        	ppd.setEp_payslip2(empProf.getEp_payslip2());
+	        	ppd.setPayslip2_status("Submitted");
+			}else {
+				ppd.setPayslip2_status("Not Submitted");
+			}
+	        if(empProf.getEp_payslip3()!=null) {
+	        	ppd.setEp_payslip3(empProf.getEp_payslip3());
+	    		ppd.setPayslip3_status("Submitted");
+			}else {
+				ppd.setPayslip3_status("Not Submitted");
+			}
+	      
+
 	
+		
+		return this.empProf.save(ppd) ;
+	}
+
+	@RequestMapping(value = "/update-prof-camera", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public PropadEmpProfDetails updatedocumentcamera( @RequestBody EmployeeProfDTO empProf) {
+	System.out.println("hiii from function");
+
+/////////////////updated details////////////////
+	PropadEmpProfDetails pep3 = new PropadEmpProfDetails();
+System.out.println("hiii from object");
+pep3.setEp_id(empProf.getEp_id());
+pep3.setIe_id(empProf.getIe_id());
+pep3.setEp_prof_mail(empProf.getEp_prof_mail());
+//pep3.setEp_prof_emp_id(empProf.getEp_prof_emp_id());
+if(empProf.getEp_service_cert1()!=null) {
+pep3.setEp_service_cert1(empProf.getEp_service_cert1());
+pep3.setService1_status("Submitted");
+}
+if(empProf.getEp_service_cert2()!=null) {
+pep3.setEp_service_cert2(empProf.getEp_service_cert2());
+pep3.setService2_status("Submitted");
+}
+if(empProf.getEp_service_cert3()!=null) {
+pep3.setEp_service_cert3(empProf.getEp_service_cert3());
+pep3.setService3_status("Submitted");
+}
+if(empProf.getEp_payslip1()!=null) {
+pep3.setEp_payslip1(empProf.getEp_payslip1());
+pep3.setPayslip1_status("Submitted");
+}
+if(empProf.getEp_payslip2()!=null) {
+pep3.setEp_payslip2(empProf.getEp_payslip2());
+pep3.setPayslip2_status("Submitted");
+}
+if(empProf.getEp_payslip3()!=null) {
+pep3.setEp_payslip3(empProf.getEp_payslip3());
+pep3.setPayslip3_status("Submitted");
+}
+
+System.out.println("updarteed records"+pep3);
+
+
+PropadEmpProfDetails returnrecord=null;
+if( pep3.getEp_id()!=0)	{
+	PropadEmpProfDetails pep2 = empProfRepository.getOne(pep3.getEp_id());
+System.out.println("record in database"+pep2);
+if (pep2.getIe_id() == pep3.getIe_id()) {
+	PropadEmpProfDetails pep = new PropadEmpProfDetails();
+pep.setEp_id(pep2.getEp_id());
+pep.setIe_id(pep2.getIe_id());
+pep.setEp_prof_mail(pep2.getEp_prof_mail());
+if(pep3.getEp_service_cert1()!=null) {
+ pep.setEp_service_cert1(pep3.getEp_service_cert1());
+ pep.setService1_status("Submitted");
+}else
+{
+ pep.setEp_service_cert1(pep2.getEp_service_cert1());
+ pep.setService1_status(pep2.getService1_status());
+}
+if(pep3.getEp_service_cert2()!=null) {
+	 pep.setEp_service_cert2(pep3.getEp_service_cert2());
+	 pep.setService2_status("Submitted");
+	}else
+	{
+	 pep.setEp_service_cert2(pep2.getEp_service_cert2());
+	 pep.setService2_status(pep2.getService2_status());
+	}
+if(pep3.getEp_service_cert3()!=null) {
+	 pep.setEp_service_cert3(pep3.getEp_service_cert3());
+	 pep.setService3_status("Submitted");
+	}else
+	{
+	 pep.setEp_service_cert3(pep2.getEp_service_cert3());
+	 pep.setService3_status(pep2.getService3_status());
+	}
+if(pep3.getEp_payslip1()!=null) {
+	 pep.setEp_payslip1(pep3.getEp_payslip1());
+	 pep.setPayslip1_status("Submitted");
+	}else
+	{
+	 pep.setEp_payslip1(pep2.getEp_payslip1());
+	 pep.setPayslip1_status(pep2.getPayslip1_status());
+	}
+if(pep3.getEp_payslip2()!=null) {
+	 pep.setEp_payslip2(pep3.getEp_payslip2());
+	 pep.setPayslip2_status("Submitted");
+	}else
+	{
+	 pep.setEp_payslip2(pep2.getEp_payslip2());
+	 pep.setPayslip2_status(pep2.getPayslip2_status());
+	}
+if(pep3.getEp_payslip3()!=null) {
+	 pep.setEp_payslip3(pep3.getEp_payslip3());
+	 pep.setPayslip3_status("Submitted");
+	}else
+	{
+	 pep.setEp_payslip3(pep2.getEp_payslip3());
+	 pep.setPayslip3_status(pep2.getPayslip3_status());
+	}
+
+
+System.out.println("update of record needed");
+returnrecord=pep;
+System.out.println("updation done successfully");
+
+}
+else
+{
+returnrecord=pep3;
+}
+}
+return this.empProf.save(returnrecord);
+}
+	
+//	@RequestMapping(value = "/uploads", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+//	public ResponseEntity<Object> uploadFile( @RequestPart(required = false) Map<String, String> json, EmployeeProfDTO empProf,@RequestParam(required= false) MultipartFile file) throws IOException {
+//		System.out.println("Srijithcode");
+////		File convertFile = new File("D:\\Srijith1\\" + file.getOriginalFilename());
+//		
+//        try {
+//            File files = new File(this.storagePath + empProf.getIe_id());
+//if (!files.exists()) 
+//{
+//if (files.mkdirs()) 
+//  {
+//   System.out.println("Multiple directories are created!");
+//   
+//  }
+//else    {
+//System.out.println("Failed to create multiple directories!");      
+//}
+//            File convertFile= new File(this.storagePath + empProf.getIe_id()+ File.separator +file.getOriginalFilename());
+//            convertFile.createNewFile();
+//            FileOutputStream fout=new FileOutputStream(convertFile);
+//            fout.write(file.getBytes());
+//            fout.close();
+//            File convertFile1= new File(this.storagePath + empProf.getIe_id()+ File.separator +file.getOriginalFilename());
+//            System.out.println(convertFile1);
+//            
+//          convertFile1.createNewFile();
+//          FileOutputStream fout1=new FileOutputStream(convertFile1);
+//          fout1.write(file.getBytes());
+//          fout1.close();
+//
+//          
+//            
+//}
+//else {
+//
+//
+//}
+//
+//
+//}
+//catch (NoSuchFileException  e) {
+//            e.printStackTrace();
+//}
+//
+//File convertFile= new File(this.storagePath + empProf.getIe_id()+ File.separator +file.getOriginalFilename());
+//		
+//		System.out.println(this.storagePath + empProf.getIe_id()+ File.separator +file.getOriginalFilename());
+//		convertFile.createNewFile();
+////		file.getOriginalFilename();
+//		FileOutputStream fout = new FileOutputStream(convertFile);
+//		fout.write(file.getBytes());
+//		fout.close();
+//		return new ResponseEntity<>("File uploaded Successfully", HttpStatus.OK);
+//		
+//	}  
+ 
+
+//    @RequestMapping(value="/uploads1",method=RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+//    public ResponseEntity<Object> uploadFile3(@RequestParam("file") MultipartFile file, @RequestPart(required = false) Map<String, String> json, EmployeeProfDTO empProf) throws IOException{
+//                    
+//                byte[] bytes = file.getBytes();
+//                Path path = Paths.get(storagePath  +file.getOriginalFilename());
+//                path.toAbsolutePath();
+//                Path pathDir = Paths.get(storagePath +File.separator+empProf.getIe_id()+File.separator+file.getOriginalFilename());
+//                    try {
+//                                    File files = new File(this.storagePath + empProf.getIe_id());
+//                                    System.out.println("Banu "+files);
+//                                    
+//            if (!files.exists()) 
+//            {
+//                if (files.mkdirs()) 
+//                          {
+//                           System.out.println("Multiple directories are created!");
+//                           
+//                          }
+//                else    {
+//                        System.out.println("Failed to create multiple directories!");      
+//                        }
+//                           
+//                                    
+//                                    File convertFile1= new File(this.storagePath + empProf.getIe_id()+ File.separator +file.getOriginalFilename());
+//                                      System.out.println(convertFile1);
+//                                      
+//                                    convertFile1.createNewFile();
+//                                    FileOutputStream fout1=new FileOutputStream(convertFile1);
+//                                    fout1.write(file.getBytes());
+//                                    fout1.close();
+//            }
+//            else {
+//            	System.out.println("folder already exists");
+//            	System.out.println("path "+pathDir);
+//                Files.write(pathDir, bytes);
+//                    
+//            }
+//           
+//                    
+//                    }
+//                    catch (NoSuchFileException e) {
+//                                    e.printStackTrace();
+//                    }
+//                      
+//                    return new ResponseEntity<>("File converted Successfully",HttpStatus.OK) ;
+//    }
+
+        
 }
 
 

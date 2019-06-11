@@ -21,18 +21,25 @@ public int getIe_id() {
 		public void setIe_id(int ie_id) {
 			this.ie_id = ie_id;
 		}
+		private String camera_file;
+		public String getCamera_file() {
+				return camera_file;
+			}
+			public void setCamera_file(String camera_file) {
+				this.camera_file = camera_file;
+			}
 		//		private int ep_emp_id;
-		private Blob ep_service_cert1;
+		private byte[] ep_service_cert1;
 		private String ep_service_cert1_text;
-		private Blob ep_service_cert2;
+		private byte[] ep_service_cert2;
 		private String ep_service_cert2_text;
-		private Blob ep_service_cert3;
+		private byte[] ep_service_cert3;
 		private String ep_service_cert3_text;
-		private Blob ep_payslip1;
+		private byte[] ep_payslip1;
 		private String ep_payslip1_text;
-		private Blob ep_payslip2;
+		private byte[] ep_payslip2;
 		private String ep_payslip2_text;
-		private Blob ep_payslip3;
+		private byte[] ep_payslip3;
 		private String ep_payslip3_text;
 		private String ep_prof_mail;
 		private String service1_status;
@@ -99,10 +106,10 @@ public int getIe_id() {
 //		public void setEp_emp_id(int ep_emp_id) {
 //			this.ep_emp_id = ep_emp_id;
 //		}
-		public Blob getEp_service_cert1() {
+		public byte[] getEp_service_cert1() {
 			return ep_service_cert1;
 		}
-		public void setEp_service_cert1(Blob ep_service_cert1) {
+		public void setEp_service_cert1(byte[] ep_service_cert1) {
 			this.ep_service_cert1 = ep_service_cert1;
 		}
 		public String getEp_service_cert1_text() {
@@ -111,10 +118,10 @@ public int getIe_id() {
 		public void setEp_service_cert1_text(String ep_service_cert1_text) {
 			this.ep_service_cert1_text = ep_service_cert1_text;
 		}
-		public Blob getEp_service_cert2() {
+		public byte[] getEp_service_cert2() {
 			return ep_service_cert2;
 		}
-		public void setEp_service_cert2(Blob ep_service_cert2) {
+		public void setEp_service_cert2(byte[] ep_service_cert2) {
 			this.ep_service_cert2 = ep_service_cert2;
 		}
 		public String getEp_service_cert2_text() {
@@ -123,10 +130,10 @@ public int getIe_id() {
 		public void setEp_service_cert2_text(String ep_service_cert2_text) {
 			this.ep_service_cert2_text = ep_service_cert2_text;
 		}
-		public Blob getEp_service_cert3() {
+		public byte[] getEp_service_cert3() {
 			return ep_service_cert3;
 		}
-		public void setEp_service_cert3(Blob ep_service_cert3) {
+		public void setEp_service_cert3(byte[] ep_service_cert3) {
 			this.ep_service_cert3 = ep_service_cert3;
 		}
 		public String getEp_service_cert3_text() {
@@ -135,10 +142,10 @@ public int getIe_id() {
 		public void setEp_service_cert3_text(String ep_service_cert3_text) {
 			this.ep_service_cert3_text = ep_service_cert3_text;
 		}
-		public Blob getEp_payslip1() {
+		public byte[] getEp_payslip1() {
 			return ep_payslip1;
 		}
-		public void setEp_payslip1(Blob ep_payslip1) {
+		public void setEp_payslip1(byte[] ep_payslip1) {
 			this.ep_payslip1 = ep_payslip1;
 		}
 		public String getEp_payslip1_text() {
@@ -147,10 +154,10 @@ public int getIe_id() {
 		public void setEp_payslip1_text(String ep_payslip1_text) {
 			this.ep_payslip1_text = ep_payslip1_text;
 		}
-		public Blob getEp_payslip2() {
+		public byte[] getEp_payslip2() {
 			return ep_payslip2;
 		}
-		public void setEp_payslip2(Blob ep_payslip2) {
+		public void setEp_payslip2(byte[] ep_payslip2) {
 			this.ep_payslip2 = ep_payslip2;
 		}
 		public String getEp_payslip2_text() {
@@ -159,10 +166,10 @@ public int getIe_id() {
 		public void setEp_payslip2_text(String ep_payslip2_text) {
 			this.ep_payslip2_text = ep_payslip2_text;
 		}
-		public Blob getEp_payslip3() {
+		public byte[] getEp_payslip3() {
 			return ep_payslip3;
 		}
-		public void setEp_payslip3(Blob ep_payslip3) {
+		public void setEp_payslip3(byte[] ep_payslip3) {
 			this.ep_payslip3 = ep_payslip3;
 		}
 		public String getEp_payslip3_text() {
@@ -171,6 +178,6 @@ public int getIe_id() {
 		public void setEp_payslip3_text(String ep_payslip3_text) {
 			this.ep_payslip3_text = ep_payslip3_text;
 		}
-		
+	
 		
 }

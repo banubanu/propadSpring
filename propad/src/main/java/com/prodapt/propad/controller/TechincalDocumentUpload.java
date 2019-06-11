@@ -302,5 +302,171 @@ PropadEmpTechDetails returnrecord=null;
     }
     return this.empTech.save(returnrecord);
     }
+	@RequestMapping(value = "/upload-tech-camera", method = RequestMethod.POST)
+	public PropadEmpTechDetails uploaddocumentcamera( @RequestBody EmpTechDTO emptech) {
+//		System.out.println("test"+file.getOriginalFilename());
+//		System.out.println(file.getBytes());
+//		System.out.println(emptech.getEt_tech_cert1());
+		
+	PropadEmpTechDetails pet = new PropadEmpTechDetails();
+//  pet.setEt_tech_cert1(((EmpTechDTO) file).getEt_tech_cert1());
+//	pet.setEt_emp_id(et_emp_id);
+	pet.setIe_id(emptech.getIe_id());
+	pet.setEt_emp_mail(emptech.getEt_emp_mail());
 
+	if(emptech.getEt_tech_cert1()!=null) {
+		pet.setEt_tech_cert1(emptech.getEt_tech_cert1());
+		 pet.setTech1_status("Submitted");
+	}else {
+		 pet.setTech1_status("Not Submitted");
+	}
+	
+		
+		if(emptech.getEt_tech_cert2()!=null) {
+			pet.setEt_tech_cert2(emptech.getEt_tech_cert2());
+			pet.setTech2_status("Submitted");
+		}else {
+			pet.setTech2_status("Not Submitted");
+		}
+        
+       
+        if(emptech.getEt_tech_cert3()!=null) {
+        	pet.setEt_tech_cert3(emptech.getEt_tech_cert3());
+        	 pet.setTech3_status("Submitted");
+		}else {
+			pet.setTech3_status("Not Submitted");
+		}
+
+       
+        if(emptech.getEt_tech_cert4()!=null) {
+        	pet.setEt_tech_cert4(emptech.getEt_tech_cert4());
+        	 pet.setTech4_status("Submitted");
+       }else {
+    	   pet.setTech4_status("Not Submitted");
+       }
+        if(emptech.getEt_tech_cert5()!=null) {
+        	pet.setEt_tech_cert5(emptech.getEt_tech_cert5());
+        	pet.setTech5_status("Submitted");
+		}else {
+			pet.setTech5_status("Not Submitted");
+		}
+        System.out.println("testing "+ emptech.getEt_id());
+        pet.setEt_tech_cert1_text(emptech.getEt_tech_cert1_text());
+        pet.setEt_tech_cert2_text(emptech.getEt_tech_cert2_text());
+        pet.setEt_tech_cert3_text(emptech.getEt_tech_cert3_text());
+        pet.setEt_tech_cert4_text(emptech.getEt_tech_cert4_text());
+        pet.setEt_tech_cert5_text(emptech.getEt_tech_cert5_text());
+        pet.setEt_tech_comments(emptech.getEt_tech_comments());
+		return this.empTech.save(pet) ;
+	}
+	@RequestMapping(value = "/update-tech-camera", method = RequestMethod.POST)
+	public PropadEmpTechDetails updatedocumentcamera( @RequestBody EmpTechDTO emptech) {
+		System.out.println("hiii from function");
+		/////////////////updated details////////////////
+		PropadEmpTechDetails pet3 = new PropadEmpTechDetails();
+		System.out.println("hiii from object");
+		pet3.setEt_id(emptech.getEt_id());
+        pet3.setIe_id(emptech.getIe_id());
+		System.out.println(emptech.getEt_emp_mail());
+		pet3.setEt_emp_mail(emptech.getEt_emp_mail());
+		
+
+		if(emptech.getEt_tech_cert1()!=null) {
+			pet3.setEt_tech_cert1(emptech.getEt_tech_cert1());
+		}
+		
+			if(emptech.getEt_tech_cert2()!=null) {
+				pet3.setEt_tech_cert2(emptech.getEt_tech_cert2());
+			}
+	        
+	       
+	        if(emptech.getEt_tech_cert3()!=null) {
+	        	pet3.setEt_tech_cert3(emptech.getEt_tech_cert3());
+			}
+
+	       
+	        if(emptech.getEt_tech_cert4()!=null) {
+	        	pet3.setEt_tech_cert4(emptech.getEt_tech_cert4());
+	       }
+	        if(emptech.getEt_tech_cert5()!=null) {
+	        	pet3.setEt_tech_cert5(emptech.getEt_tech_cert5());
+			}
+	        pet3.setTech1_status(emptech.getTech1_status());
+	        pet3.setTech2_status(emptech.getTech2_status());
+	        pet3.setTech3_status(emptech.getTech3_status());
+            pet3.setTech4_status(emptech.getTech4_status());
+            pet3.setTech5_status(emptech.getTech5_status());
+		System.out.println("updarteed records"+pet3);
+		
+		
+PropadEmpTechDetails returnrecord=null;
+	if( pet3.getEt_id()!=0)	{
+		PropadEmpTechDetails pet2 = empTechRepository.getOne(pet3.getEt_id());
+		System.out.println("record in database"+pet2);
+		 if (pet2.getIe_id() == pet3.getIe_id()) {
+			 PropadEmpTechDetails pet = new PropadEmpTechDetails();
+			 pet.setEt_id(pet2.getEt_id());
+			 pet.setIe_id(pet2.getIe_id());
+			 pet.setEt_emp_mail(pet2.getEt_emp_mail());
+			 if(pet3.getEt_tech_cert1()!=null) {
+				 pet.setEt_tech_cert1(pet3.getEt_tech_cert1());
+				 pet.setTech1_status("Submitted");
+			 }else
+			 {
+				 pet.setEt_tech_cert1(pet2.getEt_tech_cert1());
+				 pet.setTech1_status(pet2.getTech1_status());
+			 }
+			 if(pet3.getEt_tech_cert2()!=null) {
+				 pet.setEt_tech_cert2(pet3.getEt_tech_cert2());
+				 pet.setTech2_status("Submitted");
+			 }else
+			 {
+				 pet.setEt_tech_cert2(pet2.getEt_tech_cert2());
+				 pet.setTech2_status(pet2.getTech2_status());
+			 }
+			 if(pet3.getEt_tech_cert3()!=null) {
+				 pet.setEt_tech_cert3(pet3.getEt_tech_cert3());
+				  pet.setTech3_status("Submitted");
+			 }else
+			 {
+				 pet.setEt_tech_cert3(pet2.getEt_tech_cert3());
+				  pet.setTech3_status(pet2.getTech3_status());
+			 }
+			 if(pet3.getEt_tech_cert4()!=null) {
+				 pet.setEt_tech_cert4(pet3.getEt_tech_cert4());
+				 pet.setTech4_status("Submitted");
+			 }else
+			 {
+				 pet.setEt_tech_cert4(pet2.getEt_tech_cert4());
+				 pet.setTech4_status(pet2.getTech4_status());
+			 }
+			 if(pet3.getEt_tech_cert5()!=null) {
+				 pet.setEt_tech_cert5(pet3.getEt_tech_cert5());
+				 pet.setTech5_status("Submitted");
+			 }else
+			 {
+				 pet.setEt_tech_cert5(pet2.getEt_tech_cert5());
+				 pet.setTech5_status(pet2.getTech5_status());
+			 }
+			
+           
+            
+            
+		 System.out.println("update of record needed");
+		 returnrecord=pet;
+		 System.out.println("updation done successfully");
+
+		 
+		 
+		 }
+		 else
+		 {
+			 returnrecord=pet3;
+
+		 }
+	}
+	return this.empTech.save(returnrecord);
+	}
+	
+	
 }
